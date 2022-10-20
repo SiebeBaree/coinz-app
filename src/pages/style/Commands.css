@@ -1,0 +1,48 @@
+#categories .category-select {
+    margin: 0 20px 20px 0;
+    outline: none;
+    border: none;
+    padding: 10px 25px;
+    background-image: linear-gradient(90deg, #435EB7, #653FD7);
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#categories .category-select:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+#categories .category-selected {
+    -webkit-box-shadow: inset 0px 0px 0px 4px var(--text-color);
+    -moz-box-shadow: inset 0px 0px 0px 4px var(--text-color);
+    box-shadow: inset 0px 0px 0px 4px var(--text-color);
+}
+
+#commands .command-item {
+    padding: 20px 25px 10px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: var(--card-color);
+}
+
+#commands .opened {
+    box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.5);
+}
+
+#commands .opened .command-description {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+#commands h5 {
+    color: var(--text-color);
+}
+
+#commands code {
+    color: #548cdc;
+}

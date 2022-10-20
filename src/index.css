@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Ginto Nord";
+  src: url('./assets/fonts/GintoNord-Black.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Ginto Nord";
+  src: url('./assets/fonts/GintoNord-Medium.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Whitney;
+  src: url('./assets/fonts/Whitney-Semibold-Bas.otf');
+}
+
+:root {
+  --text-color: rgba(225, 255, 255, 0.87);
+  --bg-color: #000212;
+  --secondary-bg-color: rgba(60, 141, 227, 0.5);
+  --card-color: #111327;
+
+  font: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h5,
+h6 {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+.text-color {
+  color: var(--text-color);
+}
+
+.page-content {
+  min-height: calc(100vh - 150px);
+}

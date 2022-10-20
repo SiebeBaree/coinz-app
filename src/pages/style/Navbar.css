@@ -1,0 +1,42 @@
+.border-under {
+    border-bottom: 1px solid rgba(245, 245, 245, 0.2);
+}
+
+nav {
+    z-index: 1;
+    height: 50px;
+}
+
+nav .navbar-brand {
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+nav .nav-link {
+    margin: auto 10px;
+    font-size: 1rem;
+}
+
+nav .nav-link,
+nav .nav-link:hover,
+nav .nav-link:active,
+nav .nav-link:focus,
+nav .navbar-brand,
+nav .navbar-brand:hover,
+nav .navbar-brand:active,
+nav .navbar-brand:focus,
+nav .dropdown-toggle::after,
+nav span {
+    color: var(--text-color);
+}
+
+nav img {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 992px) {
+    nav .unimportant-content {
+        display: none;
+    }
+}

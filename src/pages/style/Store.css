@@ -1,0 +1,241 @@
+:root {
+    --white: #f5f5f5;
+    --grey: #848484;
+}
+
+h1,
+h3,
+h4,
+h6,
+li {
+    color: var(--text-color);
+}
+
+.pricing h6 {
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.magic-text {
+    animation: background-pan 5s linear infinite;
+    background: linear-gradient(to right,
+            var(--white),
+            var(--grey),
+            var(--white));
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-button {
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    background-image: linear-gradient(90deg, #435EB7, #653FD7);
+    transition: all 0.3s ease-in-out;
+}
+
+.gradient-button:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.page-title {
+    margin-top: 50px;
+}
+
+.shopping-cart {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+}
+
+.shopping-cart svg {
+    margin-right: 10px;
+    height: 1rem;
+}
+
+.section-title {
+    margin-top: 70px;
+}
+
+.section-description {
+    margin-bottom: 40px;
+}
+
+.section-banned {
+    gap: 25px;
+    margin: 100px 0;
+}
+
+.section-banned svg {
+    height: 100px;
+}
+
+#cards,
+#lootboxes {
+    gap: 8px;
+    width: 100%;
+}
+
+#cards:hover>.row-card::after,
+#cards .row-card:hover::before {
+    opacity: 1;
+}
+
+#cards .row-card .btn,
+#lootboxes .lootbox-card .btn {
+    color: var(--white);
+    outline: none;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#cards .row-card {
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: calc(33% - 8px);
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#cards .row-card::before,
+#cards .row-card::after {
+    border-radius: inherit;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 500ms;
+    cursor: pointer;
+}
+
+#cards .row-card::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(245, 245, 245, 0.05),
+            transparent 40%);
+    z-index: 3;
+}
+
+#cards .row-card::after {
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.2),
+            transparent 40%);
+    z-index: 1;
+}
+
+#cards .row-card>.card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    margin: 1px;
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    padding: 40px 30px 25px 30px;
+    z-index: 2;
+    position: relative;
+}
+
+#cards header,
+#lootboxes header,
+.middle-card {
+    margin-bottom: 25px;
+}
+
+#lootboxes {
+    margin-bottom: 75px;
+}
+
+#lootboxes .lootbox-card {
+    background-color: var(--card-color);
+    padding: 40px 30px 25px 30px;
+    border-radius: 25px;
+    width: calc(33% - 8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#lootboxes .lootbox-card .card-content {
+    height: 100%;
+}
+
+#lootboxes .btn,
+#lootboxes .btn button {
+    width: 100%;
+}
+
+#lootboxes button svg {
+    margin-right: 10px;
+    height: 0.9rem;
+}
+
+#lootboxes ul {
+    margin-left: 20px;
+}
+
+#lootboxes li img {
+    margin-right: 5px;
+}
+
+#lootboxes li svg {
+    height: 5px;
+}
+
+#tickets {
+    background-color: var(--card-color);
+    padding: 25px 30px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#tickets .ticket-options {
+    gap: 30px;
+}
+
+#tickets .ticket-options .ticket-option {
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    #cards .row-card {
+        width: 100%;
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #tickets .ticket-text p {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #tickets {
+        flex-direction: column;
+    }
+
+    #tickets .ticket-text h1 {
+        display: none;
+    }
+
+    #lootboxes {
+        gap: 25px;
+    }
+
+    #lootboxes .lootbox-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #tickets .ticket-options {
+        gap: 10px;
+    }
+}

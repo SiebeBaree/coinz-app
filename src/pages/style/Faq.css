@@ -1,0 +1,44 @@
+h2,
+h4,
+p {
+    color: var(--text-color);
+}
+
+#page-title {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+#page-title h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#page-title p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+#faq .faq-item {
+    padding: 20px 25px 10px 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: var(--card-color);
+}
+
+#faq .item-expanded {
+    box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.5);
+}
+
+#faq .item-expanded h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+#faq .item-expanded p {
+    padding-top: 10px;
+}
