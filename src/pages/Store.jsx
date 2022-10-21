@@ -239,7 +239,7 @@ function Store() {
         fetch("http://ip-api.com/json").then(response => response.json()).then(data => {
             if (data.status === 'success') {
                 if (bannedCountryCodes.includes(data.countryCode)) {
-                    // setIsFromBannedCountry(true);
+                    setIsFromBannedCountry(true);
                 }
             }
         });
