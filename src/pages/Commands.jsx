@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './style/Commands.css'
 import commands from '../assets/data/commands.json'
@@ -24,21 +25,29 @@ export default function Commands() {
             </div>
 
             <div id="categories" className="d-flex flex-row flex-wrap">
-                {Object.keys(categories).map((category) => <Category category={category} name={categories[category]} key={category} state={state} setState={setState} root={root} />)}
+                {Object.keys(categories).map((category) => <Category category={category} name={categories[category]} key={category} state={state} setState={setState} />)}
             </div>
 
-            <div id="commands" state={state}>
-                {getCommands(state).map((cmd) => <Command name={cmd} description={commands[cmd].description} cooldown={commands[cmd].cooldown} options={commands[cmd].options} key={cmd} />)}
+            <div id="commands">
+                {getCommands(state).map((cmd) => <Command name={cmd} description={commands[cmd].description} options={commands[cmd].options} key={cmd} />)}
             </div>
         </Container>
     )
 }
 
-function Category({ category, name, state, setState, root }) {
-    return <button category={category} className={`category-select${state === category ? " category-selected" : ""}`} onClick={(e) => handleClick(e, category, state, setState, root)}>{name}</button>
+function Category({ category, name, state, setState }) {
+    // eslint-disable-next-line react/no-unknown-property
+    return <button category={category} className={`category-select${state === category ? " category-selected" : ""}`} onClick={() => handleClick(category, state, setState)}>{name}</button>
 }
 
-function handleClick(event, category, state, setState, root) {
+Category.propTypes = {
+    category: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    setState: PropTypes.func.isRequired
+}
+
+function handleClick(category, state, setState) {
     if (state === category) return;
 
     let categories = document.getElementsByClassName("category-selected");
@@ -53,16 +62,23 @@ function getCommands(category) {
     return Object.keys(commands).filter(command => commands[command].category === category);
 }
 
-function Command({ name, description, cooldown, options, isOpened = false }) {
+function Command({ name, description, options, isOpened = false }) {
     const [commandState, setCommandState] = useState(isOpened);
 
     return (
-        <div className={`command-item${commandState ? " opened" : ""}`} onClick={(e) => setCommandState(commandState => !commandState)} >
+        <div className={`command-item${commandState ? " opened" : ""}`} onClick={() => setCommandState(commandState => !commandState)} >
             <h4>/{name}</h4>
             <p className={commandState ? "command-description" : ""}>{description}</p>
             {commandState && commandOptionParser(name, options)}
         </div>
     )
+}
+
+Command.propTypes = {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    options: PropTypes.array.isRequired,
+    isOpened: PropTypes.bool
 }
 
 function commandOptionParser(name, cmdOptions) {

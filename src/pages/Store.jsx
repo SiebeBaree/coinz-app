@@ -3,7 +3,8 @@ import './style/Store.css'
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faCartShopping, faBan, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCartShopping, faBan } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types';
 
 function Store() {
     const premiumPerks = {
@@ -233,7 +234,7 @@ function Store() {
         }
 
         for (const card of document.getElementsByClassName('row-card')) {
-            card.onclick = e => window.location.href = card.getAttribute('redirect-to');
+            card.onclick = () => window.location.href = card.getAttribute('redirect-to');
         }
 
         fetch("http://ip-api.com/json").then(response => response.json()).then(data => {
@@ -277,17 +278,17 @@ function Store() {
                     </div>
                     <div className="ticket-options d-flex">
                         <button className="ticket-option gradient-button">
-                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" /> 100</h4>
+                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' /> 100</h4>
                             <h2>$1</h2>
                         </button>
 
                         <button className="ticket-option gradient-button">
-                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" /> 300</h4>
+                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' /> 300</h4>
                             <h2>$3</h2>
                         </button>
 
                         <button className="ticket-option gradient-button">
-                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" /> 500</h4>
+                            <h4><img src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' /> 500</h4>
                             <h2>$5</h2>
                         </button>
                     </div>
@@ -305,6 +306,7 @@ function Store() {
 
 function SubscriptionCard({ title, price, botPerks, serverPerks, subscribeUrl = "#" }) {
     return (
+        // eslint-disable-next-line react/no-unknown-property
         <div className='row-card d-flex flex-column' redirect-to={subscribeUrl}>
             <div className="card-content d-flex flex-column justify-content-between">
                 <div className="head">
@@ -339,6 +341,14 @@ function SubscriptionCard({ title, price, botPerks, serverPerks, subscribeUrl = 
     )
 }
 
+SubscriptionCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    botPerks: PropTypes.array.isRequired,
+    serverPerks: PropTypes.array.isRequired,
+    subscribeUrl: PropTypes.string
+}
+
 function LootboxSection({ isFromBannedCountry, lootboxes }) {
     if (isFromBannedCountry) {
         return (
@@ -356,6 +366,11 @@ function LootboxSection({ isFromBannedCountry, lootboxes }) {
     }
 }
 
+LootboxSection.propTypes = {
+    isFromBannedCountry: PropTypes.bool.isRequired,
+    lootboxes: PropTypes.object.isRequired
+}
+
 function LootBoxCard({ title, items }) {
     return (
         <div className='lootbox-card d-flex flex-column'>
@@ -368,7 +383,7 @@ function LootBoxCard({ title, items }) {
                     <div className='middle-card'>
                         <p><b>Possible Loot:</b></p>
                         <ul className='list-unstyled'>
-                            {items.map(({ name, amount, emoteId }, index) => <li><img src={`https://cdn.discordapp.com/emojis/${emoteId}.png?size=24`} alt="Icon for loot item" loading='lazy' /><b>{amount}{name !== "Coins" ? `x` : ``}</b> {name}</li>)}
+                            {items.map(({ name, amount, emoteId }) => <li key={name}><img src={`https://cdn.discordapp.com/emojis/${emoteId}.png?size=24`} alt="Icon for loot item" loading='lazy' /><b>{amount}{name !== "Coins" ? `x` : ``}</b> {name}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -376,6 +391,11 @@ function LootBoxCard({ title, items }) {
             </div>
         </div>
     )
+}
+
+LootBoxCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    items: PropTypes.array.isRequired
 }
 
 export default Store

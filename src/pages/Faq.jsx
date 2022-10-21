@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './style/Faq.css'
 import { items } from '../assets/data/faq.json'
@@ -30,6 +31,11 @@ function FaqItem({ title, description }) {
             {state ? <p dangerouslySetInnerHTML={{ __html: description }}></p> : null}
         </div>
     )
+}
+
+FaqItem.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
 }
 
 export default Faq

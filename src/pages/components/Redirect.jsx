@@ -13,7 +13,7 @@ function Redirect() {
                 marginTop: "25px",
                 fontSize: "4rem"
             }}>Hang Tight!</h1>
-            <h3>You're being redirected...</h3>
+            <h3>You&apos;re being redirected...</h3>
         </div>
     )
 }
