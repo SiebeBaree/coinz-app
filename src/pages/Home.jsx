@@ -1,5 +1,6 @@
 import './style/App.css'
 import { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
 import CompanyImg from '../assets/img/company.webp'
@@ -37,8 +38,8 @@ function Home() {
                 <h2 className='vote-description'>Check the rewards using /vote</h2>
 
                 <div className="vote-btns d-flex flex-row justify-content-center">
-                    <a href="https://top.gg/bot/938771676433362955/vote" target="_blank"><button className='gradient-button'>Vote on Top.gg  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
-                    <a href="https://discordbotlist.com/bots/coinz/upvote" target="_blank"><button className='gradient-button'>Vote on Discordbotlist  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
+                    <a href="https://top.gg/bot/938771676433362955/vote" target="_blank" rel="noreferrer"><button className='gradient-button'>Vote on Top.gg  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
+                    <a href="https://discordbotlist.com/bots/coinz/upvote" target="_blank" rel="noreferrer"><button className='gradient-button'>Vote on Discordbotlist  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
                 </div>
             </Container>
 
@@ -101,6 +102,14 @@ function StatCounter({ icon, count, name, suffix = "", delay = 3 }) {
     )
 }
 
+StatCounter.propTypes = {
+    icon: PropTypes.node.isRequired,
+    count: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    suffix: PropTypes.string.isRequired,
+    delay: PropTypes.number.isRequired
+}
+
 function FeatureComponent({ image, imageAlt, children }) {
     return (
         <div className="feature-row d-flex justify-content-between">
@@ -112,6 +121,12 @@ function FeatureComponent({ image, imageAlt, children }) {
             </div>
         </div>
     )
+}
+
+FeatureComponent.propTypes = {
+    image: PropTypes.node.isRequired,
+    imageAlt: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired
 }
 
 export default Home
