@@ -2,10 +2,10 @@ import './style/App.css'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import CompanyImg from '../assets/img/company.png'
-import FarmingImg from '../assets/img/farming.png'
-import GamesImg from '../assets/img/games.png'
-import InvestingImg from '../assets/img/investing.png'
+import CompanyImg from '../assets/img/company.webp'
+import FarmingImg from '../assets/img/farming.webp'
+import GamesImg from '../assets/img/games.webp'
+import InvestingImg from '../assets/img/investing.webp'
 
 import Container from 'react-bootstrap/Container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +17,7 @@ function Home() {
             <div id="hero" className='d-flex flex-column'>
                 <Container className='hero-content d-flex flex-row justify-content-center'>
                     <div className="hero-text d-flex flex-column justify-content-center text-center">
-                        <h2 className="text-color magic-text">Coinz is the only economy discord bot you need</h2>
+                        <h2 className="magic-text">Coinz is the only economy discord bot you need</h2>
                         <p className="text-color">Compete against 250k+ users to be the richest person on Coinz. With loads of fun commands to keep you and your server entertained.</p>
                         <Link to="/invite" target="_blank"><button className='gradient-button'>Add To Your Server <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></Link>
                     </div>
