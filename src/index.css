@@ -2,17 +2,20 @@
   font-family: "Ginto Nord";
   src: url('./assets/fonts/GintoNord-Black.ttf');
   font-weight: bold;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Ginto Nord";
   src: url('./assets/fonts/GintoNord-Medium.ttf');
   font-weight: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: Whitney;
   src: url('./assets/fonts/Whitney-Semibold-Bas.otf');
+  font-display: swap;
 }
 
 :root {
