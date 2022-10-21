@@ -61,7 +61,7 @@ function Home() {
 
                 <FeatureComponent image={FarmingImg} imageAlt="Feature: Grow your own crops">
                     <h3>Grow your own crops</h3>
-                    <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops on. With premium you can buy up to 15 plots! Each crop has a different grow time, don't let your crops grow . Don't forget to water your crops once in a while!</p>
+                    <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops on. With premium you can buy up to 15 plots! Each crop has a different grow time, don&apos;t let your crops grow . Don&apos;t forget to water your crops once in a while!</p>
                 </FeatureComponent>
             </Container>
         </div>
@@ -69,6 +69,7 @@ function Home() {
 }
 
 function StatCounter({ icon, count, name, suffix = "", delay = 3 }) {
+    count = parseInt(count);
     const totalDelay = parseInt(delay * 1000);
     const incrementValue = Math.ceil(count * 20 / totalDelay);
     const [state, setState] = useState(0);
@@ -77,7 +78,7 @@ function StatCounter({ icon, count, name, suffix = "", delay = 3 }) {
     const ref = useRef();
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             isVisible = entries[0].isIntersecting;
         });
 
@@ -103,11 +104,11 @@ function StatCounter({ icon, count, name, suffix = "", delay = 3 }) {
 }
 
 StatCounter.propTypes = {
-    icon: PropTypes.node.isRequired,
-    count: PropTypes.number.isRequired,
+    icon: PropTypes.any.isRequired,
+    count: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    suffix: PropTypes.string.isRequired,
-    delay: PropTypes.number.isRequired
+    suffix: PropTypes.string,
+    delay: PropTypes.number
 }
 
 function FeatureComponent({ image, imageAlt, children }) {
@@ -124,9 +125,9 @@ function FeatureComponent({ image, imageAlt, children }) {
 }
 
 FeatureComponent.propTypes = {
-    image: PropTypes.node.isRequired,
+    image: PropTypes.any.isRequired,
     imageAlt: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
+    children: PropTypes.array.isRequired
 }
 
 export default Home
