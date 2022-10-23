@@ -1,5 +1,7 @@
 import '../style/Navbar.css'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { isLoggedIn } from '../helpers.js';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,7 +9,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
+const DISCORD_BASE_CDN = 'https://cdn.discordapp.com/';
+
 function NavbarComponent() {
+    const [loggedIn, setLogin] = useState(false);
+
+    useEffect(() => {
+        setLogin(isLoggedIn());
+    })
+
     return (
         <Container fluid="lg">
             <Navbar expand="lg" className='border-under'>
@@ -33,18 +43,20 @@ function NavbarComponent() {
                             </Nav>
                             <Nav className="ms-auto">
                                 <Nav.Link as={Link} to="/discord" target="_blank">Support</Nav.Link>
-                                <NavDropdown id="offcanvasNavbarDropdown-expand-lg" className="nav-btn" title={
-                                    <span>
-                                        <img src="https://cdn.discordapp.com/avatars/643072638075273248/32edb848e9f83f67be8dcdb86912acf1.webp?size=32" className="rounded-circle" height="32" alt="Discord Profile Picture" loading="lazy" />
-                                        Siebe#0001
-                                    </span>
-                                }>
-                                    <NavDropdown.Item as={Link} to="/ban-appeal">Ban Appeal</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/report">Report User</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item as={Link} to="/logout" className="text-danger">Logout</NavDropdown.Item>
-                                </NavDropdown>
-                                {/* <Nav.Link as={Link} to="/login">Login&nbsp;Via&nbsp;Discord</Nav.Link> */}
+                                {loggedIn ? (
+                                    <NavDropdown id="offcanvasNavbarDropdown-expand-lg" className="nav-btn" title={
+                                        <span>
+                                            <img src={`https://cdn.discordapp.com/avatars/${sessionStorage.getItem('user_id')}/${sessionStorage.getItem('user_avatar')}.png?size=32`} className="rounded-circle" height="32" alt="Discord Profile Picture" loading="lazy" />
+                                            {sessionStorage.getItem('user_username')}#{sessionStorage.getItem('user_discriminator')}
+                                        </span>
+                                    }>
+                                        <NavDropdown.Item as={Link} to="/dashboard">Dashboard</NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to="/ban-appeal">Ban Appeal</NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to="/report">Report User</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item as={Link} to="/logout" className="text-danger">Logout</NavDropdown.Item>
+                                    </NavDropdown>
+                                ) : <Nav.Link as={Link} to="/login">Login Via Discord</Nav.Link>}
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
