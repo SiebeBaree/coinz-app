@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const API_ENDPOINT = "https://discord.com/api/v10";
-const REDIRECT_URI = `http://localhost:5173/callback`;
+const REDIRECT_URI = process.env.WEBAPP_URL + "/callback";
 
 export async function exchangeCode(code) {
     const res = await fetch(`${API_ENDPOINT}/oauth2/token`, {
@@ -39,7 +39,7 @@ export async function refreshToken(refreshToken) {
     return await res.json();
 }
 
-export async function getToken(token) {
+export async function getToken() {
     const res = await fetch(`${API_ENDPOINT}/oauth2/token`, {
         method: 'POST',
         headers: {
