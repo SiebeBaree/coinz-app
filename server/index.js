@@ -1,23 +1,16 @@
-import express from 'express';
-import cors from 'cors';
-import { faker } from '@faker-js/faker';
+// Environment Variables (Stripe API Key)
+import { config } from "dotenv"
+if (process.env.NODE_ENV !== 'production') {
+    config();
+}
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+// Initialize Stripe
+// import Stripe from 'stripe';
+// export const stripe = new Stripe(process.env.STRIPE_SECRET, {
+//     apiVersion: '2022-08-01',
+// });
 
-const members = [...Array(1024).keys()].map(id => {
-    return {
-        id: faker.random.numeric(10),
-        name: `${faker.name.firstName().toLowerCase()}#${faker.random.numeric(4)}`,
-        email: faker.internet.email()
-    }
-});
-
-app.get('/members', (req, res) => {
-    const q = req.query.q?.toLowerCase() || '';
-    const results = members.filter(member => member.name.toLowerCase().includes(q.toLowerCase()));
-    res.send(results);
-});
-
-app.listen(3000);
+// Start the API with Express
+import { app } from './routes.js';
+const port = process.env.PORT || 3300;
+app.listen(port, () => console.log(`API available on http://localhost:${port}`));
