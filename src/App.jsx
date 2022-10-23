@@ -9,6 +9,10 @@ import Commands from './pages/Commands.jsx'
 import Store from './pages/Store.jsx'
 import Discord from './pages/Discord.jsx'
 import Invite from './pages/Invite.jsx'
+import Callback from './pages/Callback.jsx'
+import Login from './pages/Login.jsx'
+import Logout from './pages/Logout.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 
 function App() {
     return (
@@ -27,6 +31,12 @@ function App() {
                     <Route path="/invite">
                         <Route index element={<Invite />} />
                         <Route path=":id" element={<Invite />} />
+                    </Route>
+                    <Route path="/callback" element={<Callback />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/dashboard">
+                        <Route index element={<Dashboard />} />
                     </Route>
                 </Routes>
             </div>
