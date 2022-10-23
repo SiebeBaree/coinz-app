@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './style/Faq.css'
-import { items } from '../assets/data/faq.json'
+import { items } from '/src/assets/data/faq.json'
 import Container from 'react-bootstrap/Container'
 
 function Faq() {

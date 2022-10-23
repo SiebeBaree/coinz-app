@@ -1,4 +1,4 @@
-import RedirectImg from "../../assets/img/redirect.webp"
+import RedirectImg from "/src/assets/img/redirect.webp"
 
 function Redirect() {
     return (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './style/Commands.css'
-import commands from '../assets/data/commands.json'
+import commands from '/src/assets/data/commands.json'
 import Container from 'react-bootstrap/Container'
 
 const categories = {

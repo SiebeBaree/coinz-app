@@ -3,10 +3,10 @@ import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
-import CompanyImg from '../assets/img/company.webp'
-import FarmingImg from '../assets/img/farming.webp'
-import GamesImg from '../assets/img/games.webp'
-import InvestingImg from '../assets/img/investing.webp'
+import CompanyImg from '/src/assets/img/company.webp'
+import FarmingImg from '/src/assets/img/farming.webp'
+import GamesImg from '/src/assets/img/games.webp'
+import InvestingImg from '/src/assets/img/investing.webp'
 
 import Container from 'react-bootstrap/Container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
