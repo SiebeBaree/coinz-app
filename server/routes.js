@@ -4,7 +4,7 @@ export const app = express();
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { exchangeCode, getUser, refreshToken, revokeToken } from './oauth.js';
-import { authorizeWebUser } from './database.js';
+import { authorizeWebUser, createWebUser, deleteWebUserByToken } from './database.js';
 
 app.use(cors({ origin: true }));
 app.use(express.json());
@@ -27,6 +27,9 @@ app.post(
         if (!code) return res.status(400).send('No code provided');
         const data = await exchangeCode(code);
         if (data.code === 50035) return res.status(401).send('Invalid code');
+
+        const { id } = await getUser(data.access_token);
+        await createWebUser(data.access_token, id);
         res.send(data);
     })
 );
@@ -47,6 +50,7 @@ app.post(
         const { code } = req.body;
         if (!code) return res.status(400).send('No code provided');
         const data = await revokeToken(code);
+        await deleteWebUserByToken(code);
         res.send(data);
     })
 );
