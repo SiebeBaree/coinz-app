@@ -1,3 +1,9 @@
 {
-    "API_URI": "http://localhost:6173/api"
+    "API_URI": "http://localhost:6173/api",
+    "API_ENDPOINT": "https://discord.com/api/v10",
+    "DISCORD_CLIENT_ID": "938771676433362955",
+    "SCOPE": [
+        "identify",
+        "guilds"
+    ]
 }
