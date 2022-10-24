@@ -44,3 +44,12 @@ export async function revokeToken(token) {
     }));
     return { status: res.status };
 }
+
+export async function getUser(token) {
+    const res = await axios.get(`${API_ENDPOINT}/users/@me`, {}, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return res.data;
+}
