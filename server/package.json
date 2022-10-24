@@ -19,6 +19,7 @@
     "stripe": "^10.15.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.5.0"
+    "@faker-js/faker": "^7.5.0",
+    "nodemon": "^2.0.20"
   }
 }
