@@ -25,6 +25,7 @@ export default function Dashboard() {
                     sessionStorage.setItem('user_username', data.username);
                     sessionStorage.setItem('user_discriminator', data.discriminator);
                     sessionStorage.setItem('user_avatar', data.avatar);
+                    window.location.reload();
                 });
             }
         }
