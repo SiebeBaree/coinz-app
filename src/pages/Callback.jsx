@@ -8,8 +8,11 @@ export default function Callback() {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
 
-            const res = await fetch(`${API_URI}/discord/callback?code=${params.code}`, {
-                method: 'GET',
+            const res = await fetch(`${API_URI}/discord/callback`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    code: params.code,
+                }),
                 headers: {
                     'Content-Type': 'application/json'
                 }

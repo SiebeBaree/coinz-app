@@ -4,11 +4,14 @@ import { API_URI } from '../assets/data/config.json';
 export default function Logout() {
     useEffect(() => {
         async function fetchData(token) {
-            const res = await fetch(`${API_URI}/discord/revoke?code=${token}`, {
-                method: 'GET',
+            const res = await fetch(`${API_URI}/discord/revoke`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({
+                    code: token
+                })
             });
             return await res.json();
         }
