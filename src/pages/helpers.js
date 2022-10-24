@@ -3,7 +3,7 @@ import { API_URI, API_ENDPOINT } from '../assets/data/config.json';
 export function isLoggedIn() {
     let loggedIn = true;
 
-    if (!sessionStorage.getItem('access_token')) loggedIn = false;
+    if (!sessionStorage.getItem('access_token') || parseInt(sessionStorage.getItem('expires_in')) <= parseInt(Date.now() / 1000)) loggedIn = false;
     if (!sessionStorage.getItem('user')) loggedIn = false;
 
     return loggedIn;
@@ -104,4 +104,30 @@ export async function revokeToken(token = null, clearStorage = true, redirect = 
     }
 
     if (redirect) window.location.replace('/');
+}
+
+export async function isAuthorized() {
+    if (!isLoggedIn()) return false;
+
+    async function fetchData(token) {
+        const res = await fetch(`${API_URI}/discord/user/autorized/${token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return await res.json();
+    }
+
+    const id = sessionStorage.getItem('user_id');
+    const token = getAccessToken();
+
+    if (id && token) {
+        fetchData(token).then((data) => {
+            return data.status === 200;
+        }).catch(e => console.log(e));
+        return false;
+    } else {
+        return false;
+    }
 }
