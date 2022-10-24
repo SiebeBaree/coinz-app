@@ -3,7 +3,8 @@ export const app = express();
 
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { exchangeCode, refreshToken, revokeToken } from './oauth.js';
+import { exchangeCode, getUser, refreshToken, revokeToken } from './oauth.js';
+import { authorizeWebUser } from './database.js';
 
 app.use(cors({ origin: true }));
 app.use(express.json());
@@ -47,5 +48,15 @@ app.post(
         if (!code) return res.status(400).send('No code provided');
         const data = await revokeToken(code);
         res.send(data);
+    })
+);
+
+app.get(
+    '/api/discord/user/autorized/:token',
+    runAsync(async (req, res) => {
+        const { token } = req.params;
+        const { id } = await getUser(token);
+        const isAuthorized = await authorizeWebUser(token, id);
+        isAuthorized ? res.send('Authorized') : res.status(401).send('Unauthorized');
     })
 );
