@@ -20,11 +20,11 @@ export default function Callback() {
             return await res.json();
         }
 
-        if (!sessionStorage.getItem('access_token')) {
+        if (!sessionStorage.getItem('access_token') || parseInt(sessionStorage.getItem('expires_in')) <= parseInt(Date.now() / 1000)) {
             fetchData().then((data) => {
                 if (!data.error) {
                     sessionStorage.setItem('access_token', data.access_token);
-                    sessionStorage.setItem('expires_in', data.expires_in);
+                    sessionStorage.setItem('expires_in', parseInt(Date.now() / 1000) + data.expires_in);
                     localStorage.setItem('refresh_token', data.refresh_token);
                     document.location.replace('/dashboard');
                 }
