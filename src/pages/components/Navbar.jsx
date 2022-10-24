@@ -46,7 +46,7 @@ function NavbarComponent() {
                                 {loggedIn ? (
                                     <NavDropdown id="offcanvasNavbarDropdown-expand-lg" className="nav-btn" title={
                                         <span>
-                                            <img src={`https://cdn.discordapp.com/avatars/${sessionStorage.getItem('user_id')}/${sessionStorage.getItem('user_avatar')}.png?size=32`} className="rounded-circle" height="32" alt="Discord Profile Picture" loading="lazy" />
+                                            <img src={`${DISCORD_BASE_CDN}avatars/${sessionStorage.getItem('user_id')}/${sessionStorage.getItem('user_avatar')}.png?size=32`} className="rounded-circle" height="32" alt="Discord Profile Picture" loading="lazy" />
                                             {sessionStorage.getItem('user_username')}#{sessionStorage.getItem('user_discriminator')}
                                         </span>
                                     }>
