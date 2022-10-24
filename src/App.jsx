@@ -13,6 +13,8 @@ import Callback from './pages/Callback.jsx'
 import Login from './pages/Login.jsx'
 import Logout from './pages/Logout.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import TermsOfService from './pages/TermsOfService.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 
 function App() {
     return (
@@ -38,6 +40,8 @@ function App() {
                     <Route path="/dashboard">
                         <Route index element={<Dashboard />} />
                     </Route>
+                    <Route path="/tos" element={<TermsOfService />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
                 </Routes>
             </div>
             <Footer />
