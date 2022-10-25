@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faCartShopping, faBan } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
-import { isLoggedIn } from './helpers.js';
+import { isAuthorized } from '../lib/helpers.js';
 
 function Store() {
     const premiumPerks = {
@@ -223,7 +223,9 @@ function Store() {
     const bannedCountryCodes = ["JP", "CN", "NL", "BE"];
 
     useEffect(() => {
-        if (!isLoggedIn()) document.location.href = "/login";
+        isAuthorized().then((isAuthorized) => {
+            if (!isAuthorized) document.location.href = "/login";
+        });
 
         document.getElementById('cards').onmousemove = e => {
             for (const card of document.getElementsByClassName('row-card')) {
@@ -247,7 +249,7 @@ function Store() {
                 }
             }
         });
-    });
+    }, []);
 
     return (
         <Container>
