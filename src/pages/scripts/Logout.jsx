@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { revokeToken } from './helpers';
+import { revokeToken } from '../../lib/helpers.js';
 
 export default function Logout() {
     useEffect(() => {
