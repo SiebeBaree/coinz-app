@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import Redirect from '../pages/components/Redirect.jsx'
+import Redirect from '../components/Redirect.jsx'
 
 function Discord() {
     useEffect(() => {

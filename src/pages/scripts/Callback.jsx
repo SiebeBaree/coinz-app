@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { API_URI } from '../assets/data/config.json';
+import { API_URI } from '../../assets/data/config.json';
 import { getAccessToken, revokeToken, setTokenItems } from '../../lib/helpers.js';
 
 export default function Callback() {

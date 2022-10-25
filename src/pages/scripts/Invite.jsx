@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import Redirect from '../pages/components/Redirect.jsx'
+import Redirect from '../components/Redirect.jsx'
 
 function Discord() {
     const { id } = useParams();

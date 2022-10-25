@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { API_URI, API_ENDPOINT, DISCORD_CLIENT_ID, SCOPE } from '../assets/data/config.json';
+import { API_URI, API_ENDPOINT, DISCORD_CLIENT_ID, SCOPE } from '../../assets/data/config.json';
 import { generateRandomString, getAccessToken, getRefreshToken, setTokenItems } from '../../lib/helpers.js';
 
 export default function Login() {
