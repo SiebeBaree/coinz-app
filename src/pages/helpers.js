@@ -116,7 +116,7 @@ export async function isAuthorized() {
                 'Content-Type': 'application/json'
             }
         });
-        return await res.json();
+        return res;
     }
 
     const id = sessionStorage.getItem('user_id');
@@ -125,7 +125,7 @@ export async function isAuthorized() {
     if (id && token) {
         fetchData(token).then((data) => {
             return data.status === 200;
-        }).catch(e => console.log(e));
+        });
         return false;
     } else {
         return false;
