@@ -1,7 +1,7 @@
 import '../style/Navbar.css'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { isLoggedIn } from '../helpers.js';
+import { isLoggedIn } from '../../lib/helpers.js';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

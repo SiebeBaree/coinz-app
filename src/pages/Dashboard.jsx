@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getAccessToken, getUser } from './helpers';
+import { getAccessToken, getUser } from '../lib/helpers.js';
 
 export default function Dashboard() {
     useEffect(() => {
