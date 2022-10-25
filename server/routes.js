@@ -59,7 +59,7 @@ app.get(
     '/api/discord/user/autorized/:token',
     runAsync(async (req, res) => {
         const { token } = req.params;
-        const { id } = await getUser(token);
+        const { id } = await getUser(token).catch(res.status(401).send('Unauthorized'));
         const isAuthorized = await authorizeWebUser(token, id);
         isAuthorized ? res.send('Authorized') : res.status(401).send('Unauthorized');
     })
