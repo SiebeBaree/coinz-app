@@ -7,7 +7,7 @@ function Discord() {
 
     useEffect(() => {
         window.location.replace(`https://discord.com/api/oauth2/authorize?client_id=938771676433362955&permissions=313344&scope=bot%20applications.commands${id === undefined ? "" : `&guild_id=${id}`}`)
-    })
+    }, [])
 
     return (
         <Redirect />

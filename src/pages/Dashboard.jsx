@@ -11,7 +11,7 @@ export default function Dashboard() {
                 getUser().then(() => window.location.reload());
             }
         }
-    })
+    }, [])
 
     return (<></>)
 }
