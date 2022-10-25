@@ -10,6 +10,7 @@ export default function Callback() {
             });
 
             if (localStorage.getItem('oauth-state') !== window.atob(decodeURIComponent(params.state))) {
+                console.log("State doesn't match. You may have been clickjacked!\nFor more information please visit: https://auth0.com/docs/protocols/state-parameters");
                 revokeToken();
             }
 
@@ -31,6 +32,8 @@ export default function Callback() {
                 if (!data.error) {
                     setTokenItems(data);
                     document.location.replace('/dashboard');
+                } else {
+                    document.location.replace('/login')
                 }
             });
         } else {
