@@ -7,6 +7,7 @@ export const getWebUser = async (token) => {
 
 export const createWebUser = async (token, id) => {
     if (!token || !id) return;
+    if (await getWebUser(token)) return;
 
     const webUser = new WebUser({
         token: token,
