@@ -10,6 +10,12 @@ const nextConfig = {
         port: '',
         pathname: '/emojis/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.discordapp.com',
+        port: '',
+        pathname: '/avatars/**',
+      },
     ],
   }
 }
