@@ -27,7 +27,7 @@ export default function Callback() {
         } else {
             document.location.replace('/dashboard');
         }
-    }, [router.isReady]);
+    }, [router.isReady, router.query.code, router.query.state]);
 
     return (<></>)
 }
