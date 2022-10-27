@@ -24,10 +24,10 @@
 .navbarLink:active,
 .navbarLink:focus,
 .navbarBrand,
-.navbarbrand:hover,
+.navbarBrand:hover,
 .navbarBrand:active,
 .navbarBrand:focus,
-.dropdown-toggle::after,
+.dropdownToggle::after,
 .profileSpan {
     color: var(--text-color);
 }
