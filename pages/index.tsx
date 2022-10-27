@@ -77,7 +77,6 @@ function StatCounter({ icon, count, name, suffix = "", delay = "3" }) {
   let isVisible = false;
 
   const ref = useRef();
-  const visibleRef = useRef();
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
