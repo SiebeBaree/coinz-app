@@ -4,7 +4,6 @@ import '../styles/globals.css'
 import Head from 'next/head'
 
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="description"
           content="Coinz is the only discord economy bot you will ever need. It has 45+ commands to keep you entertained." />
         <meta name="keywords"
@@ -36,7 +35,6 @@ function MyApp({ Component, pageProps }) {
 
       <Navbar />
       <Component {...pageProps} />
-      <Footer />
     </>
   )
 }
