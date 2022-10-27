@@ -1,0 +1,68 @@
+#commands h2,
+#commands h4,
+#commands h5,
+#commands p {
+    color: var(--text-color);
+}
+
+#commands code {
+    color: #548cdc;
+}
+
+#pageTitle {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+#pageTitle h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+#pageTitle p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+.categorySelect {
+    margin: 0 20px 20px 0;
+    outline: none;
+    border: none;
+    padding: 10px 25px;
+    background-image: linear-gradient(90deg, #435EB7, #653FD7);
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.categorySelect:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.categorySelected {
+    -webkit-box-shadow: inset 0px 0px 0px 4px var(--text-color);
+    -moz-box-shadow: inset 0px 0px 0px 4px var(--text-color);
+    box-shadow: inset 0px 0px 0px 4px var(--text-color);
+}
+
+.commandItem {
+    padding: 20px 25px 10px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: var(--card-color);
+}
+
+.opened {
+    box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.5);
+}
+
+.opened .commandDescription {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-color);
+}
