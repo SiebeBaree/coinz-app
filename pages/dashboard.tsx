@@ -9,11 +9,9 @@ export default function Dashboard() {
             sessionStorage.clear();
             document.location.replace('/login');
         } else {
-            if (!sessionStorage.getItem('user')) {
-                getUser().then((user: User) => {
-                    window.location.replace("/dashboard/" + user.id);
-                });
-            }
+            getUser().then((user: User) => {
+                window.location.replace("/dashboard/" + user.id);
+            });
         }
     })
 
