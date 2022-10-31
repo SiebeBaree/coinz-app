@@ -76,3 +76,20 @@ export async function getUser(force = false) {
         return user;
     }
 }
+
+export async function isAuthorized() {
+    async function fetchData(id: string, token: string) {
+        const res = await fetch(`${API_URI}/discord/authorize?id=${id}&token=${token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return res.status;
+    }
+
+    const res = await fetchData(sessionStorage.getItem('user_id'), getAccessToken());
+
+    if (res !== 200) await discordRevokeToken(undefined, true, true);
+    return res === 200;
+}
