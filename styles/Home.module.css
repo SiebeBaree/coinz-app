@@ -25,6 +25,10 @@
   color: rgba(245, 245, 245, 0.7);
 }
 
+#statistics {
+  margin-top: 10px;
+}
+
 .stat {
   margin: 10px 10px;
   border-radius: 15px;

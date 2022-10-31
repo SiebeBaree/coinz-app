@@ -140,3 +140,29 @@ h6 {
 .gradient-button svg {
   height: 12px;
 }
+
+.hidden {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.hidden:not(.reverse-animation:nth-child(even)) {
+  transform: translateX(-10%);
+}
+
+.hidden.reverse-animation:nth-child(even) {
+  transform: translateX(10%);
+}
+
+.show:not(.reverse-animation:nth-child(even)),
+.show.reverse-animation:nth-child(even) {
+  opacity: 1 !important;
+  transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+    opacity: 1 !important;
+  }
+}
