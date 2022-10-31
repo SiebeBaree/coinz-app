@@ -1,13 +1,13 @@
-export interface Token {
+export type Token = {
     access_token: string;
     expires_in: number;
     refresh_token: string;
     scope: string;
     token_type: string;
-    error?: string
+    error?: string;
 }
 
-export interface User {
+export type User = {
     id: string;
     username: string;
     discriminator: string;
@@ -23,4 +23,19 @@ export interface User {
     flags?: number;
     premium_type?: number;
     public_flags?: number;
+}
+
+export type ApiCallbackResponds = {
+    error?: string;
+    access_token: string;
+    expires_in: number;
+    refresh_token: string;
+    scope: string;
+    token_type: string;
+    id: string;
+    username: string;
+    discriminator: string;
+    avatar: string | null;
+    verified?: boolean;
+    email?: string;
 }
