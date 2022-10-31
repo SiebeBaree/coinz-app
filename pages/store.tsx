@@ -52,7 +52,7 @@ export default function Store() {
                 <p className={`${styles.sectionDescription} text-center`}>Get access to premium features and support the development of Coinz!</p>
 
                 <div id={`${styles.cards}`} className='d-flex justify-content-around flex-wrap'>
-                    <SubscriptionCard title="Supporter" price="1" botPerks={storeData.subscriptions.botperks[1]} serverPerks={storeData.subscriptions.serverperks[0]} subscribeUrl="#" />
+                    <SubscriptionCard title="Supporter" price="1" botPerks={storeData.subscriptions.botperks[0]} serverPerks={storeData.subscriptions.serverperks[0]} subscribeUrl="#" />
                     <SubscriptionCard title="Server Tier I" price="3" botPerks={storeData.subscriptions.botperks[1]} serverPerks={storeData.subscriptions.serverperks[1]} subscribeUrl="#" />
                     <SubscriptionCard title="Server Tier II" price="5" botPerks={storeData.subscriptions.botperks[2]} serverPerks={storeData.subscriptions.serverperks[2]} subscribeUrl="https://google.com/" />
                 </div>
