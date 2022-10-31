@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
-import { getAccessToken, setTokenItems } from '../lib/storage';
+import { getAccessToken, setTokenItems, setUserItems } from '../lib/storage';
 import { discordCallback, discordRevokeToken } from '../lib/api';
-import { Token } from '../lib/types';
+import { ApiCallbackResponds } from '../lib/types';
 
 export default function Callback() {
     const router = useRouter();
@@ -16,9 +16,23 @@ export default function Callback() {
         }
 
         if (!getAccessToken() || parseInt(sessionStorage.getItem('expires_in')) <= Math.floor(Date.now() / 1000)) {
-            discordCallback(router.query.code as string).then((data: Token) => {
+            discordCallback(router.query.code as string).then((data: ApiCallbackResponds) => {
                 if (!data.error) {
-                    setTokenItems(data);
+                    setTokenItems({
+                        access_token: data.access_token,
+                        expires_in: data.expires_in,
+                        refresh_token: data.refresh_token,
+                        scope: data.scope,
+                        token_type: data.token_type
+                    });
+
+                    setUserItems({
+                        id: data.id,
+                        username: data.username,
+                        discriminator: data.discriminator,
+                        avatar: data.avatar
+                    });
+
                     document.location.replace('/dashboard');
                 } else {
                     document.location.replace('/login');
