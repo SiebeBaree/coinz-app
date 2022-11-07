@@ -1,0 +1,77 @@
+.roundImg {
+    border-radius: 50%;
+}
+
+#profile {
+    padding: 75px 0;
+}
+
+.profileContent {
+    margin-left: 50px;
+}
+
+.profileContent h1 {
+    font-weight: bold;
+}
+
+.profileContent img {
+    margin-right: 15px;
+}
+
+.profilePicture {
+    background: var(--card-color);
+    border: 5px solid var(--card-color);
+    box-shadow: 0px 0px 30px 0px rgba(61, 141, 227, .15);
+}
+
+#guilds {
+    margin: 50px 0;
+}
+
+.guildCard {
+    margin: 15px 15px;
+    width: calc(50% - 30px);
+    background: var(--card-color);
+    border-radius: 100px 25px 25px 100px;
+}
+
+.cardContent {
+    margin: 0 35px;
+}
+
+.cardContent p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.cardContent button {
+    font-weight: bold;
+}
+
+.premium {
+    border: 2px solid var(--premium-color);
+}
+
+@media screen and (max-width: 1200px) {
+    .guildCard {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .guildCard {
+        margin: 15px 0;
+    }
+
+    .guildCard img {
+        height: 128px;
+    }
+
+    .cardContent h3 {
+        font-size: 1.3rem;
+    }
+
+    .cardContent p {
+        font-size: 1.1rem;
+    }
+}
