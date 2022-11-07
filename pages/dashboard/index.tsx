@@ -1,7 +1,7 @@
 import { useEffect } from "react"
-import { getAccessToken } from "../lib/storage"
-import { getUser } from "../lib/api";
-import { User } from "../lib/types";
+import { getAccessToken } from "../../lib/storage"
+import { getUser } from "../../lib/api";
+import { User } from "../../lib/types";
 
 export default function Dashboard() {
     useEffect(() => {
@@ -15,7 +15,5 @@ export default function Dashboard() {
         }
     })
 
-    return (
-        <></>
-    )
+    return (<></>)
 }
