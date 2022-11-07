@@ -124,7 +124,7 @@ function FeatureComponent({ image, imageAlt, children }) {
   return (
     <div className={`${styles.featureRow} d-flex justify-content-between hidden reverse-animation`}>
       <div className={styles.featureImg}>
-        <Image src={image} alt={imageAlt} loading="lazy" />
+        <Image src={image} alt={imageAlt} loading="lazy" width={400} height={400} />
       </div>
       <div className={`${styles.featureText} my-auto`}>
         {children}
