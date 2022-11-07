@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import config from '../lib/data/config.json'
 const { API_ENDPOINT, DISCORD_CLIENT_ID, SCOPE } = config;
 
-import { discordRefreshToken } from '../lib/api'
+import { discordRefreshToken, discordRevokeToken } from '../lib/api'
 import { getRefreshToken, getAccessToken, setTokenItems } from '../lib/storage'
 import { Token } from '../lib/types'
 
@@ -38,6 +38,8 @@ export default function Login() {
                 } else {
                     document.location.replace(setOauthState());
                 }
+            }).catch(() => {
+                discordRevokeToken().then(() => document.location.replace(setOauthState()));
             });
         } else {
             document.location.replace(setOauthState());

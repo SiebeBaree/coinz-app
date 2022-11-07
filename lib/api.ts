@@ -7,6 +7,7 @@ import {
     getUser as getUserFromStorage,
     setUserItems
 } from './storage';
+import { PremiumGuildsResponds } from './types';
 
 export async function discordCallback(token: string) {
     const res = await fetch(`${API_URI}/discord/callback`, {
@@ -37,16 +38,20 @@ export async function discordRefreshToken(token: string) {
 export async function discordRevokeToken(token = null, clearStorage = true, redirect = true) {
     if (token === null) token = getAccessToken();
 
-    if (token) {
-        await fetch(`${API_URI}/discord/revoke`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                token: token
-            })
-        });
+    try {
+        if (token) {
+            await fetch(`${API_URI}/discord/revoke`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token: token
+                })
+            });
+        }
+    } catch {
+        console.error('Failed to revoke token');
     }
 
     if (clearStorage) {
@@ -92,4 +97,32 @@ export async function isAuthorized() {
 
     if (res !== 200) await discordRevokeToken(undefined, true, true);
     return res === 200;
+}
+
+export async function getGuilds() {
+    const res = await fetch(`${API_ENDPOINT}/users/@me/guilds`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `${getTokenType()} ${getAccessToken()}`
+        }
+    });
+
+    if (res.status !== 200) return [];
+    return await res.json();
+}
+
+export async function getPremiumGuilds(guilds: PremiumGuildsResponds[]) {
+    const res = await fetch(`${API_URI}/discord/guilds`, {
+        method: 'POST',
+        body: JSON.stringify({
+            guilds: guilds
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (res.status !== 200) return {};
+    const data = await res.json();
+    return data.guilds;
 }

@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import { getAccessToken, setTokenItems, setUserItems } from '../lib/storage';
 import { discordCallback, discordRevokeToken } from '../lib/api';
 import { ApiCallbackResponds } from '../lib/types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBan } from '@fortawesome/free-solid-svg-icons'
+
 export default function Callback() {
     const router = useRouter();
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         if (!router.isReady) return;
@@ -37,11 +41,27 @@ export default function Callback() {
                 } else {
                     document.location.replace('/login');
                 }
+            }).catch((e) => {
+                console.log(e)
+                setError(true);
             });
         } else {
             document.location.replace('/dashboard');
         }
     }, [router.isReady, router.query.code, router.query.state]);
 
-    return (<></>)
+    return (
+        <>
+            {error &&
+                <div className='page-content my-auto d-flex flex-column justify-content-center text-center'>
+                    <FontAwesomeIcon icon={faBan} className='text-danger' style={{
+                        height: '150px',
+                        marginBottom: '50px',
+                    }} />
+                    <h1 className='text-danger display-5'>Something went wrong, please try again.</h1>
+                    <p className='text-white display-6'>If the issue keeps occuring, please contact <code className='text-info'>Siebe#0001</code> on Discord.</p>
+                </div>
+            }
+        </>
+    )
 }
