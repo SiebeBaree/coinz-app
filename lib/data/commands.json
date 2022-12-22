@@ -1,11 +1,11 @@
 {
-    "plot": {
-        "description": "Plant or get a list of your plots.",
+    "farm": {
+        "description": "Manage your farm and plant crops.",
         "category": "farming",
         "cooldown": 0,
         "options": [
             {
-                "name": "list",
+                "name": "plots",
                 "options": []
             },
             {
@@ -18,13 +18,17 @@
                     {
                         "name": "crop",
                         "required": true
+                    },
+                    {
+                        "name": "force",
+                        "required": false
                     }
                 ]
             }
         ]
     },
-    "company": {
-        "description": "Start your own company and become richer than Elon Musk!",
+    "business": {
+        "description": "Start your own business and earn the big bucks!",
         "category": "business",
         "cooldown": 0,
         "options": [
@@ -33,14 +37,62 @@
                 "options": []
             },
             {
-                "name": "inventory",
+                "name": "create",
+                "options": [
+                    {
+                        "name": "name",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "rename",
+                "options": [
+                    {
+                        "name": "name",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "sell-business",
                 "options": []
+            },
+            {
+                "name": "sell-item",
+                "options": [
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "supply",
+                "options": [
+                    {
+                        "name": "option",
+                        "required": true
+                    },
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
             },
             {
                 "name": "employee",
                 "options": [
                     {
-                        "name": "add",
+                        "name": "hire",
                         "options": [
                             {
                                 "name": "user",
@@ -84,15 +136,6 @@
                         ]
                     }
                 ]
-            },
-            {
-                "name": "create",
-                "options": [
-                    {
-                        "name": "name",
-                        "required": true
-                    }
-                ]
             }
         ]
     },
@@ -115,6 +158,10 @@
                     {
                         "name": "product-id",
                         "required": true
+                    },
+                    {
+                        "name": "force?",
+                        "required": false
                     }
                 ]
             },
@@ -141,12 +188,6 @@
         "cooldown": 300,
         "options": []
     },
-    "crime": {
-        "description": "Commit a crime and get the chance to become rich...",
-        "category": "economy",
-        "cooldown": 900,
-        "options": []
-    },
     "daily": {
         "description": "Claim your daily reward.",
         "category": "economy",
@@ -163,12 +204,6 @@
                 "required": true
             }
         ]
-    },
-    "dig": {
-        "description": "Dig up valuable items and sell them for money.",
-        "category": "economy",
-        "cooldown": 900,
-        "options": []
     },
     "fish": {
         "description": "Try and catch some fish that you can sell for money.",
@@ -218,7 +253,7 @@
         ]
     },
     "lootbox": {
-        "description": "Apply for a job or get a list with all jobs.",
+        "description": "Open or buy a lootbox to get awesome rewards.",
         "category": "economy",
         "cooldown": 0,
         "options": [
@@ -237,19 +272,6 @@
                     {
                         "name": "lootbox-id",
                         "required": true
-                    }
-                ]
-            },
-            {
-                "name": "buy",
-                "options": [
-                    {
-                        "name": "lootbox-id",
-                        "required": true
-                    },
-                    {
-                        "name": "amount",
-                        "required": false
                     }
                 ]
             }
@@ -291,7 +313,7 @@
         "options": []
     },
     "pay": {
-        "description": "Give your mone to another user.",
+        "description": "Give your money to another user.",
         "category": "economy",
         "cooldown": 0,
         "options": [
@@ -481,6 +503,17 @@
             }
         ]
     },
+    "scratch": {
+        "description": "Scratch off a card to win money.",
+        "category": "games",
+        "cooldown": 300,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
     "russian-roulette": {
         "description": "Be lucky and don't die with russian roulette.",
         "category": "games",
@@ -570,20 +603,41 @@
         "cooldown": 0,
         "options": []
     },
-    "guide": {
-        "description": "Get a guide to help you get started with Coinz.",
-        "category": "misc",
-        "cooldown": 0,
-        "options": []
-    },
     "help": {
-        "description": "Get a list of all commands. To get more info about a specific command use `/help <command>`.",
+        "description": "Get a list of all commands. To get more info about a specific command use `/help command <command>`.",
         "category": "misc",
         "cooldown": 0,
         "options": [
             {
                 "name": "command",
-                "required": false
+                "options": [
+                    {
+                        "name": "command",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "categories",
+                "options": []
+            },
+            {
+                "name": "guide",
+                "options": [
+                    {
+                        "name": "topic",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "loot",
+                "options": [
+                    {
+                        "name": "command",
+                        "required": true
+                    }
+                ]
             }
         ]
     },
