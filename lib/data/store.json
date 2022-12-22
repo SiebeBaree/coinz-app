@@ -4,23 +4,22 @@
             [
                 "Access to /monthly & /weekly",
                 "All 5-second cooldowns are 1 second",
-                "30-minute cooldown on airdrops",
+                "Ability to change profile color",
                 "Premium Achievement + Badge",
-                "Buy up to 15 plots instead of 9",
+                "Buy up to 15 farming plots instead of 9",
                 "Get a lucky wheel spin with /daily",
-                "Increased /daily limit to 200",
-                "Ability to open loot boxes",
+                "Increased /daily limit to 260",
                 "All votes count double",
                 "Increased betting limit (10.000) in all games",
-                "Ability to change profile color"
+                "SOON: 30-minute cooldown on airdrops",
+                "SOON: Ability to open loot boxes"
             ],
             [
                 "All perks from Supporter (only for you)",
                 "You can activate all the perks for 1 server",
                 "Apply to everyone in the server",
-                "Change airdrop cooldown",
-                "All 5-second cooldowns are 3 seconds",
-                "Ability to host own airdrops (like giveaways)",
+                "SOON: Change airdrop cooldown",
+                "SOON: Ability to host own airdrops (like giveaways)",
                 "SOON: Ability to change embed colors",
                 "SOON: Ability to change coin emote"
             ],
@@ -28,9 +27,8 @@
                 "All perks from Supporter (only for you)",
                 "You can activate all the perks for 3 servers",
                 "Apply to everyone in the server",
-                "Change airdrop cooldown",
-                "All 5-second cooldowns are 3 seconds",
-                "Ability to host own airdrops (like giveaways)",
+                "SOON: Change airdrop cooldown",
+                "SOON: Ability to host own airdrops (like giveaways)",
                 "SOON: Ability to change embed colors",
                 "SOON: Ability to change coin emote"
             ]
@@ -45,13 +43,13 @@
                 "Premium role",
                 "Access to an exclusive channel",
                 "Ability to use Coinz Beta",
-                "Promote your server in #premium"
+                "Promote your server in #premium-ads"
             ],
             [
                 "Premium role",
                 "Access to an exclusive channel",
                 "Ability to use Coinz Beta",
-                "Promote your server in #premium"
+                "Promote your server in #premium-ads"
             ]
         ]
     },
