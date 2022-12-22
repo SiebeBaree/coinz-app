@@ -42,10 +42,10 @@ export default function Home() {
       </section>
 
       <section id={styles.statistics} className="container d-flex justify-content-around flex-wrap hidden">
-        <StatCounter key="servers" icon={faServer} count="1100" name="Servers" suffix="+" />
-        <StatCounter key="users" icon={faUsers} count="250" name="Users" suffix="k+" />
-        <StatCounter key="cmds" icon={faCode} count="45" name="Commands" />
-        <StatCounter key="dailycmds" icon={faTerminal} count="3500" name="Daily Commands" suffix="+" />
+        <StatCounter key="servers" icon={faServer} count="2000" name="Servers" suffix="+" />
+        <StatCounter key="users" icon={faUsers} count="325" name="Users" suffix="k+" />
+        <StatCounter key="cmds" icon={faCode} count="46" name="Commands" />
+        <StatCounter key="dailycmds" icon={faTerminal} count="4000" name="Daily Commands" suffix="+" />
       </section>
 
       <section id={styles.vote} className="container text-center d-flex flex-column justify-content-center hidden">
@@ -65,9 +65,9 @@ export default function Home() {
           <p>Enhance your knowledge of the stock and crypto market by buying, holding and selling stocks and crypto within Coinz. All prices are updated regularly. Coinz currently has 30 stocks and 27 crypto currencies.</p>
         </FeatureComponent>
 
-        <FeatureComponent image={CompanyImg} imageAlt="Feature: Own a Company">
-          <h3>Start your own company</h3>
-          <p>Create your own company, buy factories and produce items that you can sell for a big profit. Repeat this step over and over and become richer than Elon Musk! Did I mention that you can employ real users?!</p>
+        <FeatureComponent image={CompanyImg} imageAlt="Feature: Own a Business">
+          <h3>Start your own business</h3>
+          <p>Create your own business, buy factories and produce items that you can sell for a big profit. Repeat this step over and over and become richer than Elon Musk! Did I mention that you can employ real users?!</p>
         </FeatureComponent>
 
         <FeatureComponent image={GamesImg} imageAlt="Feature: Play some Minigames">
