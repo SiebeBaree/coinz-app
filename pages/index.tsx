@@ -77,7 +77,7 @@ export default function Home() {
 
         <FeatureComponent image={FarmingImg} imageAlt="Feature: Grow your own crops">
           <h3>Grow your own crops</h3>
-          <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops on. With premium you can buy up to 15 plots! Each crop has a different grow time, don&apos;t let your crops grow . Don&apos;t forget to water your crops once in a while!</p>
+          <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops on. With premium you can buy up to 15 plots! Each crop has a different grow time, don&apos;t let your crops grow rotten!</p>
         </FeatureComponent>
       </section>
     </div>
