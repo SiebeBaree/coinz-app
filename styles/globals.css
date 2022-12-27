@@ -167,3 +167,8 @@ h6 {
     opacity: 1 !important;
   }
 }
+
+.tooltip-inner {
+  white-space: pre;
+  max-width: none;
+}
