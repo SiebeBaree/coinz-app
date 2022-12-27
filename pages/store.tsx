@@ -59,13 +59,15 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                     x = e.clientX - rect.left,
                     y = e.clientY - rect.top;
 
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                if (card instanceof HTMLElement) {
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                }
             }
         }
 
         for (const card of document.getElementsByClassName(styles.rowCard)) {
-            card.onclick = () => window.location.href = card.getAttribute('redirect-to');
+            if (card instanceof HTMLElement) card.onclick = () => window.location.href = card.getAttribute('redirect-to');
         }
 
         fetch("http://ip-api.com/json").then(response => response.json()).then(data => {
