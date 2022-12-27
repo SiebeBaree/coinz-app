@@ -1,6 +1,5 @@
 import styles from '../styles/commands.module.css'
 import { useState } from 'react'
-import commands from '../lib/data/commands.json'
 
 const categories = {
     misc: "Miscellaneous",
@@ -11,7 +10,15 @@ const categories = {
     investing: "Investing"
 }
 
-export default function Commands() {
+export async function getStaticProps() {
+    const data = await import(`../lib/data/commands.json`, { assert: { type: "json" } });
+
+    return {
+        props: { commands: data.default }
+    }
+}
+
+export default function Commands({ commands }) {
     const [state, setState] = useState("misc");
 
     return (
@@ -26,7 +33,7 @@ export default function Commands() {
             </div>
 
             <div>
-                {getCommands(state).map((cmd) => <Command name={cmd} description={commands[cmd].description} options={commands[cmd].options} key={cmd} />)}
+                {getCommands(commands, state).map((cmd) => <Command name={cmd} description={commands[cmd].description} options={commands[cmd].options} key={cmd} />)}
             </div>
         </div>
     )
@@ -36,7 +43,7 @@ function Category({ category, name, state, setState }) {
     return <button data-category={category} className={`${styles.categorySelect} ${state === category ? styles.categorySelected : ""}`} onClick={() => setState(category)}>{name}</button>
 }
 
-function getCommands(category: string) {
+function getCommands(commands: any, category: string) {
     return Object.keys(commands).filter(command => commands[command].category === category);
 }
 

@@ -1,8 +1,15 @@
 import styles from '../styles/faq.module.css'
 import { useState } from 'react'
-import faqData from '../lib/data/faq.json'
 
-export default function Faq() {
+export async function getStaticProps() {
+    const data = await import(`../lib/data/faq.json`, { assert: { type: "json" } });
+
+    return {
+        props: { faqItems: data.default.items }
+    }
+}
+
+export default function Faq({ faqItems }) {
     return (
         <div id={styles.faq} className='container'>
             <div id={styles.pageTitle}>
@@ -11,7 +18,7 @@ export default function Faq() {
             </div>
 
             <div>
-                {faqData.items.map(({ title, description }, index) =>
+                {faqItems.map(({ title, description }, index: number) =>
                     <FaqItem key={index} title={title} description={description} />
                 )}
             </div>
