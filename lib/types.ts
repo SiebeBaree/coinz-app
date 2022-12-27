@@ -39,24 +39,3 @@ export type ApiCallbackResponds = {
     verified?: boolean;
     email?: string;
 }
-
-export type GuildResponds = {
-    id: string;
-    name: string;
-    icon: string | null;
-    owner: boolean;
-    permissions: string;
-    features?: string[];
-}
-
-export type Guild = {
-    id: string;
-    name: string;
-    icon: string | null;
-    permissions: string;
-    isPremium: boolean | null;
-}
-
-export type PremiumGuildsResponds = {
-    id: string;
-}

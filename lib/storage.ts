@@ -1,4 +1,4 @@
-import { Guild, Token, User } from "./types";
+import { Token, User } from "./types";
 
 export function getAccessToken() {
     return sessionStorage.getItem('access_token');
@@ -30,8 +30,4 @@ export function setUserItems(user: User) {
     sessionStorage.setItem('user_username', user.username);
     sessionStorage.setItem('user_discriminator', user.discriminator);
     sessionStorage.setItem('user_avatar', user.avatar);
-}
-
-export function setGuilds(guilds: Guild[]) {
-    sessionStorage.setItem('guilds', JSON.stringify(guilds));
 }
