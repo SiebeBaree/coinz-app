@@ -44,6 +44,9 @@ export default function NavbarComponent() {
                                 <li className={`nav-item ${styles.navItem}`}>
                                     <Link href="/invite" className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
                                 </li>
+                                <li className={`nav-item ${styles.navItem}`}>
+                                    <Link href="/status" className={`nav-link ${styles.navbarLink}`}>Status</Link>
+                                </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
                                 <li className={`nav-item ${styles.navItem}`}>
@@ -59,8 +62,6 @@ export default function NavbarComponent() {
                                         </a>
                                         <ul className="dropdown-menu">
                                             <li><Link className="dropdown-item" href={`/dashboard/${sessionStorage.getItem('user_id')}`}>Dashboard</Link></li>
-                                            <li><Link className="dropdown-item" href={`/dashboard/${sessionStorage.getItem('user_id')}/ban-appeal`}>Ban Appeal</Link></li>
-                                            <li><Link className="dropdown-item" href={`/dashboard/${sessionStorage.getItem('user_id')}/report-user`}>Report User</Link></li>
                                             <li>
                                                 <hr className="dropdown-divider" />
                                             </li>
