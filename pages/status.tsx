@@ -92,9 +92,9 @@ function ClusterCard({ cluster }) {
                         overlay={
                             <Tooltip>
                                 <h5>Cluster #{cluster.id}</h5>
-                                <h6 className="card-subtitle mb-2 text-color">Total Guilds: {cluster.shards.reduce((total: number, shard: Shard) => total + shard.guildcount, 0)}</h6>
-                                <h6 className="card-subtitle mb-2 text-color">Average Ping: {averagePing} ms</h6>
-                                <h6 className="card-subtitle mb-2 text-color">Total RAM: {cluster.shards.reduce((total: number, shard: Shard) => total + shard.ram.heapUsed, 0).toFixed(2)} MB</h6>
+                                <b>Total Guilds:</b> {cluster.shards.reduce((total: number, shard: Shard) => total + shard.guildcount, 0)}<br />
+                                <b>Average Ping:</b> {averagePing} ms<br />
+                                <b>Total RAM:</b> {cluster.shards.reduce((total: number, shard: Shard) => total + shard.ram.heapUsed, 0).toFixed(2)} MB
                             </Tooltip>
                         }
                     >
