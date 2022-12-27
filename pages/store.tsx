@@ -3,11 +3,52 @@ import styles from '../styles/store.module.css'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-import storeData from '../lib/data/store.json'
+import config from "../lib/data/config.json" assert { type: "json" }
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faBan } from '@fortawesome/free-solid-svg-icons'
 
-export default function Store() {
+interface StoreItems {
+    tiers: PremiumTier[];
+    tickets: Ticket[];
+    lootboxes: Lootbox[];
+    lastUpdated?: number;
+}
+
+interface PremiumTier {
+    name: string;
+    price: number;
+    botperks: string[];
+    serverperks: string[];
+    subscribeURL: string;
+}
+
+interface Ticket {
+    amount: number;
+    price: number;
+    subscribeURL: string;
+}
+
+interface Lootbox {
+    id: string;
+    name: string;
+    price: number;
+    loot: Loot[];
+    subscribeURL: string;
+}
+
+interface Loot {
+    name: string;
+    amount: number;
+    emoteId: string;
+}
+
+export async function getStaticProps() {
+    const responds = await fetch(config.API_URI + "/store/all");
+    const storeData = await responds.json();
+    return { props: { storeData } }
+}
+
+export default function Store({ storeData }: { storeData: StoreItems }) {
     const [isFromBannedCountry, setIsFromBannedCountry] = useState(false);
     const bannedCountryCodes = ["JP", "CN", "NL", "BE"];
 
@@ -40,11 +81,6 @@ export default function Store() {
         <div id={styles.storePage} className='container'>
             <div className={`${styles.pageTitle} d-flex justify-content-between`}>
                 <h1>Store</h1>
-
-                <button className={`${styles.shoppingCart} gradient-button`}>
-                    <FontAwesomeIcon icon={faCartShopping} className='align-middle' />
-                    Shopping Cart
-                </button>
             </div>
 
             <div>
@@ -52,9 +88,7 @@ export default function Store() {
                 <p className={`${styles.sectionDescription} text-center`}>Get access to premium features and support the development of Coinz!</p>
 
                 <div id={`${styles.cards}`} className='d-flex justify-content-around flex-wrap'>
-                    <SubscriptionCard title="Supporter" price="1" botPerks={storeData.subscriptions.botperks[0]} serverPerks={storeData.subscriptions.serverperks[0]} subscribeUrl="#" />
-                    <SubscriptionCard title="Server Tier I" price="3" botPerks={storeData.subscriptions.botperks[1]} serverPerks={storeData.subscriptions.serverperks[1]} subscribeUrl="#" />
-                    <SubscriptionCard title="Server Tier II" price="5" botPerks={storeData.subscriptions.botperks[2]} serverPerks={storeData.subscriptions.serverperks[2]} subscribeUrl="https://google.com/" />
+                    {storeData.tiers.map((tier: PremiumTier, index: number) => <SubscriptionCard key={index} tier={tier} />)}
                 </div>
             </div>
 
@@ -67,20 +101,16 @@ export default function Store() {
                         <p><b>Select the amount of tickets you want</b></p>
                     </div>
                     <div className={`${styles.ticketOptions} d-flex`}>
-                        <button className={`${styles.ticketOption} gradient-button`}>
-                            <h4><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' width="24" height="24" /> 100</h4>
-                            <h2>$1</h2>
-                        </button>
-
-                        <button className={`${styles.ticketOption} gradient-button`}>
-                            <h4><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' width="24" height="24" /> 300</h4>
-                            <h2>$3</h2>
-                        </button>
-
-                        <button className={`${styles.ticketOption} gradient-button`}>
-                            <h4><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' width="24" height="24" /> 500</h4>
-                            <h2>$5</h2>
-                        </button>
+                        {storeData.tickets.map((ticket: Ticket, index: number) => {
+                            return (
+                                <a key={index} href={ticket.subscribeURL}>
+                                    <button className={`${styles.ticketOption} gradient-button`}>
+                                        <h4><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' width="24" height="24" /> {ticket.amount}</h4>
+                                        <h2>${parseFloat((ticket.price / 100).toFixed(2))}</h2>
+                                    </button>
+                                </a>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
@@ -94,41 +124,41 @@ export default function Store() {
     )
 }
 
-function SubscriptionCard({ title, price, botPerks, serverPerks, subscribeUrl = "#" }) {
+function SubscriptionCard({ tier }: { tier: PremiumTier }) {
     return (
-        <div className={`${styles.rowCard} d-flex flex-column`} redirect-to={subscribeUrl}>
+        <div className={`${styles.rowCard} d-flex flex-column`} redirect-to={tier.subscribeURL}>
             <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
                 <div>
                     <header className='text-center'>
-                        <h3 className='magic-text'>{title}</h3>
+                        <h3 className='magic-text'>{tier.name}</h3>
                         <div className={`${styles.pricing} d-flex align-items-baseline justify-content-center`}>
-                            <h1>${price}</h1>
+                            <h1>${parseFloat((tier.price / 100).toFixed(2))}</h1>
                             <h6>/MONTH</h6>
                         </div>
                     </header>
                     <div className={styles.middleCard}>
                         <p><b>Perks in Coinz:</b></p>
                         <ul className='fa-ul'>
-                            {botPerks.map((perk: string, index: number) => <li key={index}>
+                            {tier.botperks.map((perk: string, index: number) => <li key={index}>
                                 {perk}
                             </li>)}
                         </ul>
 
                         <p><b>Perks in the Support Server:</b></p>
                         <ul className='fa-ul'>
-                            {serverPerks.map((perk: string, index: number) => <li key={index}>
+                            {tier.serverperks.map((perk: string, index: number) => <li key={index}>
                                 {perk}
                             </li>)}
                         </ul>
                     </div>
                 </div>
-                <a href={subscribeUrl} className='btn w-100 gradient-button'>Subscribe</a>
+                <a href={tier.subscribeURL} className='btn w-100 gradient-button'>Subscribe</a>
             </div>
         </div>
     )
 }
 
-function LootboxSection({ isFromBannedCountry, lootboxes }) {
+function LootboxSection({ isFromBannedCountry, lootboxes }: { isFromBannedCountry: boolean, lootboxes: Lootbox[] }) {
     if (isFromBannedCountry) {
         return (
             <div className={`${styles.sectionBanned} d-flex flex-column justify-content-center`}>
@@ -139,30 +169,30 @@ function LootboxSection({ isFromBannedCountry, lootboxes }) {
     } else {
         return (
             <div id={styles.lootboxes} className='d-flex justify-content-around flex-wrap'>
-                {Object.keys(lootboxes).map((lootbox: string, index: number) =>
-                    <LootBoxCard key={index} name={lootboxes[lootbox].name} price={lootboxes[lootbox].price} items={lootboxes[lootbox].loot} />)}
+                {lootboxes.map((lootbox: Lootbox, index: number) =>
+                    <LootBoxCard key={index} lootbox={lootbox} />)}
             </div>
         )
     }
 }
 
-function LootBoxCard({ name, price, items }) {
+function LootBoxCard({ lootbox }: { lootbox: Lootbox }) {
     return (
         <div className={`${styles.lootboxCard} d-flex flex-column`}>
             <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
                 <div>
                     <header className='text-center'>
-                        <h3>{name}</h3>
-                        <h1>${price}</h1>
+                        <h3>{lootbox.name}</h3>
+                        <h1>${parseFloat((lootbox.price / 100).toFixed(2))}</h1>
                     </header>
                     <div className={styles.middleCard}>
                         <p><b>Possible Loot:</b></p>
                         <ul className='list-unstyled'>
-                            {items.map(({ name, amount, emoteId }) => <li key={name}><Image src={`https://cdn.discordapp.com/emojis/${emoteId}.png?size=24`} alt="Icon for loot item" loading='lazy' width="24" height="24" /><b>{amount}{name !== "Coins" ? `x` : ``}</b> {name}</li>)}
+                            {lootbox.loot.map((loot: Loot) => <li key={loot.name}><Image src={`https://cdn.discordapp.com/emojis/${loot.emoteId}.png?size=24`} alt="Icon for loot item" loading='lazy' width="24" height="24" /><b>{loot.amount}{loot.name !== "Coins" ? `x` : ``}</b> {loot.name}</li>)}
                         </ul>
                     </div>
                 </div>
-                <a href="#" className='btn w-100'><button className='gradient-button'><FontAwesomeIcon icon={faCartShopping} className='align-middle' />Buy</button></a>
+                <a href={lootbox.subscribeURL} className='btn w-100'><button className='gradient-button'><FontAwesomeIcon icon={faCartShopping} className='align-middle' />Buy</button></a>
             </div>
         </div>
     )
