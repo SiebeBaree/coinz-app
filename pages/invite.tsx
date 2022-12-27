@@ -2,6 +2,10 @@ import { useEffect } from "react"
 import { useRouter } from 'next/router'
 import Redirect from '../components/Redirect'
 
+export async function getStaticProps() {
+    return { props: {} }
+}
+
 export default function Invite() {
     const router = useRouter();
 

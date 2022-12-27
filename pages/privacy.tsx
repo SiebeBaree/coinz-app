@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+export async function getStaticProps() {
+    return { props: {} }
+}
+
 export default function PrivacyPolicy() {
     return (
         <div className="container mt-5 mb-5 text-white">

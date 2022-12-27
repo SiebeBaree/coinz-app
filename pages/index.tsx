@@ -11,6 +11,10 @@ import InvestingImg from '../public/investing.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faUsers, faServer, faTerminal, faCode, faCheckToSlot } from '@fortawesome/free-solid-svg-icons'
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
