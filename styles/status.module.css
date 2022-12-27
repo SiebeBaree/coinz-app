@@ -1,0 +1,35 @@
+.clusterCards {
+    gap: 20px;
+}
+
+.clusterCard {
+    background-color: var(--card-color);
+    position: relative;
+}
+
+.clusterCard h3 {
+    padding: 0 75px;
+}
+
+.clusterCardBody span {
+    position: absolute;
+}
+
+.clusterCardBody svg {
+    color: var(--grey);
+    height: 20px;
+    width: 20px;
+}
+
+.shardCards {
+    column-gap: 10px;
+}
+
+.shardCard {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    height: 75px;
+    width: 75px;
+}
