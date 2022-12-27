@@ -31,6 +31,14 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://coinzbot.xyz/" />
         <meta property="og:locale" content="en_US" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@BareeSiebe" />
+        <meta name="twitter:creator" content="@BareeSiebe" />
+        <meta name="twitter:title" content="Coinz" />
+        <meta name="twitter:description"
+          content="Coinz is the only discord economy bot you will ever need. It has 45+ commands to keep you entertained." />
+        <meta name="twitter:image" content="/logo512.png" />
       </Head>
 
       <Navbar />
