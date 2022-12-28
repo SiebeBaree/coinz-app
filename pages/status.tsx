@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from '../styles/status.module.css'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import config from "../lib/data/config.json" assert { type: "json" };
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -49,18 +50,20 @@ function StatusPage({ clusters }) {
     const [error, setError] = useState(clusters.length === 0);
     const UPDATE_INTERVAL = 30;
 
-    setInterval(() => {
+    const updateData = setInterval(() => {
         getStatus()
             .then((data) => {
                 if (data.length === 0) {
                     setError(true);
                 } else {
                     setStatus(data);
-                    setError(false);
                 }
-            })
-            .catch(() => setError(true));
+            }).catch(() => setError(true));
     }, UPDATE_INTERVAL * 1000)
+
+    useEffect(() => {
+        if (error) clearInterval(updateData);
+    }, [error]);
 
     return (
         <div className="container">
