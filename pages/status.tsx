@@ -47,23 +47,31 @@ async function getStatus(): Promise<Cluster[]> {
 
 function StatusPage({ clusters }) {
     const [status, setStatus] = useState(clusters);
+    const [tries, setTries] = useState(0);
     const [error, setError] = useState(clusters.length === 0);
     const UPDATE_INTERVAL = 30;
 
-    const updateData = setInterval(() => {
+    const updateData = setTimeout(() => {
         getStatus()
             .then((data) => {
                 if (data.length === 0) {
                     setError(true);
                 } else {
                     setStatus(data);
+                    setError(false);
                 }
             }).catch(() => setError(true));
-    }, UPDATE_INTERVAL * 1000)
+    }, UPDATE_INTERVAL * 1000);
 
     useEffect(() => {
-        if (error) clearInterval(updateData);
-    }, [error]);
+        if (error) {
+            if (tries < 3) {
+                setTries((prev) => prev + 1);
+            } else {
+                clearTimeout(updateData);
+            }
+        }
+    }, [error, tries]);
 
     return (
         <div className="container">
