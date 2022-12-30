@@ -3,7 +3,7 @@ import styles from '../styles/store.module.css'
 import { useEffect } from 'react'
 import Image from 'next/image'
 
-import config from "../lib/data/config.json" assert { type: "json" }
+import config from "../../lib/data/config.json" assert { type: "json" }
 
 interface StoreItems {
     tiers: PremiumTier[];
