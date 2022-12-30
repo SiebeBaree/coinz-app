@@ -1,16 +1,13 @@
 import styles from '../styles/store.module.css'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 
 import config from "../lib/data/config.json" assert { type: "json" }
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faBan } from '@fortawesome/free-solid-svg-icons'
 
 interface StoreItems {
     tiers: PremiumTier[];
     tickets: Ticket[];
-    lootboxes: Lootbox[];
     lastUpdated?: number;
 }
 
@@ -28,20 +25,6 @@ interface Ticket {
     subscribeURL: string;
 }
 
-interface Lootbox {
-    id: string;
-    name: string;
-    price: number;
-    loot: Loot[];
-    subscribeURL: string;
-}
-
-interface Loot {
-    name: string;
-    amount: number;
-    emoteId: string;
-}
-
 export async function getStaticProps() {
     const responds = await fetch(config.API_URI + "/store/all");
     const storeData = await responds.json();
@@ -49,9 +32,6 @@ export async function getStaticProps() {
 }
 
 export default function Store({ storeData }: { storeData: StoreItems }) {
-    const [isFromBannedCountry, setIsFromBannedCountry] = useState(false);
-    const bannedCountryCodes = ["JP", "CN", "NL", "BE"];
-
     useEffect(() => {
         document.getElementById(styles.cards).onmousemove = e => {
             for (const card of document.getElementsByClassName(styles.rowCard)) {
@@ -69,14 +49,6 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
         for (const card of document.getElementsByClassName(styles.rowCard)) {
             if (card instanceof HTMLElement) card.onclick = () => window.location.href = card.getAttribute('redirect-to');
         }
-
-        fetch("http://ip-api.com/json").then(response => response.json()).then(data => {
-            if (data.status === 'success') {
-                if (bannedCountryCodes.includes(data.countryCode)) {
-                    setIsFromBannedCountry(true);
-                }
-            }
-        });
     });
 
     return (
@@ -116,12 +88,6 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                     </div>
                 </div>
             </div>
-
-            <div>
-                <h2 className={`${styles.sectionTitle} text-center`}>Loot Boxes</h2>
-                <p className={`${styles.sectionDescription} text-center`}>Open loot boxes to get random items!</p>
-                <LootboxSection isFromBannedCountry={isFromBannedCountry} lootboxes={storeData.lootboxes} />
-            </div>
         </div>
     )
 }
@@ -155,46 +121,6 @@ function SubscriptionCard({ tier }: { tier: PremiumTier }) {
                     </div>
                 </div>
                 <a href={tier.subscribeURL} className='btn w-100 gradient-button'>Subscribe</a>
-            </div>
-        </div>
-    )
-}
-
-function LootboxSection({ isFromBannedCountry, lootboxes }: { isFromBannedCountry: boolean, lootboxes: Lootbox[] }) {
-    if (isFromBannedCountry) {
-        return (
-            <div className={`${styles.sectionBanned} d-flex flex-column justify-content-center`}>
-                <FontAwesomeIcon icon={faBan} className='text-danger' />
-                <h3 className='text-center'>You cannot buy loot boxes in your country.</h3>
-            </div>
-        )
-    } else {
-        return (
-            <div id={styles.lootboxes} className='d-flex justify-content-around flex-wrap'>
-                {lootboxes.map((lootbox: Lootbox, index: number) =>
-                    <LootBoxCard key={index} lootbox={lootbox} />)}
-            </div>
-        )
-    }
-}
-
-function LootBoxCard({ lootbox }: { lootbox: Lootbox }) {
-    return (
-        <div className={`${styles.lootboxCard} d-flex flex-column`}>
-            <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
-                <div>
-                    <header className='text-center'>
-                        <h3>{lootbox.name}</h3>
-                        <h1>${parseFloat((lootbox.price / 100).toFixed(2))}</h1>
-                    </header>
-                    <div className={styles.middleCard}>
-                        <p><b>Possible Loot:</b></p>
-                        <ul className='list-unstyled'>
-                            {lootbox.loot.map((loot: Loot) => <li key={loot.name}><Image src={`https://cdn.discordapp.com/emojis/${loot.emoteId}.png?size=24`} alt="Icon for loot item" loading='lazy' width="24" height="24" /><b>{loot.amount}{loot.name !== "Coins" ? `x` : ``}</b> {loot.name}</li>)}
-                        </ul>
-                    </div>
-                </div>
-                <a href={lootbox.subscribeURL} className='btn w-100'><button className='gradient-button'><FontAwesomeIcon icon={faCartShopping} className='align-middle' />Buy</button></a>
             </div>
         </div>
     )
