@@ -42,10 +42,10 @@ export default function NavbarComponent() {
                                     <Link href="/store" className={`nav-link ${styles.navbarLink}`}>Store</Link>
                                 </li>
                                 <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="/invite" className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
+                                    <Link href="/status" className={`nav-link ${styles.navbarLink}`}>Status</Link>
                                 </li>
                                 <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="/status" className={`nav-link ${styles.navbarLink}`}>Status</Link>
+                                    <Link href="/invite" className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
                                 </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
