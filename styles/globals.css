@@ -98,7 +98,7 @@ h6 {
 }
 
 .page-content {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 100px);
 }
 
 @keyframes background-pan {
