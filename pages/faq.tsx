@@ -1,5 +1,6 @@
 import styles from '../styles/faq.module.css'
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export async function getStaticProps() {
     const data = await import(`../lib/data/faq.json`, { assert: { type: "json" } });
@@ -32,7 +33,7 @@ function FaqItem({ title, description }) {
     return (
         <div className={`${styles.faqItem} ${state ? styles.itemExpanded : ""}`} onClick={() => setState(state => !state)}>
             <h4>{title}</h4>
-            {state ? <p dangerouslySetInnerHTML={{ __html: description }}></p> : null}
-        </div>
+            {state ? <p>{description.split("\n").map((line: string, i: number) => <ReactMarkdown key={i}>{line}</ReactMarkdown>)}</p> : null}
+        </div >
     )
 }
