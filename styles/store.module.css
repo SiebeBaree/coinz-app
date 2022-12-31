@@ -17,17 +17,6 @@
     margin-top: 50px;
 }
 
-.shoppingCart {
-    padding: 10px 25px;
-    border-radius: 25px;
-    border: none;
-}
-
-.shoppingCart svg {
-    margin-right: 10px;
-    height: 1rem;
-}
-
 .sectionTitle {
     margin-top: 70px;
 }
@@ -36,17 +25,7 @@
     margin-bottom: 40px;
 }
 
-.sectionBanned {
-    gap: 25px;
-    margin: 100px 0;
-}
-
-.sectionBanned svg {
-    height: 100px;
-}
-
-#cards,
-#lootboxes {
+#cards {
     gap: 8px;
     width: 100%;
 }
@@ -56,8 +35,7 @@
     opacity: 1;
 }
 
-#cards .rowCard .btn,
-#lootboxes .lootboxCard .btn {
+#cards .rowCard .btn {
     color: var(--white);
     outline: none;
     border: none;
@@ -115,47 +93,8 @@
 }
 
 #cards header,
-#lootboxes header,
 .middleCard {
     margin-bottom: 25px;
-}
-
-#lootboxes {
-    margin-bottom: 75px;
-}
-
-#lootboxes .lootboxCard {
-    background-color: var(--card-color);
-    padding: 40px 30px 25px 30px;
-    border-radius: 25px;
-    width: calc(33% - 8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#lootboxes .lootboxCard .cardContent {
-    height: 100%;
-}
-
-#lootboxes .btn,
-#lootboxes .btn button {
-    width: 100%;
-}
-
-#lootboxes button svg {
-    margin-right: 10px;
-    height: 0.9rem;
-}
-
-#lootboxes ul {
-    margin-left: 20px;
-}
-
-#lootboxes li img {
-    margin-right: 5px;
-}
-
-#lootboxes li svg {
-    height: 5px;
 }
 
 #tickets {
@@ -163,6 +102,7 @@
     padding: 25px 30px;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 75px;
 }
 
 #tickets .ticketOptions {
@@ -173,6 +113,10 @@
     border-radius: 10px;
     border: none;
     padding: 10px 20px;
+}
+
+#tickets .ticketOptions .ticketOption h1 {
+    font-size: 48px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -195,14 +139,6 @@
 
     #tickets .ticketText h1 {
         display: none;
-    }
-
-    #lootboxes {
-        gap: 25px;
-    }
-
-    #lootboxes .lootboxCard {
-        width: 100%;
     }
 }
 
