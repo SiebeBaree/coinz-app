@@ -1,13 +1,13 @@
-import styles from '../styles/store.module.css'
+import styles from '../../styles/store.module.css'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import config from "../../lib/data/config.json" assert { type: "json" }
 
 interface StoreItems {
     tiers: PremiumTier[];
-    tickets: Ticket[];
+    ticketPrice: number;
     lastUpdated?: number;
 }
 
@@ -16,13 +16,6 @@ interface PremiumTier {
     price: number;
     botperks: string[];
     serverperks: string[];
-    subscribeURL: string;
-}
-
-interface Ticket {
-    amount: number;
-    price: number;
-    subscribeURL: string;
 }
 
 export async function getStaticProps() {
@@ -32,6 +25,16 @@ export async function getStaticProps() {
 }
 
 export default function Store({ storeData }: { storeData: StoreItems }) {
+    const [tickets, setTickets] = useState(100);
+
+    const changeQuantity = (amount: number) => {
+        if (tickets + amount < 100 || tickets + amount > 1500) return;
+        setTickets(tickets + amount);
+    }
+
+    const buyTickets = async () => {
+    }
+
     useEffect(() => {
         document.getElementById(styles.cards).onmousemove = e => {
             for (const card of document.getElementsByClassName(styles.rowCard)) {
@@ -44,10 +47,6 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                     card.style.setProperty('--mouse-y', `${y}px`);
                 }
             }
-        }
-
-        for (const card of document.getElementsByClassName(styles.rowCard)) {
-            if (card instanceof HTMLElement) card.onclick = () => window.location.href = card.getAttribute('redirect-to');
         }
     });
 
@@ -74,17 +73,24 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                         <h1>Tickets</h1>
                         <p><b>Select the amount of tickets you want</b></p>
                     </div>
-                    <div className={`${styles.ticketOptions} d-flex`}>
-                        {storeData.tickets.map((ticket: Ticket, index: number) => {
-                            return (
-                                <a key={index} href={ticket.subscribeURL}>
-                                    <button className={`${styles.ticketOption} gradient-button`}>
-                                        <h4><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=24" alt="Ticket icon" loading='lazy' width="24" height="24" /> {ticket.amount}</h4>
-                                        <h2>${parseFloat((ticket.price / 100).toFixed(2))}</h2>
-                                    </button>
-                                </a>
-                            )
-                        })}
+                    <div className={`${styles.ticketOptions} d-flex align-items-center justify-content-center`}>
+                        <div className='d-flex flex-column justify-content-center align-items-center'>
+                            <h1 className='my-auto'><Image src="https://cdn.discordapp.com/emojis/1032669959161122976.png?size=48" alt="Ticket icon" loading='lazy' width="48" height="48" /> {tickets}</h1>
+
+                            <div className='d-flex justify-content-around gap-1 w-100 mt-2'>
+                                <button className={`${styles.ticketOption} gradient-button`} onClick={() => changeQuantity(-100)}>-</button>
+                                <button className={`${styles.ticketOption} gradient-button`} onClick={() => changeQuantity(100)}>+</button>
+                            </div>
+                        </div>
+
+                        <button className={`${styles.ticketOption} ms-4 gradient-button d-flex justify-content-center align-items-center`}
+                            onClick={async () => await buyTickets()}
+                            style={{
+                                fontSize: '1.5rem',
+                                fontWeight: 'bold',
+                            }}>
+                            Buy for ${parseFloat(((tickets * storeData.ticketPrice) / 100).toFixed(2))}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -93,8 +99,11 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
 }
 
 function SubscriptionCard({ tier }: { tier: PremiumTier }) {
+    const buySubscription = async () => {
+    }
+
     return (
-        <div className={`${styles.rowCard} d-flex flex-column`} redirect-to={tier.subscribeURL}>
+        <div className={`${styles.rowCard} d-flex flex-column`} onClick={async () => await buySubscription()}>
             <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
                 <div>
                     <header className='text-center'>
@@ -120,7 +129,7 @@ function SubscriptionCard({ tier }: { tier: PremiumTier }) {
                         </ul>
                     </div>
                 </div>
-                <a href={tier.subscribeURL} className='btn w-100 gradient-button'>Subscribe</a>
+                <a className='btn w-100 gradient-button'>Subscribe</a>
             </div>
         </div>
     )
