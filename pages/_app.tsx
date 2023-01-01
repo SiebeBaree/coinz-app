@@ -5,6 +5,12 @@ import Head from 'next/head'
 
 import Navbar from '../components/Navbar'
 
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import config from '../lib/data/config.json' assert { type: "json"};
+
+export const stripePromise = loadStripe(config.STRIPE_PUBLIC);
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -41,8 +47,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:image" content="/logo512.png" />
       </Head>
 
-      <Navbar />
-      <Component {...pageProps} />
+      <Elements stripe={stripePromise}>
+        <Navbar />
+        <Component {...pageProps} />
+      </Elements>
     </>
   )
 }
