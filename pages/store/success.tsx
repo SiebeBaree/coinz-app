@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export async function getStaticProps() {
-    return { props: {} }
+    return { props: {} };
 }
 
 export default function Success() {
@@ -23,5 +23,5 @@ export default function Success() {
             {sessionId && <p>Use this key <code>{sessionId}</code> to refer to your payment.</p>}
             <h5>Join our <Link href="/invite" target="_blank" className="text-danger">Discord server</Link> for support.</h5>
         </div>
-    )
+    );
 }

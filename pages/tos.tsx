@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export async function getStaticProps() {
-    return { props: {} }
+    return { props: {} };
 }
 
 function TermsOfService() {
@@ -77,7 +77,7 @@ function TermsOfService() {
             <p>Any claim related to Coinz&apos;s Website shall be governed by the laws of be without regards to its conflict of law
                 provisions.</p>
         </div >
-    )
+    );
 }
 
-export default TermsOfService
+export default TermsOfService;

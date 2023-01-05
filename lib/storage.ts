@@ -1,4 +1,4 @@
-import { Token, User } from "./types";
+import { Token, User } from './types';
 
 export function getAccessToken() {
     return sessionStorage.getItem('access_token');

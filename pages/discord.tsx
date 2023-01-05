@@ -1,18 +1,18 @@
-import { useEffect } from "react"
-import Redirect from '../components/Redirect'
+import { useEffect } from 'react';
+import Redirect from '../components/Redirect';
 
 export async function getStaticProps() {
-    return { props: {} }
+    return { props: {} };
 }
 
 function Discord() {
     useEffect(() => {
-        window.location.replace("https://discord.gg/asnZQwc6kW")
-    }, [])
+        window.location.replace('https://discord.gg/asnZQwc6kW');
+    }, []);
 
     return (
         <Redirect />
-    )
+    );
 }
 
-export default Discord
+export default Discord;

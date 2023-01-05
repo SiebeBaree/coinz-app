@@ -1,7 +1,7 @@
-import Link from "next/link"
+import Link from 'next/link';
 
 export async function getStaticProps() {
-    return { props: {} }
+    return { props: {} };
 }
 
 export default function Cancel() {
@@ -13,5 +13,5 @@ export default function Cancel() {
                 <h4>Join our <Link href="/invite" target="_blank" className="text-danger">Discord server</Link> for support.</h4>
             </div>
         </div>
-    )
+    );
 }

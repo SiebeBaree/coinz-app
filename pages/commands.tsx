@@ -1,25 +1,25 @@
-import styles from '../styles/commands.module.css'
-import { useState } from 'react'
+import styles from '../styles/commands.module.css';
+import { useState } from 'react';
 
 const categories = {
-    misc: "Miscellaneous",
-    economy: "Economy",
-    games: "Games",
-    business: "Business",
-    farming: "Farming",
-    investing: "Investing"
-}
+    misc: 'Miscellaneous',
+    economy: 'Economy',
+    games: 'Games',
+    business: 'Business',
+    farming: 'Farming',
+    investing: 'Investing',
+};
 
 export async function getStaticProps() {
-    const data = await import(`../lib/data/commands.json`, { assert: { type: "json" } });
+    const data = await import('../lib/data/commands.json', { assert: { type: 'json' } });
 
     return {
-        props: { commands: data.default }
-    }
+        props: { commands: data.default },
+    };
 }
 
 export default function Commands({ commands }) {
-    const [state, setState] = useState("misc");
+    const [state, setState] = useState('misc');
 
     return (
         <div id={styles.commands} className="container">
@@ -36,11 +36,11 @@ export default function Commands({ commands }) {
                 {getCommands(commands, state).map((cmd) => <Command name={cmd} description={commands[cmd].description} options={commands[cmd].options} key={cmd} />)}
             </div>
         </div>
-    )
+    );
 }
 
 function Category({ category, name, state, setState }) {
-    return <button data-category={category} className={`${styles.categorySelect} ${state === category ? styles.categorySelected : ""}`} onClick={() => setState(category)}>{name}</button>
+    return <button data-category={category} className={`${styles.categorySelect} ${state === category ? styles.categorySelected : ''}`} onClick={() => setState(category)}>{name}</button>;
 }
 
 function getCommands(commands: any, category: string) {
@@ -51,17 +51,17 @@ function Command({ name, description, options, isOpened = false }) {
     const [commandState, setCommandState] = useState(isOpened);
 
     return (
-        <div className={`${styles.commandItem} ${commandState ? styles.opened : ""}`} onClick={() => setCommandState(commandState => !commandState)} >
+        <div className={`${styles.commandItem} ${commandState ? styles.opened : ''}`} onClick={() => setCommandState(!commandState)} >
             <h4>/{name}</h4>
-            <p className={commandState ? styles.commandDescription : ""}>{description}</p>
+            <p className={commandState ? styles.commandDescription : ''}>{description}</p>
             {commandState && commandOptionParser(name, options)}
         </div>
-    )
+    );
 }
 
 function commandOptionParser(name: string, cmdOptions: Array<any>) {
     if (cmdOptions.length === 0) return <p>This command has no extra parameters</p>;
-    let output = "";
+    let output = '';
 
     for (let i = 0; i < cmdOptions.length; i++) {
         const options = cmdOptions[i];
@@ -80,24 +80,24 @@ function commandOptionParser(name: string, cmdOptions: Array<any>) {
                         }
 
                         for (let k = 0; k < newOptions[j].options.length; k++) {
-                            let brackets = newOptions[j].options[k].required === true ? ["<", ">"] : ["[", "]"];
+                            const brackets = newOptions[j].options[k].required === true ? ['<', '>'] : ['[', ']'];
                             output += ` ${brackets[0]}${newOptions[j].options[k].name}${brackets[1]}`;
                         }
 
-                        if (j < newOptions.length - 1) output += "\n";
+                        if (j < newOptions.length - 1) output += '\n';
                     } else {
-                        let brackets = newOptions[j].required === true ? ["<", ">"] : ["[", "]"];
+                        const brackets = newOptions[j].required === true ? ['<', '>'] : ['[', ']'];
                         output += ` ${brackets[0]}${newOptions[j].name}${brackets[1]}`;
                     }
                 }
-                output += "\n";
+                output += '\n';
             } else {
                 output += `/${name} ${options.name}\n`;
             }
         } else {
             if (!output.startsWith(`/${name}`)) output += `/${name}`;
 
-            let brackets = options.required === true ? ["<", ">"] : ["[", "]"];
+            const brackets = options.required === true ? ['<', '>'] : ['[', ']'];
             output += ` ${brackets[0]}${options.name}${brackets[1]}`;
         }
     }
@@ -106,7 +106,7 @@ function commandOptionParser(name: string, cmdOptions: Array<any>) {
         <>
             <h5>Usage</h5>
             <p>
-                <code>{output.trim().split("\n").map(e => <>{e}<br /></>)}</code>
+                <code>{output.trim().split('\n').map(e => <>{e}<br /></>)}</code>
             </p>
         </>
     );

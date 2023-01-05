@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export async function getStaticProps() {
-    return { props: {} }
+    return { props: {} };
 }
 
 export default function PrivacyPolicy() {
@@ -82,5 +82,5 @@ export default function PrivacyPolicy() {
 
             <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
         </div >
-    )
+    );
 }

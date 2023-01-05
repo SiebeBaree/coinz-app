@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import styles from '../styles/status.module.css'
+import styles from '../styles/status.module.css';
 
-import { useEffect, useState } from "react";
-import config from "../lib/data/config.json" assert { type: "json" };
+import { useEffect, useState } from 'react';
+import config from '../lib/data/config.json' assert { type: 'json' };
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -31,13 +31,13 @@ export async function getStaticProps() {
 
     return {
         props: { clusters },
-        revalidate: 30
-    }
+        revalidate: 30,
+    };
 }
 
 async function getStatus(): Promise<Cluster[]> {
     try {
-        const status = await fetch(config.API_URI + "/status");
+        const status = await fetch(config.API_URI + '/status');
         const json = await status.json();
         return json;
     } catch {
@@ -85,7 +85,7 @@ function StatusPage({ clusters }) {
                 {!error && status.map((cluster: Cluster, index: number) => <ClusterCard key={index} cluster={cluster} />)}
             </div>
         </div>
-    )
+    );
 }
 
 function ClusterCard({ cluster }) {
@@ -115,21 +115,21 @@ function ClusterCard({ cluster }) {
 
                 </span>
 
-                <h3 className={`card-title text-center text-color`}>Cluster #{cluster.id}</h3>
+                <h3 className={'card-title text-center text-color'}>Cluster #{cluster.id}</h3>
                 <div className={`${styles.shardCards} d-flex justify-content-center flex-wrap`}>
                     {(cluster.shards).map((shard: Shard, index: number) => <ShardCard key={index} shard={shard} />)}
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 function ShardCard({ shard }) {
     const status = shard.ping === -1
-        ? "Shard is offline"
+        ? 'Shard is offline'
         : shard.ping > 300
-            ? "Shard is responding slowly"
-            : "Shard is fully operational";
+            ? 'Shard is responding slowly'
+            : 'Shard is fully operational';
 
     return (
         <OverlayTrigger
@@ -153,15 +153,15 @@ function ShardCard({ shard }) {
                 <h5 className='my-auto'>#{shard.id}</h5>
             </div >
         </OverlayTrigger>
-    )
+    );
 }
 
 function getColor(ping: number): string {
     return ping === -1
-        ? "#DA3F40"
+        ? '#DA3F40'
         : ping > 300
-            ? "#FAA61A"
-            : "#44B581";
+            ? '#FAA61A'
+            : '#44B581';
 }
 
 export default StatusPage;

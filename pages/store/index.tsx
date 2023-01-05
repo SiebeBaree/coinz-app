@@ -1,39 +1,23 @@
-import styles from '../../styles/store.module.css'
+import styles from '../../styles/store.module.css';
 
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import config from "../../lib/data/config.json" assert { type: "json" }
+// import config from '../../lib/data/config.json' assert { type: 'json' };
 
-interface StoreItems {
-    tiers: PremiumTier[];
-    ticketPrice: number;
-    lastUpdated?: number;
-}
+// export async function getStaticProps() {
+//     const responds = await fetch(config.API_URI + '/store/all');
+//     const storeData = await responds.json();
+//     return { props: { storeData } };
+// }
 
-interface PremiumTier {
-    name: string;
-    price: number;
-    botperks: string[];
-    serverperks: string[];
-}
-
-export async function getStaticProps() {
-    const responds = await fetch(config.API_URI + "/store/all");
-    const storeData = await responds.json();
-    return { props: { storeData } }
-}
-
-export default function Store({ storeData }: { storeData: StoreItems }) {
+export default function Store() {
     const [tickets, setTickets] = useState(100);
 
     const changeQuantity = (amount: number) => {
         if (tickets + amount < 100 || tickets + amount > 1500) return;
         setTickets(tickets + amount);
-    }
-
-    const buyTickets = async () => {
-    }
+    };
 
     useEffect(() => {
         document.getElementById(styles.cards).onmousemove = e => {
@@ -47,8 +31,8 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                     card.style.setProperty('--mouse-y', `${y}px`);
                 }
             }
-        }
-    });
+        };
+    }, []);
 
     return (
         <div id={styles.storePage} className='container'>
@@ -61,7 +45,7 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                 <p className={`${styles.sectionDescription} text-center`}>Get access to premium features and support the development of Coinz!</p>
 
                 <div id={`${styles.cards}`} className='d-flex justify-content-around flex-wrap'>
-                    {storeData.tiers.map((tier: PremiumTier, index: number) => <SubscriptionCard key={index} tier={tier} />)}
+                    {/* {storeData.tiers.map((tier: PremiumTier, index: number) => <SubscriptionCard key={index} tier={tier} />)} */}
                 </div>
             </div>
 
@@ -83,54 +67,51 @@ export default function Store({ storeData }: { storeData: StoreItems }) {
                             </div>
                         </div>
 
-                        <button className={`${styles.ticketOption} ms-4 gradient-button d-flex justify-content-center align-items-center`}
-                            onClick={async () => await buyTickets()}
+                        {/* <button className={`${styles.ticketOption} ms-4 gradient-button d-flex justify-content-center align-items-center`}
+                            onClick={buyTickets}
                             style={{
                                 fontSize: '1.5rem',
                                 fontWeight: 'bold',
                             }}>
                             Buy for ${parseFloat(((tickets * storeData.ticketPrice) / 100).toFixed(2))}
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-function SubscriptionCard({ tier }: { tier: PremiumTier }) {
-    const buySubscription = async () => {
-    }
+// function SubscriptionCard({ tier }: { tier: PremiumTier }) {
+//     return (
+//         <div className={`${styles.rowCard} d-flex flex-column`}>
+//             <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
+//                 <div>
+//                     <header className='text-center'>
+//                         <h3 className='magic-text'>{tier.name}</h3>
+//                         <div className={`${styles.pricing} d-flex align-items-baseline justify-content-center`}>
+//                             <h1>${parseFloat((tier.price / 100).toFixed(2))}</h1>
+//                             <h6>/MONTH</h6>
+//                         </div>
+//                     </header>
+//                     <div className={styles.middleCard}>
+//                         <p><b>Perks in Coinz:</b></p>
+//                         <ul className='fa-ul'>
+//                             {tier.botperks.map((perk: string, index: number) => <li key={index}>
+//                                 {perk}
+//                             </li>)}
+//                         </ul>
 
-    return (
-        <div className={`${styles.rowCard} d-flex flex-column`} onClick={async () => await buySubscription()}>
-            <div className={`${styles.cardContent} d-flex flex-column justify-content-between`}>
-                <div>
-                    <header className='text-center'>
-                        <h3 className='magic-text'>{tier.name}</h3>
-                        <div className={`${styles.pricing} d-flex align-items-baseline justify-content-center`}>
-                            <h1>${parseFloat((tier.price / 100).toFixed(2))}</h1>
-                            <h6>/MONTH</h6>
-                        </div>
-                    </header>
-                    <div className={styles.middleCard}>
-                        <p><b>Perks in Coinz:</b></p>
-                        <ul className='fa-ul'>
-                            {tier.botperks.map((perk: string, index: number) => <li key={index}>
-                                {perk}
-                            </li>)}
-                        </ul>
-
-                        <p><b>Perks in the Support Server:</b></p>
-                        <ul className='fa-ul'>
-                            {tier.serverperks.map((perk: string, index: number) => <li key={index}>
-                                {perk}
-                            </li>)}
-                        </ul>
-                    </div>
-                </div>
-                <a className='btn w-100 gradient-button'>Subscribe</a>
-            </div>
-        </div>
-    )
-}
+//                         <p><b>Perks in the Support Server:</b></p>
+//                         <ul className='fa-ul'>
+//                             {tier.serverperks.map((perk: string, index: number) => <li key={index}>
+//                                 {perk}
+//                             </li>)}
+//                         </ul>
+//                     </div>
+//                 </div>
+//                 <a className='btn w-100 gradient-button'>Subscribe</a>
+//             </div>
+//         </div>
+//     );
+// }

@@ -1,29 +1,29 @@
-import { useEffect } from 'react'
-import config from '../lib/data/config.json'
+import { useEffect } from 'react';
+import config from '../lib/data/config.json';
 const { API_ENDPOINT, DISCORD_CLIENT_ID, SCOPE } = config;
 
-import { discordRefreshToken, discordRevokeToken } from '../lib/api'
-import { getRefreshToken, getAccessToken, setTokenItems } from '../lib/storage'
-import { Token } from '../lib/types'
+import { discordRefreshToken, discordRevokeToken } from '../lib/api';
+import { getRefreshToken, getAccessToken, setTokenItems } from '../lib/storage';
+import { Token } from '../lib/types';
 
 const generateRandomString = (length = 0) => {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     length = length === 0 ? Math.floor(Math.random() * (48 - 24 + 1) + 24) : length;
 
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
     return result;
-}
+};
 
 const setOauthState = () => {
     const state = generateRandomString();
     localStorage.setItem('oauth_state', state);
-    return `${API_ENDPOINT}/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${window.location.origin + "/callback"}` +
+    return `${API_ENDPOINT}/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${window.location.origin + '/callback'}` +
         `&response_type=code&scope=${SCOPE.join('%20')}&prompt=consent&state=${encodeURIComponent(state)}`;
-}
+};
 
 export default function Login() {
     useEffect(() => {
@@ -44,7 +44,7 @@ export default function Login() {
         } else {
             document.location.replace(setOauthState());
         }
-    })
+    });
 
-    return (<></>)
+    return (<></>);
 }

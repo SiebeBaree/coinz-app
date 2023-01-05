@@ -1,7 +1,7 @@
-import styles from '../styles/navbar.module.css'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import styles from '../styles/navbar.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function NavbarComponent() {
     const [loggedIn, setLogin] = useState(false);
@@ -11,9 +11,9 @@ export default function NavbarComponent() {
     }
 
     useEffect(() => {
-        require("bootstrap/dist/js/bootstrap.bundle.min.js");
+        require('bootstrap/dist/js/bootstrap.bundle.min.js');
         setLogin(hasUserData());
-    }, [])
+    }, []);
 
     return (
         <div className='container'>
@@ -79,5 +79,5 @@ export default function NavbarComponent() {
                 </div>
             </nav>
         </div>
-    )
+    );
 }

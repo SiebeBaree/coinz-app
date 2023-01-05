@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { getAccessToken, setTokenItems, setUserItems } from '../lib/storage';
 import { discordCallback, discordRevokeToken } from '../lib/api';
 import { ApiCallbackResponds } from '../lib/types';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
 
 export default function Callback() {
     const router = useRouter();
@@ -27,14 +27,14 @@ export default function Callback() {
                         expires_in: data.expires_in,
                         refresh_token: data.refresh_token,
                         scope: data.scope,
-                        token_type: data.token_type
+                        token_type: data.token_type,
                     });
 
                     setUserItems({
                         id: data.id,
                         username: data.username,
                         discriminator: data.discriminator,
-                        avatar: data.avatar
+                        avatar: data.avatar,
                     });
 
                     document.location.replace('/dashboard');
@@ -42,7 +42,7 @@ export default function Callback() {
                     document.location.replace('/login');
                 }
             }).catch((e) => {
-                console.log(e)
+                console.log(e);
                 setError(true);
             });
         } else {
@@ -63,5 +63,5 @@ export default function Callback() {
                 </div>
             }
         </>
-    )
+    );
 }

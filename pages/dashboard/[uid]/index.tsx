@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
-import styles from "../../../styles/dashboard.module.css"
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import styles from '../../../styles/dashboard.module.css';
 
 export default function UserDashboard() {
     const userName = useRef(null);
-    const [userProfile, setUserProfile] = useState("https://cdn.discordapp.com/embed/avatars/0.png");
+    const [userProfile, setUserProfile] = useState('https://cdn.discordapp.com/embed/avatars/0.png');
 
     useEffect(() => {
         userName.current = `${sessionStorage.getItem('user_username')}#${sessionStorage.getItem('user_discriminator')}`;
@@ -20,5 +20,5 @@ export default function UserDashboard() {
                 </div>
             </section>
         </div>
-    )
+    );
 }

@@ -1,13 +1,13 @@
-import styles from '../styles/faq.module.css'
-import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
+import styles from '../styles/faq.module.css';
+import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export async function getStaticProps() {
-    const data = await import(`../lib/data/faq.json`, { assert: { type: "json" } });
+    const data = await import('../lib/data/faq.json', { assert: { type: 'json' } });
 
     return {
-        props: { faqItems: data.default.items }
-    }
+        props: { faqItems: data.default.items },
+    };
 }
 
 export default function Faq({ faqItems }) {
@@ -20,20 +20,20 @@ export default function Faq({ faqItems }) {
 
             <div>
                 {faqItems.map(({ title, description }, index: number) =>
-                    <FaqItem key={index} title={title} description={description} />
+                    <FaqItem key={index} title={title} description={description} />,
                 )}
             </div>
         </div>
-    )
+    );
 }
 
 function FaqItem({ title, description }) {
     const [state, setState] = useState(false);
 
     return (
-        <div className={`${styles.faqItem} ${state ? styles.itemExpanded : ""}`} onClick={() => setState(state => !state)}>
+        <div className={`${styles.faqItem} ${state ? styles.itemExpanded : ''}`} onClick={() => setState(!state)}>
             <h4>{title}</h4>
-            {state ? <p>{description.split("\n").map((line: string, i: number) => <ReactMarkdown key={i}>{line}</ReactMarkdown>)}</p> : null}
+            {state ? <p>{description.split('\n').map((line: string, i: number) => <ReactMarkdown key={i}>{line}</ReactMarkdown>)}</p> : null}
         </div >
-    )
+    );
 }

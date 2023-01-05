@@ -1,11 +1,11 @@
-import config from './data/config.json'
+import config from './data/config.json';
 const { API_URI, API_ENDPOINT } = config;
 
 import {
     getAccessToken,
     getTokenType,
     getUser as getUserFromStorage,
-    setUserItems
+    setUserItems,
 } from './storage';
 
 export async function discordCallback(token: string) {
@@ -15,8 +15,8 @@ export async function discordCallback(token: string) {
             token: token,
         }),
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
     });
     return await res.json();
 }
@@ -28,8 +28,8 @@ export async function discordRefreshToken(token: string) {
             token: token,
         }),
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
     });
     return await res.json();
 }
@@ -42,11 +42,11 @@ export async function discordRevokeToken(token = null, clearStorage = true, redi
             await fetch(`${API_URI}/discord/revoke`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    token: token
-                })
+                    token: token,
+                }),
             });
         }
     } catch {
@@ -66,8 +66,8 @@ export async function getUser(force = false) {
         const res = await fetch(`${API_ENDPOINT}/users/@me`, {
             method: 'GET',
             headers: {
-                'Authorization': `${tokenType} ${token}`
-            }
+                'Authorization': `${tokenType} ${token}`,
+            },
         });
         return await res.json();
     }
@@ -86,8 +86,8 @@ export async function isAuthorized() {
         const res = await fetch(`${API_URI}/discord/authorize?id=${id}&token=${token}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         });
         return res.status;
     }
