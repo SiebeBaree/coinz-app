@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import styles from '../../../styles/dashboard.module.css';
+import styles from '../../styles/dashboard.module.css';
 
 export default function UserDashboard() {
     const userName = useRef(null);
