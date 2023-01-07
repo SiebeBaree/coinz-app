@@ -7,76 +7,45 @@ export async function getStaticProps() {
 function TermsOfService() {
     return (
         <div className="container mt-5 mb-5 text-white">
-            <h1 className="text-center">Website Terms and Conditions of Use</h1>
+            <h1 className="text-center">Coinz Terms and Conditions</h1>
 
-            <h3>1. Terms</h3>
+            <p>Coinz is a Discord bot and website that allows users to engage in virtual economic and gambling activities using virtual currency. While all gambling activities on Coinz are for entertainment purposes only and do not involve the use of real money, users may purchase premium features and lootboxes on the Coinz website using real money.</p>
 
-            <p>By accessing this Website, accessible from the <Link href="/" className='text-white text-decoration-none'>coinzbot website</Link>, you
-                are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the
-                agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from
-                accessing this site. The materials contained in this Website are protected by copyright and trade mark law.</p>
+            <p>By accessing or using the Coinz bot or website, you agree to be bound by the following terms of service. If you do not agree to these terms, you are not permitted to use Coinz.</p>
 
-            <h3>2. Use License</h3>
+            <h4>I. Age Restriction</h4>
+            <p>You must be at least 13 years old to use Coinz. By accessing or using Coinz, you confirm that you are at least 13 years old.</p>
 
-            <p>Permission is granted to temporarily download one copy of the materials on Coinz&apos;s Website for personal,
-                non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this
-                license you may not:</p>
+            <h4>II. Virtual Currency</h4>
+            <p>Coinz uses a virtual currency, known as &quot;coins&quot;, for all economic and gambling activities on the platform. Coins have no real-world value and cannot be exchanged for real money or any other form of currency.</p>
 
-            <ul>
-                <li>modify or copy the materials;</li>
-                <li>use the materials for any commercial purpose or for any public display;</li>
-                <li>attempt to reverse engineer any software contained on Coinz&apos;s Website;</li>
-                <li>remove any copyright or other proprietary notations from the materials; or</li>
-                <li>transferring the materials to another person or &quot;mirror&quot; the materials on any other server.</li>
-            </ul>
+            <h4>III. Premium Features</h4>
+            <p>Coinz offers premium features that can be purchased on the website using real money. These premium features are subject to change and may be discontinued at any time. Coinz is not responsible for any losses or damages resulting from the discontinuation of premium features.</p>
 
-            <p>This will let Coinz to terminate upon violations of any of these restrictions. Upon termination, your viewing
-                right will also be terminated and you should destroy any downloaded materials in your possession whether it is
-                printed or electronic format.</p>
+            <h4>IV. Lootboxes</h4>
+            <p>Coinz also offers lootboxes that can be purchased on the website using real money. Lootboxes contain a random selection of virtual items, and the contents of each lootbox are unknown until it is opened. Coinz is not responsible for any dissatisfaction with the contents of a lootbox.</p>
 
-            <h3>3. Disclaimer</h3>
+            <h4>V. Account Termination</h4>
+            <p>Coinz reserves the right to terminate any account at any time for any reason, including, but not limited to, violation of these terms of service or any applicable laws. If your account is terminated, you may lose access to any virtual currency or items you have acquired on Coinz.</p>
 
-            <p>All the materials on Coinz&apos;s Website are provided &quot;as is&quot;. Coinz makes no warranties, may it be expressed or
-                implied, therefore negates all other warranties. Furthermore, Coinz does not make any representations concerning
-                the accuracy or reliability of the use of the materials on its
-                Website
-                or otherwise relating to such materials or any sites linked to this Website.</p>
+            <h4>VI. Errors</h4>
+            <p>Coinz may contain errors, such as typos, technical errors, or other inaccuracies. Coinz is not responsible for any errors or omissions, and we reserve the right to correct any errors or inaccuracies at any time.</p>
 
-            <h3>4. Limitations</h3>
+            <h4>VII. Warranty Disclaimer</h4>
+            <p>Coinz is provided &quot;as is&quot;, without warranty of any kind. Coinz makes no warranties, express or implied, regarding the accuracy, completeness, reliability, or suitability of the bot or website. Coinz is not responsible for any actions taken based on the information provided on the bot or website.</p>
 
-            <p>Coinz or its suppliers will not be hold accountable for any damages that will arise with the use or inability to
-                use the materials on Coinz&apos;s Website, even if Coinz or an authorize representative of this Website has been
-                notified, orally or written, of the possibility of such damage. Some
-                jurisdiction does not allow limitations on implied warranties or limitations of liability for incidental
-                damages, these limitations may not apply to you.</p>
+            <h4>VIII. Limitation of Liability</h4>
+            <p>In no event will Coinz be liable for any damages, including, but not limited to, direct, indirect, special, incidental, or consequential damages, arising out of the use or inability to use the bot or website, even if Coinz has been advised of the possibility of such damages.</p>
 
-            <h3>5. Revisions and Errata</h3>
+            <h4>IX. Governing Law</h4>
+            <p>These terms of service shall be governed by and construed in accordance with the laws of the United States.</p>
 
-            <p>The materials appearing on Coinz&apos;s Website may include technical, typographical, or photographic errors. Coinz
-                will not promise that any of the materials in this Website are accurate, complete, or current. Coinz may change
-                the materials contained on its Website at any time without notice.
-                Coinz does not make any commitment to update the materials.</p>
+            <h4>X. Changes to These Terms</h4>
+            <p>Coinz reserves the right to change these terms of service at any time. Any changes will be effective immediately upon posting on the Coinz website. By continuing to access or use Coinz after any changes have been made, you agree to be bound by the revised terms of service.</p>
 
-            <h3>6. Links</h3>
-
-            <p>Coinz has not reviewed all of the sites linked to its Website and is not responsible for the contents of any such
-                linked site. The presence of any link does not imply endorsement by Coinz of the site. The use of any linked
-                website is at the user&apos;s own risk.</p>
-
-            <h3>7. Site Terms of Use Modifications</h3>
-
-            <p>Coinz may revise these Terms of Use for its Website at any time without prior notice. By using this Website, you
-                are agreeing to be bound by the current version of these Terms and Conditions of Use.</p>
-
-            <h3>8. Your Privacy</h3>
-
-            <p>Please read our <Link href="/privacy" className='text-white text-decoration-none'>Privacy Policy</Link>.</p>
-
-            <h3>9. Governing Law</h3>
-
-            <p>Any claim related to Coinz&apos;s Website shall be governed by the laws of be without regards to its conflict of law
-                provisions.</p>
-        </div >
+            <h4>XI. Privacy Policy</h4>
+            <p>By accessing or using Coinz, you agree to the collection, use, and sharing of your personal information as described in the Coinz privacy policy, which can be found at our <Link href="/privacy" className='text-primary'>Privacy Policy</Link>.</p>
+        </div>
     );
 }
 
