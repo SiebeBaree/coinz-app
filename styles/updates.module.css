@@ -11,15 +11,6 @@
     color: #548cdc;
 }
 
-#updates code {
-    color: #548cdc;
-    background-color: rgb(88, 101, 242, 0.3);
-    color: var(--text-color);
-    padding: 3px 5px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
 #updates em {
     color: #548cdc;
     background-color: rgba(0, 2, 18, 0.5);
@@ -33,4 +24,60 @@
     border-radius: 10px;
     margin: 20px 0;
     background-color: var(--card-color);
+}
+
+#updates code {
+    color: #548cdc;
+    background-color: rgb(88, 101, 242, 0.3);
+    color: var(--text-color);
+    padding: 3px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+#updates code::before,
+#updates code::after {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    z-index: 1;
+    visibility: hidden;
+}
+
+
+#updates code::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    z-index: 1;
+}
+
+#updates code::after {
+    position: absolute;
+    top: -35px;
+    right: auto;
+    padding: 4px 5px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+#updates code:hover::before,
+#updates code:hover::after {
+    visibility: visible;
+}
+
+#updates code:not([data-tooltip])::after {
+    content: "Click to copy";
+}
+
+#updates code[data-tooltip]::after {
+    content: attr(data-tooltip);
 }

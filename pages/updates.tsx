@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styles from '../styles/updates.module.css';
 
@@ -10,8 +11,6 @@ interface Update {
 
 export async function getStaticProps() {
     const data = await import('../lib/data/updates.json', { assert: { type: 'json' } });
-
-    // sort data by timestamp
     data.default.sort((a: Update, b: Update) => b.timestamp - a.timestamp);
 
     return {
@@ -20,6 +19,23 @@ export async function getStaticProps() {
 }
 
 export default function Updates({ updates }: { updates: Update[] }) {
+    useEffect(() => {
+        // get all code elements
+        const codeElements = document.querySelectorAll('code');
+
+        // bind click event to all code elements to copy the text and change the text to "Copied!"
+        codeElements.forEach(element => {
+            element.addEventListener('click', () => {
+                navigator.clipboard.writeText(element.textContent);
+                element.setAttribute('data-tooltip', 'Copied!');
+            });
+
+            element.addEventListener('mouseout', () => {
+                element.setAttribute('data-tooltip', 'Click to copy');
+            });
+        });
+    }, []);
+
     return (
         <div className="page-content container">
             <section className="text-white d-flex flex-column align-items-center my-5">
