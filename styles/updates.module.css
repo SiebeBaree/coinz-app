@@ -1,0 +1,36 @@
+#updates h4 {
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+#updates ul {
+    margin: 3px 0;
+}
+
+#updates a {
+    color: #548cdc;
+}
+
+#updates code {
+    color: #548cdc;
+    background-color: rgb(88, 101, 242, 0.3);
+    color: var(--text-color);
+    padding: 3px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#updates em {
+    color: #548cdc;
+    background-color: rgba(0, 2, 18, 0.5);
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-style: normal;
+}
+
+#updates .card {
+    padding: 20px 25px 0px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    background-color: var(--card-color);
+}
