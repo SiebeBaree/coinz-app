@@ -14,7 +14,6 @@ interface Shard {
     id: number;
     ping: number;
     guildcount: number;
-    cpu: number;
     ram: {
         heapUsed: number;
         rss: number;
@@ -141,7 +140,6 @@ function ShardCard({ shard }) {
                         <br /><br />
                         <b>Ping:</b> {shard.ping} ms<br />
                         <b>Guilds:</b> {shard.guildcount}<br />
-                        <b>CPU:</b> {shard.cpu.toFixed(2)} %<br />
                         <b>RAM:</b> {shard.ram.heapUsed.toFixed(2)} MB
                     </>}
                 </Tooltip>
