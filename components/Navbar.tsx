@@ -45,6 +45,9 @@ export default function NavbarComponent() {
                                     <Link href="/status" className={`nav-link ${styles.navbarLink}`}>Status</Link>
                                 </li>
                                 <li className={`nav-item ${styles.navItem}`}>
+                                    <Link href="/updates" className={`nav-link ${styles.navbarLink}`}>Updates</Link>
+                                </li>
+                                <li className={`nav-item ${styles.navItem}`}>
                                     <Link href="/invite" className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
                                 </li>
                             </ul>
