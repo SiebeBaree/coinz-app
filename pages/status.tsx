@@ -36,7 +36,7 @@ export async function getStaticProps() {
 
 async function getStatus(): Promise<Cluster[]> {
     try {
-        const status = await fetch(config.API_URI + '/status');
+        const status = await fetch(config.API_URL + '/status');
         const json = await status.json();
         return json;
     } catch {

@@ -2,17 +2,19 @@ import styles from '../styles/navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import config from '../lib/data/config.json';
 
 export default function NavbarComponent() {
     const [loggedIn, setLogin] = useState(false);
 
-    function hasUserData() {
-        return sessionStorage.getItem('user') ? true : false;
-    }
-
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js');
-        setLogin(hasUserData());
+
+        if (sessionStorage.getItem('user_id') &&
+            sessionStorage.getItem('user_username') &&
+            sessionStorage.getItem('user_discriminator')) {
+            setLogin(true);
+        }
     }, []);
 
     return (
@@ -64,7 +66,7 @@ export default function NavbarComponent() {
                                             </span>
                                         </a>
                                         <ul className="dropdown-menu">
-                                            <li><Link className="dropdown-item" href={`/dashboard/${sessionStorage.getItem('user_id')}`}>Dashboard</Link></li>
+                                            <li><Link className="dropdown-item" href={'/dashboard'}>Dashboard</Link></li>
                                             <li>
                                                 <hr className="dropdown-divider" />
                                             </li>
@@ -73,7 +75,7 @@ export default function NavbarComponent() {
                                     </li>
                                 ) : (
                                     <li className='nav-item'>
-                                        <Link href="/login" className={`nav-link ${styles.navbarLink}`}>Login Via Discord</Link>
+                                        <Link href={config.API_URL + '/auth/login'} className={`nav-link ${styles.navbarLink}`}>Login Via Discord</Link>
                                     </li>
                                 )}
                             </ul>

@@ -1,99 +1,40 @@
+import { GetServerSidePropsContext } from 'next';
 import config from './data/config.json';
-const { API_URI, API_ENDPOINT } = config;
+import { validateCookies } from './helpers';
+import { User } from './types';
 
-import {
-    getAccessToken,
-    getTokenType,
-    getUser as getUserFromStorage,
-    setUserItems,
-} from './storage';
-
-export async function discordCallback(token: string) {
-    const res = await fetch(`${API_URI}/discord/callback`, {
-        method: 'POST',
-        body: JSON.stringify({
-            token: token,
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    return await res.json();
-}
-
-export async function discordRefreshToken(token: string) {
-    const res = await fetch(`${API_URI}/discord/refresh`, {
-        method: 'POST',
-        body: new URLSearchParams({
-            token: token,
-        }),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    });
-    return await res.json();
-}
-
-export async function discordRevokeToken(token = null, clearStorage = true, redirect = true) {
-    if (token === null) token = getAccessToken();
+export const fetchUser = async (context: GetServerSidePropsContext) => {
+    const headers = validateCookies(context);
+    if (!headers) return { redirect: config.API_URL + '/auth/login' };
 
     try {
-        if (token) {
-            await fetch(`${API_URI}/discord/revoke`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+        const res = await fetch(config.API_URL + '/discord/user', {
+            headers,
+        });
+        const user = await res.json();
+
+        if (user.error) {
+            return {
+                redirect: {
+                    destination: config.API_URL + '/auth/login',
+                    permanent: false,
                 },
-                body: JSON.stringify({
-                    token: token,
-                }),
-            });
+                props: {},
+            };
         }
+
+        return {
+            props: {
+                user: user as User,
+            },
+        };
     } catch {
-        console.error('Failed to revoke token');
-    }
-
-    if (clearStorage) {
-        sessionStorage.clear();
-        localStorage.clear();
-    }
-
-    if (redirect) window.location.replace('/');
-}
-
-export async function getUser(force = false) {
-    async function fetchUser(tokenType: string, token: string) {
-        const res = await fetch(`${API_ENDPOINT}/users/@me`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `${tokenType} ${token}`,
+        return {
+            redirect: {
+                destination: config.API_URL + '/auth/login',
+                permanent: false,
             },
-        });
-        return await res.json();
+            props: {},
+        };
     }
-
-    if (sessionStorage.getItem('user') && !force) {
-        return getUserFromStorage();
-    } else {
-        const user = await fetchUser(getTokenType(), getAccessToken());
-        setUserItems(user);
-        return user;
-    }
-}
-
-export async function isAuthorized() {
-    async function fetchData(id: string, token: string) {
-        const res = await fetch(`${API_URI}/discord/authorize?id=${id}&token=${token}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        return res.status;
-    }
-
-    const res = await fetchData(sessionStorage.getItem('user_id'), getAccessToken());
-
-    if (res !== 200) await discordRevokeToken(undefined, true, true);
-    return res === 200;
-}
+};

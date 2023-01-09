@@ -1,19 +1,25 @@
+import { GetServerSidePropsContext } from 'next';
 import { useEffect } from 'react';
-import { getAccessToken } from '../../lib/storage';
-import { getUser } from '../../lib/api';
+import { fetchUser } from '../../lib/api';
 import { User } from '../../lib/types';
 
-export default function Dashboard() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    return await fetchUser(context);
+}
+
+export default function Dashboard({ user }: { user: User }) {
     useEffect(() => {
-        if (!getAccessToken()) {
-            sessionStorage.clear();
-            document.location.replace('/login');
-        } else {
-            getUser().then((user: User) => {
-                window.location.replace('/dashboard/' + user.id);
-            });
-        }
+        sessionStorage.setItem('user_id', user.id);
+        sessionStorage.setItem('user_username', user.username);
+        sessionStorage.setItem('user_discriminator', user.discriminator);
+        sessionStorage.setItem('user_avatar', user.avatar);
     });
 
-    return (<></>);
+    return (
+        <>
+            <h1>Dashboard</h1>
+            <p>Welcome {user.username}#{user.discriminator}!</p>
+            <p>{user.id}</p>
+        </>
+    );
 }
