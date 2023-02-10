@@ -46,10 +46,10 @@ export default function Home() {
             </section>
 
             <section id={styles.statistics} className="container d-flex justify-content-around flex-wrap hidden">
-                <StatCounter key="servers" icon={faServer} count="2000" name="Servers" suffix="+" />
-                <StatCounter key="users" icon={faUsers} count="325" name="Users" suffix="k+" />
-                <StatCounter key="cmds" icon={faCode} count="46" name="Commands" />
-                <StatCounter key="dailycmds" icon={faTerminal} count="4000" name="Daily Commands" suffix="+" />
+                <StatCounter key="servers" icon={faServer} count="2400" name="Servers" suffix="+" />
+                <StatCounter key="users" icon={faUsers} count="300" name="Users" suffix="K+" />
+                <StatCounter key="cmds" icon={faCode} count="48" name="Commands" />
+                <StatCounter key="dailycmds" icon={faTerminal} count="5000" name="Daily Commands" suffix="+" />
             </section>
 
             <section id={styles.vote} className="container text-center d-flex flex-column justify-content-center hidden">
@@ -88,10 +88,10 @@ export default function Home() {
     );
 }
 
-function StatCounter({ icon, count, name, suffix = '', delay = '3' }) {
+function StatCounter({ icon, count, name, suffix = '', delay = '2' }) {
     count = parseInt(count);
     const totalDelay = Math.floor(parseInt(delay) * 1000);
-    const incrementValue = Math.ceil(count * 20 / totalDelay);
+    const incrementValue = Math.ceil(count / (totalDelay / 10));
     const [state, setState] = useState(0);
     let isVisible = false;
 

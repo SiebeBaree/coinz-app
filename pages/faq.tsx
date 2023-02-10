@@ -19,19 +19,19 @@ export default function Faq({ faqItems }) {
             </div>
 
             <div>
-                {faqItems.map(({ title, description }, index: number) =>
-                    <FaqItem key={index} title={title} description={description} />,
+                {faqItems.map(({ title, slug, description }, index: number) =>
+                    <FaqItem key={index} title={title} slug={slug} description={description} />,
                 )}
             </div>
         </div>
     );
 }
 
-function FaqItem({ title, description }) {
+function FaqItem({ title, slug, description }) {
     const [state, setState] = useState(false);
 
     return (
-        <div className={`${styles.faqItem} ${state ? styles.itemExpanded : ''}`} onClick={() => setState(!state)}>
+        <div id={slug} className={`${styles.faqItem} ${state ? styles.itemExpanded : ''}`} onClick={() => setState(!state)}>
             <h4>{title}</h4>
             {state ? <p>{description.split('\n').map((line: string, i: number) => <ReactMarkdown key={i}>{line}</ReactMarkdown>)}</p> : null}
         </div >
