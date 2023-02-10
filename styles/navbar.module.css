@@ -3,7 +3,7 @@
 }
 
 .navbarHeader {
-    z-index: 1;
+    z-index: 999;
     height: 50px;
 }
 
@@ -38,6 +38,24 @@
 
 .navLogo {
     margin-right: 5px;
+}
+
+.navbarToggler {
+    color: white;
+    border: none;
+}
+
+.navbarToggler span {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.87)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.offCanvas {
+    background: var(--bg-color);
+}
+
+.offCanvas h5 {
+    color: var(--text-color);
+    font-size: 2rem;
 }
 
 @media screen and (max-width: 992px) {

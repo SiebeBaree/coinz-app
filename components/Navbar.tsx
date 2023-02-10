@@ -2,20 +2,41 @@ import styles from '../styles/navbar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import config from '../lib/data/config.json';
 
 export default function NavbarComponent() {
     const [loggedIn, setLogin] = useState(false);
+    const [user, setUser] = useState({
+        id: '',
+        username: '',
+        discriminator: '',
+        avatar: '',
+    });
 
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js');
 
-        if (sessionStorage.getItem('user_id') &&
-            sessionStorage.getItem('user_username') &&
-            sessionStorage.getItem('user_discriminator')) {
-            setLogin(true);
-        }
-    }, []);
+        const userObj = {
+            id: sessionStorage.getItem('user_id') ?? '',
+            username: sessionStorage.getItem('user_username') ?? '',
+            discriminator: sessionStorage.getItem('user_discriminator') ?? '',
+            avatar: sessionStorage.getItem('user_avatar') ?? '',
+        };
+        setUser(userObj);
+        setLogin(user.id !== '' && user.username !== '' && user.discriminator !== '');
+
+        addEventListener('storage', (e) => {
+            if (e.storageArea === sessionStorage) {
+                setUser({
+                    id: sessionStorage.getItem('user_id') ?? '',
+                    username: sessionStorage.getItem('user_username') ?? '',
+                    discriminator: sessionStorage.getItem('user_discriminator') ?? '',
+                    avatar: sessionStorage.getItem('user_avatar') ?? '',
+                });
+
+                setLogin(user.id !== '' && user.username !== '' && user.discriminator !== '');
+            }
+        });
+    }, [user.id, user.username, user.discriminator, user.avatar]);
 
     return (
         <div className='container'>
@@ -23,14 +44,13 @@ export default function NavbarComponent() {
                 <div className='container-fluid'>
                     <Link href="/" className={styles.navbarBrand}>Coinz</Link>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button className={`${styles.navbarToggler} navbar-toggler`} type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="offcanvas offcanvas-end" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div className={`${styles.offCanvas} offcanvas offcanvas-end`} id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div className="offcanvas-header">
-                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Coinz</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <h5 className="offcanvas-title mx-auto" id="offcanvasNavbarLabel">Coinz</h5>
                         </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav">
@@ -50,19 +70,24 @@ export default function NavbarComponent() {
                                     <Link href="/updates" className={`nav-link ${styles.navbarLink}`}>Updates</Link>
                                 </li>
                                 <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="/invite" className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
+                                    <Link href="https://discord.com/api/oauth2/authorize?client_id=938771676433362955&permissions=313344&scope=bot%20applications.commands" className={`nav-link ${styles.navbarLink}`} target="_blank" rel="noreferrer">Invite</Link>
                                 </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
                                 <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="/discord" className={`nav-link ${styles.navbarLink}`} target="_blank">Support</Link>
+                                    <Link href="https://discord.gg/asnZQwc6kW" className={`nav-link ${styles.navbarLink}`} target="_blank">Support</Link>
                                 </li>
                                 {loggedIn ? (
                                     <li className={`nav-item dropdown ${styles.navItem}`}>
                                         <a className={`nav-link dropdown-toggle d-flex align-items-center ${styles.navbarLink}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span className='d-flex align-items-center'>
-                                                <Image src={`https://cdn.discordapp.com/avatars/${sessionStorage.getItem('user_id')}/${sessionStorage.getItem('user_avatar')}.png?size=32`} className="rounded-circle" height="32" width="32" alt="Discord Profile Picture" loading="lazy" />
-                                                {sessionStorage.getItem('user_username')}#{sessionStorage.getItem('user_discriminator')}
+                                                {
+                                                    user.avatar === '' ?
+                                                        <Image src={'https://cdn.discordapp.com/embed/avatars/1.png?size=32'} className="rounded-circle me-2" height="32" width="32" alt="Discord Profile Picture" loading="lazy" /> :
+                                                        <Image src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=32`} className="rounded-circle me-2" height="32" width="32" alt="Discord Profile Picture" loading="lazy" />
+                                                }
+
+                                                {user.username}#{user.discriminator}
                                             </span>
                                         </a>
                                         <ul className="dropdown-menu">
@@ -75,7 +100,7 @@ export default function NavbarComponent() {
                                     </li>
                                 ) : (
                                     <li className='nav-item'>
-                                        <Link href={config.API_URL + '/auth/login'} className={`nav-link ${styles.navbarLink}`}>Login Via Discord</Link>
+                                        <Link href="/dashboard" className={`nav-link ${styles.navbarLink}`}>Login Via Discord</Link>
                                     </li>
                                 )}
                             </ul>
