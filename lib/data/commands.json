@@ -1,236 +1,7 @@
 {
-    "farm": {
-        "description": "Manage your farm and plant crops.",
-        "category": "farming",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "plots",
-                "options": []
-            },
-            {
-                "name": "plant",
-                "options": [
-                    {
-                        "name": "plot-id",
-                        "required": true
-                    },
-                    {
-                        "name": "crop",
-                        "required": true
-                    },
-                    {
-                        "name": "force",
-                        "required": false
-                    }
-                ]
-            }
-        ]
-    },
-    "business": {
-        "description": "Start your own business and earn the big bucks!",
-        "category": "business",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "info",
-                "options": []
-            },
-            {
-                "name": "create",
-                "options": [
-                    {
-                        "name": "name",
-                        "required": true
-                    }
-                ]
-            },
-            {
-                "name": "rename",
-                "options": [
-                    {
-                        "name": "name",
-                        "required": true
-                    }
-                ]
-            },
-            {
-                "name": "sell-business",
-                "options": []
-            },
-            {
-                "name": "sell-item",
-                "options": [
-                    {
-                        "name": "item-id",
-                        "required": true
-                    },
-                    {
-                        "name": "amount",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "supply",
-                "options": [
-                    {
-                        "name": "option",
-                        "required": true
-                    },
-                    {
-                        "name": "item-id",
-                        "required": true
-                    },
-                    {
-                        "name": "amount",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "employee",
-                "options": [
-                    {
-                        "name": "hire",
-                        "options": [
-                            {
-                                "name": "user",
-                                "required": true
-                            }
-                        ]
-                    },
-                    {
-                        "name": "fire",
-                        "options": [
-                            {
-                                "name": "user",
-                                "required": true
-                            }
-                        ]
-                    },
-                    {
-                        "name": "set-wage",
-                        "options": [
-                            {
-                                "name": "user",
-                                "required": true
-                            },
-                            {
-                                "name": "wage",
-                                "required": false
-                            }
-                        ]
-                    },
-                    {
-                        "name": "set-position",
-                        "options": [
-                            {
-                                "name": "user",
-                                "required": true
-                            },
-                            {
-                                "name": "position",
-                                "required": true
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "factory": {
-        "description": "Do stuff with your factories!",
-        "category": "business",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "view",
-                "options": []
-            },
-            {
-                "name": "set-production",
-                "options": [
-                    {
-                        "name": "factory-id",
-                        "required": true
-                    },
-                    {
-                        "name": "product-id",
-                        "required": true
-                    },
-                    {
-                        "name": "force?",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "list-products",
-                "options": []
-            }
-        ]
-    },
-    "balance": {
-        "description": "Get your balance or the balance of another user.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "user",
-                "required": false
-            }
-        ]
-    },
-    "beg": {
-        "description": "If you really want money you can beg for it.",
-        "category": "economy",
-        "cooldown": 300,
-        "options": []
-    },
-    "daily": {
-        "description": "Claim your daily reward.",
-        "category": "economy",
-        "cooldown": 86400,
-        "options": []
-    },
-    "deposit": {
-        "description": "Deposit money from your wallet to your bank account.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "amount",
-                "required": true
-            }
-        ]
-    },
-    "fish": {
-        "description": "Try and catch some fish that you can sell for money.",
-        "category": "economy",
-        "cooldown": 900,
-        "options": []
-    },
-    "hunt": {
-        "description": "Hunt for animals and get money selling their meat and skin.",
-        "category": "economy",
-        "cooldown": 900,
-        "options": []
-    },
-    "inventory": {
-        "description": "View your or someone's inventory.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "user",
-                "required": false
-            }
-        ]
-    },
-    "job": {
-        "description": "Apply for a job or get a list with all jobs.",
-        "category": "economy",
+    "achievement": {
+        "description": "Get a list of all achievements or refresh your achievements.",
+        "category": "misc",
         "cooldown": 0,
         "options": [
             {
@@ -238,373 +9,83 @@
                 "options": []
             },
             {
-                "name": "leave",
+                "name": "refresh",
                 "options": []
             },
             {
-                "name": "apply",
+                "name": "select",
                 "options": [
                     {
-                        "name": "job-name",
+                        "name": "achievement",
                         "required": true
                     }
                 ]
             }
         ]
     },
-    "lootbox": {
-        "description": "Open or buy a lootbox to get awesome rewards.",
-        "category": "economy",
+    "config": {
+        "description": "Change settings for your account.",
+        "category": "misc",
         "cooldown": 0,
         "options": [
             {
-                "name": "list",
+                "name": "notification",
                 "options": [
                     {
-                        "name": "lootbox-id",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "open",
-                "options": [
-                    {
-                        "name": "lootbox-id",
-                        "required": true
-                    }
-                ]
-            }
-        ]
-    },
-    "lucky-wheel": {
-        "description": "Spin the lucky wheel and get awesome rewards",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "info",
-                "options": []
-            },
-            {
-                "name": "spin",
-                "options": [
-                    {
-                        "name": "amount",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "buy",
-                "options": [
-                    {
-                        "name": "amount",
-                        "required": false
-                    }
-                ]
-            }
-        ]
-    },
-    "monthly": {
-        "description": "Claim your monthly reward.",
-        "category": "economy",
-        "cooldown": 2592000,
-        "options": []
-    },
-    "pay": {
-        "description": "Give your money to another user.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "user",
-                "required": true
-            },
-            {
-                "name": "amount",
-                "required": true
-            }
-        ]
-    },
-    "profile": {
-        "description": "Get your or another user's Coinz profile. You can see detailed information here.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "user",
-                "required": false
-            }
-        ]
-    },
-    "shop": {
-        "description": "View, buy or sell items with this command.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "list",
-                "options": [
-                    {
-                        "name": "item-id",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "buy",
-                "options": [
-                    {
-                        "name": "item-id",
+                        "name": "notification",
                         "required": true
                     },
                     {
-                        "name": "amount",
+                        "name": "value",
                         "required": false
                     }
                 ]
             },
             {
-                "name": "sell",
+                "name": "profile",
                 "options": [
                     {
-                        "name": "item-id",
-                        "required": true
+                        "name": "profile-color",
+                        "options": [
+                            {
+                                "name": "color",
+                                "required": true
+                            }
+                        ]
                     },
                     {
-                        "name": "amount",
-                        "required": false
-                    }
-                ]
-            }
-        ]
-    },
-    "weekly": {
-        "description": "Claim your weekly reward.",
-        "category": "economy",
-        "cooldown": 604800,
-        "options": []
-    },
-    "withdraw": {
-        "description": "Withdraw money from your bank to your wallet.",
-        "category": "economy",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "amount",
-                "required": true
-            }
-        ]
-    },
-    "work": {
-        "description": "Work hard and get paid a unfair salary.",
-        "category": "economy",
-        "cooldown": 1800,
-        "options": []
-    },
-    "blackjack": {
-        "description": "Play a game of blackjack.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "coinflip": {
-        "description": "Flip a coin and guess on what side it's going to land.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            },
-            {
-                "name": "coin-side",
-                "required": true
-            }
-        ]
-    },
-    "crash": {
-        "description": "Are you fast enough to sell before the market crashes?",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "higherlower": {
-        "description": "Is the next number higher, lower or the same as the current number.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "horse-race": {
-        "description": "Bet on the fastest horse to earn money.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            },
-            {
-                "name": "horse",
-                "required": true
-            }
-        ]
-    },
-    "poker": {
-        "description": "Play a game of video poker.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "rock-paper-scissors": {
-        "description": "Play rock paper scissors againt the bot",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "roulette": {
-        "description": "Play a game of roulette.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            },
-            {
-                "name": "space",
-                "required": true
-            }
-        ]
-    },
-    "scratch": {
-        "description": "Scratch off a card to win money.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "russian-roulette": {
-        "description": "Be lucky and don't die with russian roulette.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "slot-machine": {
-        "description": "Try your luck on the slot machines.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            }
-        ]
-    },
-    "tictactoe": {
-        "description": "Connect 4 X's or O's in a row to win the game. Must be played with 2 users.",
-        "category": "games",
-        "cooldown": 300,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            },
-            {
-                "name": "user",
-                "required": true
-            }
-        ]
-    },
-    "invest": {
-        "description": "Buy, sell or get info about an investment.",
-        "category": "investing",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "info",
-                "options": [
+                        "name": "set-birthday",
+                        "options": [
+                            {
+                                "name": "birthday",
+                                "required": true
+                            }
+                        ]
+                    },
                     {
-                        "name": "ticker",
-                        "required": false
+                        "name": "set-bio",
+                        "options": [
+                            {
+                                "name": "bio",
+                                "required": true
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "name": "buy",
+                "name": "passive-mode",
                 "options": [
                     {
-                        "name": "ticker",
-                        "required": true
-                    },
-                    {
-                        "name": "amount",
-                        "required": false
-                    },
-                    {
-                        "name": "price",
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "name": "sell",
-                "options": [
-                    {
-                        "name": "ticker",
-                        "required": true
-                    },
-                    {
-                        "name": "amount",
+                        "name": "value",
                         "required": true
                     }
                 ]
             }
         ]
-    },
-    "portfolio": {
-        "description": "Check all your progress in your portfolio.",
-        "category": "investing",
-        "cooldown": 0,
-        "options": []
     },
     "help": {
-        "description": "Get a list of all commands. To get more info about a specific command use `/help command <command>`.",
+        "description": "Get a list of all commands or get more info about a specific command.",
         "category": "misc",
         "cooldown": 0,
         "options": [
@@ -665,53 +146,8 @@
         "cooldown": 300,
         "options": []
     },
-    "vote": {
-        "description": "Get all the links to the voting sites for rewards.",
-        "category": "misc",
-        "cooldown": 0,
-        "options": []
-    },
-    "achievement": {
-        "description": "Refresh or view your current achievements.",
-        "category": "misc",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "list",
-                "options": []
-            },
-            {
-                "name": "refresh",
-                "options": []
-            },
-            {
-                "name": "select",
-                "options": [
-                    {
-                        "name": "achievement",
-                        "required": true
-                    }
-                ]
-            }
-        ]
-    },
-    "connect4": {
-        "description": "Play a game of Connect4 with someone.",
-        "category": "games",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "bet",
-                "required": true
-            },
-            {
-                "name": "user",
-                "required": true
-            }
-        ]
-    },
-    "server-config": {
-        "description": "Setup the Coinz bot in this server.",
+    "settings": {
+        "description": "Change settings for THIS SERVER.",
         "category": "misc",
         "cooldown": 0,
         "options": [
@@ -735,19 +171,607 @@
             }
         ]
     },
-    "user-config": {
-        "description": "Change your user settings in every server.",
+    "vote": {
+        "description": "Get all the links to the voting sites for rewards.",
         "category": "misc",
+        "cooldown": 0,
+        "options": []
+    },
+    "balance": {
+        "description": "Get your balance or the balance of another user.",
+        "category": "general",
         "cooldown": 0,
         "options": [
             {
-                "name": "set-notification",
+                "name": "user",
+                "required": false
+            }
+        ]
+    },
+    "beg": {
+        "description": "If you really want money you can beg for it.",
+        "category": "general",
+        "cooldown": 900,
+        "options": []
+    },
+    "daily": {
+        "description": "Claim your daily reward.",
+        "category": "general",
+        "cooldown": 0,
+        "options": []
+    },
+    "deposit": {
+        "description": "Deposit money from your wallet to your bank account.",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "amount",
+                "required": true
+            }
+        ]
+    },
+    "fish": {
+        "description": "Try and catch some fish that you can sell for money.",
+        "category": "general",
+        "cooldown": 1200,
+        "options": [
+            {
+                "name": "rod",
+                "required": false
+            }
+        ]
+    },
+    "hunt": {
+        "description": "Hunt for animals and get money selling their meat and skin.",
+        "category": "general",
+        "cooldown": 1200,
+        "options": []
+    },
+    "inventory": {
+        "description": "View your or someone else's inventory",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "user",
+                "required": false
+            }
+        ]
+    },
+    "lucky-wheel": {
+        "description": "Spin the lucky wheel and get awesome rewards",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "info",
+                "options": []
+            },
+            {
+                "name": "spin",
                 "options": [
                     {
-                        "name": "notification",
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "buy",
+                "options": [
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            }
+        ]
+    },
+    "monthly": {
+        "description": "Claim your monthly reward.",
+        "category": "general",
+        "cooldown": 2592000,
+        "options": []
+    },
+    "pay": {
+        "description": "Give your money to another user.",
+        "category": "general",
+        "cooldown": 21600,
+        "options": [
+            {
+                "name": "user",
+                "required": true
+            },
+            {
+                "name": "amount",
+                "required": true
+            }
+        ]
+    },
+    "profile": {
+        "description": "Get your or another user's Coinz profile. You can see detailed information here.",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "user",
+                "required": false
+            }
+        ]
+    },
+    "shop": {
+        "description": "View, buy or sell items with this command.",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "list",
+                "options": [
+                    {
+                        "name": "item-id",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "buy",
+                "options": [
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "sell",
+                "options": [
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            }
+        ]
+    },
+    "steal": {
+        "description": "Steal money from another user.",
+        "category": "general",
+        "cooldown": 86400,
+        "options": [
+            {
+                "name": "user",
+                "required": true
+            },
+            {
+                "name": "use-bomb",
+                "required": false
+            }
+        ]
+    },
+    "weekly": {
+        "description": "Claim your weekly reward.",
+        "category": "general",
+        "cooldown": 604800,
+        "options": []
+    },
+    "withdraw": {
+        "description": "Withdraw money from your bank to your wallet.",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "amount",
+                "required": true
+            }
+        ]
+    },
+    "job": {
+        "description": "Get a job to pay for the bills.",
+        "category": "general",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "list",
+                "options": []
+            },
+            {
+                "name": "quit",
+                "options": []
+            },
+            {
+                "name": "apply",
+                "options": [
+                    {
+                        "name": "job-name",
                         "required": true
                     }
                 ]
+            },
+            {
+                "name": "work",
+                "options": []
+            }
+        ]
+    },
+    "blackjack": {
+        "description": "Play a game of blackjack.",
+        "category": "games",
+        "cooldown": 300,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "connect4": {
+        "description": "Play a game of Connect4 with someone.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            },
+            {
+                "name": "user",
+                "required": true
+            }
+        ]
+    },
+    "crash": {
+        "description": "Are you fast enough to sell before the market crashes?",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "higherlower": {
+        "description": "Is the next number higher, lower or the same as the current number.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "horse-race": {
+        "description": "Bet on the fastest horse to earn money.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            },
+            {
+                "name": "horse",
+                "required": true
+            }
+        ]
+    },
+    "rock-paper-scissors": {
+        "description": "Play rock paper scissors againt the bot",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "roulette": {
+        "description": "Play a game of roulette.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            },
+            {
+                "name": "space",
+                "required": true
+            }
+        ]
+    },
+    "russian-roulette": {
+        "description": "Be lucky and don't die with russian roulette.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "scratch": {
+        "description": "Scratch a card to win money.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            }
+        ]
+    },
+    "tictactoe": {
+        "description": "Connect 4 X's or O's in a row to win the game. Must be played with 2 users.",
+        "category": "games",
+        "cooldown": 420,
+        "options": [
+            {
+                "name": "bet",
+                "required": true
+            },
+            {
+                "name": "user",
+                "required": true
+            }
+        ]
+    },
+    "business": {
+        "description": "Start your own business and earn the big bucks!",
+        "category": "business",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "info",
+                "options": [
+                    {
+                        "name": "name",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "create",
+                "options": [
+                    {
+                        "name": "name",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "leave",
+                "options": []
+            },
+            {
+                "name": "rename",
+                "options": [
+                    {
+                        "name": "name",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "sell-business",
+                "options": []
+            },
+            {
+                "name": "sell-item",
+                "options": [
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "pay-dividends",
+                "options": [
+                    {
+                        "name": "amount",
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "name": "supply",
+                "options": [
+                    {
+                        "name": "option",
+                        "required": true
+                    },
+                    {
+                        "name": "item-id",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "employee",
+                "options": [
+                    {
+                        "name": "hire",
+                        "options": [
+                            {
+                                "name": "user",
+                                "required": true
+                            }
+                        ]
+                    },
+                    {
+                        "name": "fire",
+                        "options": [
+                            {
+                                "name": "user",
+                                "required": true
+                            }
+                        ]
+                    },
+                    {
+                        "name": "set-payout",
+                        "options": [
+                            {
+                                "name": "user",
+                                "required": true
+                            },
+                            {
+                                "name": "payout",
+                                "required": false
+                            }
+                        ]
+                    },
+                    {
+                        "name": "set-position",
+                        "options": [
+                            {
+                                "name": "user",
+                                "required": true
+                            },
+                            {
+                                "name": "position",
+                                "required": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "factory": {
+        "description": "Create products from your supply and sell them for profit!",
+        "category": "business",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "view",
+                "options": []
+            },
+            {
+                "name": "set-production",
+                "options": [
+                    {
+                        "name": "factory-id",
+                        "required": true
+                    },
+                    {
+                        "name": "product-id",
+                        "required": true
+                    },
+                    {
+                        "name": "force?",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "list-products",
+                "options": []
+            }
+        ]
+    },
+    "farm": {
+        "description": "Manage your farm and plant crops.",
+        "category": "business",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "plots",
+                "options": []
+            },
+            {
+                "name": "plant",
+                "options": [
+                    {
+                        "name": "plot-id",
+                        "required": true
+                    },
+                    {
+                        "name": "crop",
+                        "required": true
+                    },
+                    {
+                        "name": "force",
+                        "required": false
+                    }
+                ]
+            }
+        ]
+    },
+    "invest": {
+        "description": "Buy, sell or get info about an investment.",
+        "category": "investing",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "info",
+                "options": [
+                    {
+                        "name": "ticker",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "buy",
+                "options": [
+                    {
+                        "name": "ticker",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": false
+                    },
+                    {
+                        "name": "price",
+                        "required": false
+                    }
+                ]
+            },
+            {
+                "name": "sell",
+                "options": [
+                    {
+                        "name": "ticker",
+                        "required": true
+                    },
+                    {
+                        "name": "amount",
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    },
+    "portfolio": {
+        "description": "Get your investment portfolio or the portfolio from another user.",
+        "category": "investing",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "user",
+                "required": false
             }
         ]
     }
