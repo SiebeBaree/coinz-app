@@ -2,38 +2,47 @@
     "items": [
         {
             "title": "What is Coinz and why should I use it?",
+            "slug": "what-is-coinz",
             "description": "Coinz is a feature-packed discord economy bot. We have everything from A-Z!\n\n**Some Features Are:**\n- Trade real-time stocks and crypto.\n- Buy Pets, train them and fight with other players.\n - Create an account on social media and engage with your followers.\n - Manage your business, produce items and hire other users, ...\n - Mine your own crypto to sell and become rich.\n - And so much more...\nDo you want to make your server more active? Invite Coinz! Members will love it and have more reason to chat in the other channels!\nAre You bored? Use Coinz! Coinz is a great way to kill time when you're bored."
         },
         {
             "title": "What is the prefix of Coinz?",
+            "slug": "prefix",
             "description": "Coinz uses only 1 prefix, that is `/`. Discord introduced Slash Commands and require every bot to use them.\nMore information here: [Slash Commands](https://discord.com/blog/welcome-to-the-new-era-of-discord-apps)"
         },
         {
             "title": "Can I add my own items to the shop?",
+            "slug": "add-items-to-shop",
             "description": "We don't allow you to add new items to the shop. Coinz uses a global economy so that means you have the same progress on every server."
         },
         {
             "title": "Can I set the bot into my own language?",
+            "slug": "set-language",
             "description": "We currently don't support any languages other than English."
         },
         {
             "title": "How do I restrict who can use commands?",
+            "slug": "restrict-commands",
             "description": "Discord offers a built-in way to enable/disable commands or restrict them to a few roles or users.\nMore information here: [Slash Command Permissions](https://support.discord.com/hc/en-us/articles/4644915651095-Command-Permissions)"
         },
         {
             "title": "Can I turn the bot off/on in some channels?",
+            "slug": "channels",
             "description": "Yes you can! This is built-in to the Discord App. Only admins will see the commands in every channel.\nMore information here: [Slash Command Permissions](https://support.discord.com/hc/en-us/articles/4644915651095-Command-Permissions)"
         },
         {
             "title": "How do I start using Coinz?",
+            "slug": "how-to-start",
             "description": "To see all commands use `/help categories`, if you really don't know where to start use `/help guide` to get more information about Coinz."
         },
         {
             "title": "How do I withdraw the balance of my company?",
-            "description": "There is currently only one way to withdraw money. That is by using `/work`, if you don't have enough balance in your company you won't be able to work."
+            "slug": "",
+            "description": "As a business owner you can use `/business pay-dividends` to withdraw the balance of your company."
         },
         {
             "title": "How to cheat in money in Coinz as an admin?",
+            "slug": "cheat-money",
             "description": "You can't. Coinz uses a global economy so that means you have the same progress on every server. So this means if you cheat in money on 1 server you would have the same money on every other server."
         }
     ]

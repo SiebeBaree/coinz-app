@@ -1,0 +1,42 @@
+[
+    {
+        "id": "supporter",
+        "name": "Supporter Subscription",
+        "price": 200,
+        "quantity": 1,
+        "maxQuantity": 1,
+        "priceId": "",
+        "incompatible": [
+            "benefactor"
+        ]
+    },
+    {
+        "id": "benefactor",
+        "name": "Benefactor Subscription",
+        "price": 500,
+        "quantity": 1,
+        "maxQuantity": 1,
+        "priceId": "",
+        "incompatible": [
+            "supporter"
+        ]
+    },
+    {
+        "id": "community",
+        "name": "Community Subscription",
+        "price": 300,
+        "quantity": 1,
+        "maxQuantity": 7,
+        "priceId": "",
+        "incompatible": []
+    },
+    {
+        "id": "tickets",
+        "name": "Tickets",
+        "price": 100,
+        "quantity": 100,
+        "maxQuantity": 1500,
+        "priceId": "",
+        "incompatible": []
+    }
+]

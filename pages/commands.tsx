@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../styles/commands.module.css';
 import { useState } from 'react';
 
 const categories = {
+    all: 'All',
     misc: 'Miscellaneous',
-    economy: 'Economy',
+    general: 'General',
     games: 'Games',
     business: 'Business',
-    farming: 'Farming',
     investing: 'Investing',
 };
 
@@ -44,7 +45,7 @@ function Category({ category, name, state, setState }) {
 }
 
 function getCommands(commands: any, category: string) {
-    return Object.keys(commands).filter(command => commands[command].category === category);
+    return Object.keys(commands).filter(command => commands[command].category === category || category === 'all');
 }
 
 function Command({ name, description, options, isOpened = false }) {

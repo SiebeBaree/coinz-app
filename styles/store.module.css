@@ -2,10 +2,15 @@
 #storePage h2,
 #storePage h3,
 #storePage h4,
+#storePage h5,
 #storePage h6,
 #storePage p,
 #storePage li {
     color: var(--text-color);
+}
+
+#storePage a:hover {
+    transform: scale(1.03);
 }
 
 .pricing h6 {
@@ -25,14 +30,39 @@
     margin-bottom: 40px;
 }
 
-#cards {
-    gap: 8px;
-    width: 100%;
+/* .shoppingCart {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: var(--card-color);
+    border-radius: 0 0 0 25px;
+    padding: 25px 30px;
+    z-index: 10;
+    transform: translateX(400px);
+    transition: transform 0.3s ease-in-out;
 }
 
-#cards:hover>.rowCard::after,
-#cards .rowCard:hover::before {
-    opacity: 1;
+.shoppingCart.open {
+    transform: translateX(0);
+}
+
+.shoppingCart .cartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+} */
+
+.shoppingCart button {
+    border: none;
+    outline: none;
+}
+
+#cards {
+    gap: 24px;
+    width: 100%;
 }
 
 #cards .rowCard .btn {
@@ -48,37 +78,13 @@
 #cards .rowCard {
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.1);
-    width: calc(33% - 8px);
+    width: calc(50% - 24px);
     position: relative;
     margin-bottom: 25px;
 }
 
-#cards .rowCard::before,
-#cards .rowCard::after {
-    border-radius: inherit;
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 500ms;
-    cursor: pointer;
-}
-
-#cards .rowCard::before {
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(245, 245, 245, 0.05),
-            transparent 40%);
-    z-index: 3;
-}
-
-#cards .rowCard::after {
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
-            rgba(255, 255, 255, 0.2),
-            transparent 40%);
-    z-index: 1;
+#cards .wideRowCard {
+    width: calc(70%);
 }
 
 #cards .rowCard>.cardContent {
@@ -95,6 +101,11 @@
 #cards header,
 .middleCard {
     margin-bottom: 25px;
+}
+
+.changeQuantityButton {
+    padding: auto;
+    border: none;
 }
 
 #tickets {
@@ -127,18 +138,23 @@
 }
 
 @media screen and (max-width: 992px) {
-    #tickets .ticketText p {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 768px) {
     #tickets {
-        flex-direction: column;
+        display: block;
     }
 
-    #tickets .ticketText h1 {
+    #tickets .ticketText {
         display: none;
+    }
+
+    #tickets .ticketOptions,
+    #tickets .ticketMenu a {
+        width: 100%;
+    }
+
+    #tickets .ticketMenu {
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
     }
 }
 
