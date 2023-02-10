@@ -140,36 +140,30 @@
         "cooldown": 0,
         "options": []
     },
+    "premium": {
+        "description": "Get more info about premium and (de)activate server features.",
+        "category": "misc",
+        "cooldown": 0,
+        "options": [
+            {
+                "name": "info",
+                "options": []
+            },
+            {
+                "name": "activate",
+                "options": []
+            },
+            {
+                "name": "deactivate",
+                "options": []
+            }
+        ]
+    },
     "reset": {
         "description": "Reset your account on EVERY server.",
         "category": "misc",
         "cooldown": 300,
         "options": []
-    },
-    "settings": {
-        "description": "Change settings for THIS SERVER.",
-        "category": "misc",
-        "cooldown": 0,
-        "options": [
-            {
-                "name": "airdrop toggle",
-                "options": []
-            },
-            {
-                "name": "airdrop",
-                "options": [
-                    {
-                        "name": "set-channel",
-                        "options": [
-                            {
-                                "name": "channel",
-                                "required": true
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
     },
     "vote": {
         "description": "Get all the links to the voting sites for rewards.",
@@ -238,6 +232,12 @@
                 "required": false
             }
         ]
+    },
+    "loot": {
+        "description": "Go and loot a building and steal items.",
+        "category": "general",
+        "cooldown": 14400,
+        "options": []
     },
     "lucky-wheel": {
         "description": "Spin the lucky wheel and get awesome rewards",
