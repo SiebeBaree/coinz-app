@@ -11,7 +11,7 @@ export default function Document() {
                 <meta name="keywords"
                     content="Discord, Discord Bot, Bot, Economy, Discord Economy Bot, Blackjack, Poker, Stocks, Crypto" />
                 <link rel="manifest" href="/manifest.json" />
-                <meta name="author" content="Siebe Baree" />
+                <meta name="author" content="Coinz" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href="https://coinzbot.xyz/" />
                 <link rel="apple-touch-icon" href="/logo192.png" />
