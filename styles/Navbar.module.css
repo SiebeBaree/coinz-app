@@ -1,0 +1,42 @@
+.navbarHeader {
+    z-index: 999;
+    height: 75px;
+}
+
+.navbarBrand {
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.navbarLink {
+    margin: auto 7px;
+    padding: 5px 10px;
+}
+
+.navbarLink,
+.navbarLink:hover,
+.navbarLink:active,
+.navbarLink:focus,
+.navbarBrand,
+.navbarBrand:hover,
+.navbarBrand:active,
+.navbarBrand:focus,
+.dropdownToggle::after,
+.profileSpan {
+    color: var(--color-text);
+}
+
+.highlight {
+    outline: 3px solid var(--color-selected);
+    border-radius: 10px;
+}
+
+.colored,
+.colored:hover,
+.colored:active,
+.colored:focus {
+    background-color: var(--color-selected);
+    border-radius: 10px;
+    color: var(--color-text-dark);
+}
