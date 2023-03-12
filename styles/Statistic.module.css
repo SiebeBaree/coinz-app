@@ -1,0 +1,14 @@
+.statistic h3,
+.statistic p {
+    margin: 0;
+    padding: 0;
+}
+
+.statistic p {
+    color: var(--color-text-soft);
+}
+
+.icon {
+    color: var(--color-selected);
+    font-size: 70px;
+}
