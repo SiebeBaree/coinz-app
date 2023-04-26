@@ -1,0 +1,109 @@
+.heroText {
+    position: relative;
+    height: calc(100vh - 225px);
+}
+
+.heroText h2 {
+    font-size: 4rem;
+}
+
+.description {
+    font-size: 1.3rem;
+}
+
+.watermark {
+    color: var(--color-watermark);
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 180px;
+    position: absolute;
+    margin-left: -120px;
+    margin-top: -280px;
+}
+
+.ctaButton {
+    background-color: var(--color-selected);
+    color: var(--color-text-dark);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.ctaButton:hover {
+    color: var(--color-text-dark);
+}
+
+.ctaButton img {
+    height: 20px;
+    width: 20px;
+}
+
+.ctaButtonInner {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border: 3px solid var(--color-selected);
+    border-radius: 10px;
+    z-index: 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.ctaButtonInner:hover {
+    top: 0;
+    left: 0;
+    border: 3px solid var(--color-selected);
+}
+
+.ctaText {
+    color: var(--color-selected);
+}
+
+.ctaText a {
+    color: var(--color-selected);
+    cursor: pointer;
+}
+
+.heroImg {
+    object-fit: cover;
+    height: calc(100vh - 300px);
+    width: calc(100vh - 300px);
+    max-width: 650px;
+    max-height: 650px;
+}
+
+.reviewCard {
+    background-color: var(--color-background-soft);
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    z-index: 2;
+    position: relative;
+}
+
+.reviewCard img {
+    border-radius: 100%;
+    background-color: var(--color-background-soft);
+    position: absolute;
+    top: 0;
+}
+
+.statistics {
+    height: 150px;
+    background-color: var(--color-background-soft);
+}
+
+.featuresTitle h2 {
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+}
+
+.feature p {
+    max-width: 70%;
+}

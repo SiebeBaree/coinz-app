@@ -1,0 +1,62 @@
+.statusCard {
+    position: relative;
+    background-color: var(--color-background-soft);
+    border-radius: 10px;
+    width: 400px;
+    margin-top: 40px;
+    cursor: default;
+}
+
+.custerId {
+    position: absolute;
+    background-color: var(--color-background-soft);
+    border-radius: 100%;
+    padding: 20px;
+    font-weight: bold;
+    border: 10px solid var(--color-background);
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.shardContainer {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.shardCard {
+    position: relative;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    background-color: var(--color-shard-offline);
+}
+
+.shardCard[data-status="online"] {
+    background-color: var(--color-shard-online);
+}
+
+.shardCard[data-status="slow"] {
+    color: var(--color-text-dark);
+    background-color: var(--color-shard-slow);
+}
+
+.shardId {
+    margin: 0;
+}
+
+.statusContainer {
+    margin-top: 5px;
+    height: 60px;
+}
+
+.status p,
+.status h6 {
+    margin: 0;
+}
+
+.status h6 {
+    color: var(--color-text-soft);
+    font-weight: bold;
+}
