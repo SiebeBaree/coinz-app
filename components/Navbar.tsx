@@ -41,20 +41,20 @@ export default function NavbarComponent() {
                                 <li className={`nav-item ${styles.navItem}`}>
                                     <Link href="/updates" className={`nav-link ${styles.navbarLink}`}>Updates</Link>
                                 </li>
-                                <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="/premium" className={`nav-link ${styles.navbarLink} ${styles.highlight}`}>Get Premium</Link>
-                                </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
-                                <li className={`nav-item ${styles.navItem}`}>
-                                    <Link href="https://discord.gg/asnZQwc6kW"
-                                          className={`nav-link ${styles.navbarLink} ${styles.colored}`} target="_blank">
-                                        Support Server
+                                <li className={`nav-item ${styles.navItem} ${styles.navItemButton} fw-bold`}>
+                                    <Link href="/donate"
+                                          className={`nav-link ${styles.navbarLink} ${styles.colored} px-3`}>
+                                        Donate
                                     </Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link href="/dashboard" className={`nav-link ${styles.navbarLink} ${styles.colored}`}>Login Via
-                                        Discord</Link>
+                                <li className={`nav-item ${styles.navItem} ${styles.navItemButton} fw-bold`}>
+                                    <Link href="https://discord.gg/asnZQwc6kW"
+                                          className={`nav-link ${styles.navbarLink} ${styles.colored} px-3`}
+                                          target="_blank">
+                                        Support Server
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
