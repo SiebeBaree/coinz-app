@@ -1,138 +1,115 @@
+import Statistic from '../components/Statistic';
+import { faServer, faUsers, faTerminal } from '@fortawesome/free-solid-svg-icons';
+import styles from '../styles/Index.module.css';
+import HeroImg from '../public/hero.png';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
-import styles from '../styles/Home.module.css';
+import Discord from '../public/discord.svg';
 
-import CompanyImg from '../public/company.webp';
-import FarmingImg from '../public/farming.webp';
-import GamesImg from '../public/games.webp';
-import InvestingImg from '../public/investing.webp';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faUsers, faServer, faTerminal, faCode, faCheckToSlot } from '@fortawesome/free-solid-svg-icons';
-
-export async function getStaticProps() {
-    return { props: {} };
-}
-
-export default function Home() {
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
-
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach(element => {
-            observer.observe(element);
-        });
-    });
-
+export default function IndexPage() {
     return (
-        <div className="page-content">
-            <section id={styles.hero} className='d-flex flex-column hidden'>
-                <div className={`${styles.heroContent} container d-flex flex-row justify-content-center`}>
-                    <div className="d-flex flex-column justify-content-center text-center">
-                        <h2 className="magic-text">Coinz is the only economy discord bot you need</h2>
-                        <p className="text-color">Compete against 250k+ users to be the richest person on Coinz. With loads of fun commands to keep you and your server entertained.</p>
-                        <div>
-                            <Link href="/invite" target="_blank"><button className='gradient-button'>Add To Your Server <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></Link>
+        <>
+            <div className="page-content">
+                <div className={`${styles.hero} d-flex justify-content-between align-items-center container`}>
+                    <div className={`${styles.heroText} d-flex flex-column justify-content-center`}>
+                        <h1 className={styles.watermark}>Coinz</h1>
+                        <h2 className="fw-bold">The Ultimate Economy Discord Bot</h2>
+                        <p className={styles.description}>
+                            Join over 325,000 users and compete to be the wealthiest person
+                            on Coinz with our entertaining commands.
+                        </p>
+
+                        <div className="d-flex gap-4 mt-4">
+                            <a className={`${styles.ctaButton} d-flex align-items-center gap-2`}>
+                                <Image src={Discord} alt="Discord Logo"/>
+                                Add To Discord
+                                <div className={`${styles.ctaButtonInner} w-100 h-100`}/>
+                            </a>
+                            <span className={`${styles.ctaText} my-auto`}>or <a className="text-decoration-underline">get help using Coinz</a></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <Image src={HeroImg} alt="Hero Image" className={styles.heroImg}/>
+
+                        {/* <ReviewCard key={1} image="https://cdn.discordapp.com/avatars/513020026488619012/8af02ef19f09e7065d643d095d3d6115.webp?size=48" review="Never gets boring, a fun way to kill time"/> */}
+                        {/* <ReviewCard key={1} image="https://cdn.discordapp.com/avatars/513020026488619012/8af02ef19f09e7065d643d095d3d6115.webp?size=48" review="Never gets boring, a fun way to kill time"/> */}
+                        {/* <ReviewCard key={1} image="https://cdn.discordapp.com/avatars/513020026488619012/8af02ef19f09e7065d643d095d3d6115.webp?size=48" review="Never gets boring, a fun way to kill time"/> */}
+                    </div>
+                </div>
+            </div>
+
+            <div className={`${styles.statistics}`}>
+                <div className="container d-flex justify-content-around align-items-center h-100">
+                    <Statistic icon={faServer} title="Servers" value="2900+"/>
+                    <Statistic icon={faUsers} title="Users" value="330,000+"/>
+                    <Statistic icon={faTerminal} title="Commands" value="42"/>
+                </div>
+            </div>
+
+            <div className="container my-5">
+                <div className={`${styles.featuresTitle} mb-5`}>
+                    <h2>Features</h2>
+                </div>
+
+                <div className={styles.features}>
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5`}>
+                        <Image src="/investing.webp" alt="A picture of discord that shows the games category of Coinz."
+                               width={600} height={400}/>
+
+                        <div className="d-flex flex-column align-items-end text-end justify-content-center">
+                            <h1 className="mb-3 fw-bold">Buy, hold and sell stocks</h1>
+                            <p>Enhance your knowledge of the stock and crypto market by buying, holding and selling
+                                stocks and crypto within Coinz. All prices are updated regularly. Coinz currently has 30
+                                stocks and 27 crypto currencies.</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5 flex-row-reverse`}>
+                        <Image src="/company.webp" alt="A picture of discord that shows the games category of Coinz."
+                               width={600} height={400}/>
+
+                        <div className="d-flex flex-column align-items-start text-start justify-content-center">
+                            <h1 className="mb-3 fw-bold">Start your own business</h1>
+                            <p>Create your own business, buy factories and produce items that you can sell for a big
+                                profit. Repeat this step over and over and become richer than Elon Musk! Did I mention
+                                that you can employ real users?!</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5`}>
+                        <Image src="/games.webp" alt="A picture of discord that shows the games category of Coinz."
+                               width={600} height={400}/>
+
+                        <div className="d-flex flex-column align-items-end text-end justify-content-center">
+                            <h1 className="mb-3 fw-bold">Play more than 15 games</h1>
+                            <p>Play all sorts of minigames inside of discord! You will never get bored when playing
+                                these minigames. We plan to release a lot more minigames in the future. Some examples
+                                are: Blackjack, Poker, Roulette, Crash, ...</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5 flex-row-reverse`}>
+                        <Image src="/farming.webp" alt="A picture of discord that shows the games category of Coinz."
+                               width={600} height={400}/>
+
+                        <div className="d-flex flex-column align-items-start text-start justify-content-center">
+                            <h1 className="mb-3 fw-bold">Grow your own crops</h1>
+                            <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops
+                                on. With premium you can buy up to 15 plots! Each crop has a different grow time,
+                                don&apos;t let your crops grow rotten!</p>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section id={styles.statistics} className="container d-flex justify-content-around flex-wrap hidden">
-                <StatCounter key="servers" icon={faServer} count="2400" name="Servers" suffix="+" />
-                <StatCounter key="users" icon={faUsers} count="300" name="Users" suffix="K+" />
-                <StatCounter key="cmds" icon={faCode} count="48" name="Commands" />
-                <StatCounter key="dailycmds" icon={faTerminal} count="5000" name="Daily Commands" suffix="+" />
-            </section>
-
-            <section id={styles.vote} className="container text-center d-flex flex-column justify-content-center hidden">
-                <FontAwesomeIcon icon={faCheckToSlot} className={styles.headerIcon} />
-                <h1>Vote to get awesome rewards</h1>
-                <h2 className={styles.voteDescription}>Check the rewards using /vote</h2>
-
-                <div className={`${styles.voteBtns} d-flex flex-row justify-content-center`}>
-                    <a href="https://top.gg/bot/938771676433362955/vote" target="_blank" rel="noreferrer"><button className='gradient-button'>Vote on Top.gg  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
-                    <a href="https://discordbotlist.com/bots/coinz/upvote" target="_blank" rel="noreferrer"><button className='gradient-button'>Vote on Discordbotlist  <FontAwesomeIcon icon={faChevronRight} className='align-middle' /></button></a>
-                </div>
-            </section>
-
-            <section id={styles.features} className='container'>
-                <FeatureComponent image={InvestingImg} imageAlt="Feature: Stocks and Crypto">
-                    <h3>Buy, hold and sell stocks</h3>
-                    <p>Enhance your knowledge of the stock and crypto market by buying, holding and selling stocks and crypto within Coinz. All prices are updated regularly. Coinz currently has 30 stocks and 27 crypto currencies.</p>
-                </FeatureComponent>
-
-                <FeatureComponent image={CompanyImg} imageAlt="Feature: Own a Business">
-                    <h3>Start your own business</h3>
-                    <p>Create your own business, buy factories and produce items that you can sell for a big profit. Repeat this step over and over and become richer than Elon Musk! Did I mention that you can employ real users?!</p>
-                </FeatureComponent>
-
-                <FeatureComponent image={GamesImg} imageAlt="Feature: Play some Minigames">
-                    <h3>Play more than 15 games</h3>
-                    <p>Play all sorts of minigames inside of discord! You will never get bored when playing these minigames. We plan to release a lot more minigames in the future. Some examples are: Blackjack, Poker, Roulette, Crash, ...</p>
-                </FeatureComponent>
-
-                <FeatureComponent image={FarmingImg} imageAlt="Feature: Grow your own crops">
-                    <h3>Grow your own crops</h3>
-                    <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops on. With premium you can buy up to 15 plots! Each crop has a different grow time, don&apos;t let your crops grow rotten!</p>
-                </FeatureComponent>
-            </section>
-        </div>
+            </div>
+        </>
     );
 }
 
-function StatCounter({ icon, count, name, suffix = '', delay = '2' }) {
-    count = parseInt(count);
-    const totalDelay = Math.floor(parseInt(delay) * 1000);
-    const incrementValue = Math.ceil(count / (totalDelay / 10));
-    const [state, setState] = useState(0);
-    let isVisible = false;
-
-    const ref = useRef();
-
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-            isVisible = entries[0].isIntersecting;
-        });
-
-        observer.observe(ref.current);
-
-        const interval = setInterval(() => {
-            if (isVisible === true) {
-                if (state < count) setState(state + incrementValue);
-                else if (state >= count) setState(count);
-            }
-        }, 10);
-
-        return () => clearInterval(interval);
-    }, [state, count]);
-
+function ReviewCard({ image, review }) {
     return (
-        <div ref={ref} className={`${styles.stat} d-flex flex-column align-items-center`}>
-            <header><FontAwesomeIcon icon={icon} /></header>
-            <div className={styles.countNumber}>{state}{suffix}</div>
-            <p className={`${styles.statName} text-center`}>{name}</p>
-        </div>
-    );
-}
-
-function FeatureComponent({ image, imageAlt, children }) {
-    return (
-        <div className={`${styles.featureRow} d-flex justify-content-between hidden reverse-animation`}>
-            <div className={styles.featureImg}>
-                <Image src={image} alt={imageAlt} loading="lazy" width={400} height={400} />
-            </div>
-            <div className={`${styles.featureText} my-auto`}>
-                {children}
-            </div>
+        <div className={`${styles.reviewCard}`}>
+            <Image src={image} alt="Reviewer Profile Picture" width={42} height={42} className="me-auto"/>
+            <p>{review}</p>
         </div>
     );
 }
