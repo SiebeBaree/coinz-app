@@ -14,7 +14,11 @@
     --color-background-soft: #32343D;
     --color-shadow: rgba(0, 0, 0, 0.1);
     --color-selected: #FFCA21;
-    --color-background-blur: rgba(255, 255, 255, 0.1)
+    --color-background-blur: rgba(255, 255, 255, 0.1);
+    --color-discord-mention: #3D4276;
+    --color-shard-online: #4CAB61;
+    --color-shard-offline: #DC3645;
+    --color-shard-slow: #FFC205;
 }
 
 *,
@@ -71,7 +75,7 @@ a {
 }
 
 .page-content {
-    min-height: calc(100vh - 225px);
+    min-height: calc(100vh - 295px);
 }
 
 .tooltip-inner {
