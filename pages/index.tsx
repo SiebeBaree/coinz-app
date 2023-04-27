@@ -14,12 +14,12 @@ export default function IndexPage() {
                         <h1 className={styles.watermark}>Coinz</h1>
                         <h2 className="fw-bold">The Ultimate Economy Discord Bot</h2>
                         <p className={styles.description}>
-                            Join over 325,000 users and compete to be the wealthiest person
+                            Join over 330,000 users and compete to be the wealthiest person
                             on Coinz with our entertaining commands.
                         </p>
 
-                        <div className="d-flex gap-4 mt-4">
-                            <a className={`${styles.ctaButton} d-flex align-items-center gap-2`}>
+                        <div className={`${styles.ctaButtons} d-flex gap-4 mt-4`}>
+                            <a className={`${styles.ctaButton} d-flex align-items-center gap-2 fw-bold`}>
                                 <Image src={Discord} alt="Discord Logo"/>
                                 Add To Discord
                                 <div className={`${styles.ctaButtonInner} w-100 h-100`}/>
@@ -39,10 +39,10 @@ export default function IndexPage() {
             </div>
 
             <div className={`${styles.statistics}`}>
-                <div className="container d-flex justify-content-around align-items-center h-100">
-                    <Statistic icon={faServer} title="Servers" value="2900+"/>
-                    <Statistic icon={faUsers} title="Users" value="330,000+"/>
-                    <Statistic icon={faTerminal} title="Commands" value="42"/>
+                <div className="container d-flex justify-content-around align-items-center h-100 flex-wrap gap-4 py-3">
+                    <Statistic icon={faServer} title="Servers" value="2900" suffix="+"/>
+                    <Statistic icon={faUsers} title="Users" value="330" suffix="k+"/>
+                    <Statistic icon={faTerminal} title="Commands" value="41"/>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@ export default function IndexPage() {
                         <Image src="/investing.webp" alt="A picture of discord that shows the games category of Coinz."
                                width={600} height={400}/>
 
-                        <div className="d-flex flex-column align-items-end text-end justify-content-center">
+                        <div className="d-flex flex-column justify-content-center">
                             <h1 className="mb-3 fw-bold">Buy, hold and sell stocks</h1>
                             <p>Enhance your knowledge of the stock and crypto market by buying, holding and selling
                                 stocks and crypto within Coinz. All prices are updated regularly. Coinz currently has 30
@@ -64,11 +64,11 @@ export default function IndexPage() {
                         </div>
                     </div>
 
-                    <div className={`${styles.feature} d-flex justify-content-between gap-5 flex-row-reverse`}>
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5`}>
                         <Image src="/company.webp" alt="A picture of discord that shows the games category of Coinz."
                                width={600} height={400}/>
 
-                        <div className="d-flex flex-column align-items-start text-start justify-content-center">
+                        <div className="d-flex flex-column justify-content-center">
                             <h1 className="mb-3 fw-bold">Start your own business</h1>
                             <p>Create your own business, buy factories and produce items that you can sell for a big
                                 profit. Repeat this step over and over and become richer than Elon Musk! Did I mention
@@ -80,7 +80,7 @@ export default function IndexPage() {
                         <Image src="/games.webp" alt="A picture of discord that shows the games category of Coinz."
                                width={600} height={400}/>
 
-                        <div className="d-flex flex-column align-items-end text-end justify-content-center">
+                        <div className="d-flex flex-column justify-content-center">
                             <h1 className="mb-3 fw-bold">Play more than 15 games</h1>
                             <p>Play all sorts of minigames inside of discord! You will never get bored when playing
                                 these minigames. We plan to release a lot more minigames in the future. Some examples
@@ -88,11 +88,11 @@ export default function IndexPage() {
                         </div>
                     </div>
 
-                    <div className={`${styles.feature} d-flex justify-content-between gap-5 flex-row-reverse`}>
+                    <div className={`${styles.feature} d-flex justify-content-between gap-5`}>
                         <Image src="/farming.webp" alt="A picture of discord that shows the games category of Coinz."
                                width={600} height={400}/>
 
-                        <div className="d-flex flex-column align-items-start text-start justify-content-center">
+                        <div className="d-flex flex-column justify-content-center">
                             <h1 className="mb-3 fw-bold">Grow your own crops</h1>
                             <p>Buy farmland to grow crops on and live a peaceful live. Buy up to 9 plots to grow crops
                                 on. With premium you can buy up to 15 plots! Each crop has a different grow time,
