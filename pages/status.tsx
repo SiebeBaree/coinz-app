@@ -54,7 +54,7 @@ export default function StatusPage({ clusters }: { clusters: Cluster[] }) {
     }, [error, tries]);
 
     return (
-        <div className="page-content">
+        <div className="page-content pb-5">
             <div className="container">
                 <div className="page-title">
                     <h1 className="watermark">Status</h1>

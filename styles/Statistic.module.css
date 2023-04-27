@@ -12,3 +12,17 @@
     color: var(--color-selected);
     font-size: 70px;
 }
+
+@media screen and (max-width: 768px) {
+    .icon {
+        height: 30px ;
+    }
+
+    .statText h3 {
+        font-size: 1.2rem;
+    }
+
+    .statText p {
+        font-size: 0.8rem;
+    }
+}
