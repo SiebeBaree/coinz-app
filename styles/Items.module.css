@@ -1,5 +1,5 @@
 .categories {
-    gap: 12px
+    column-gap: 12px;
 }
 
 .category {
@@ -42,7 +42,7 @@
 }
 
 .itemCard {
-    width: 650px;
+    min-width: 450px;
     background-color: var(--color-background-blur);
     border-radius: 10px;
     padding: 25px 40px;
@@ -65,4 +65,58 @@
 
 .itemCard .imgGlow {
     filter: drop-shadow(0 0 10px var(--color-background-blur));
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-background-soft);
+}
+
+@media screen and (max-width: 992px) {
+    .items {
+        flex-direction: column-reverse;
+    }
+
+    .itemCard {
+        width: 100%;
+        position: inherit;
+        margin-bottom: 15px;
+    }
+
+    .selectMenu {
+        flex-direction: column;
+    }
+
+    .searchInputContainer {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .itemHeader {
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .item {
+        height: 66px;
+        width: 66px;
+    }
+
+    .item img {
+        width: 48px;
+        height: 48px;
+    }
 }
