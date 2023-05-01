@@ -1,8 +1,12 @@
 import styles from '../styles/Navbar.module.css';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function NavbarComponent() {
+    const router = useRouter();
+    const isCurrentPage = (pagePath: string) => router.pathname === pagePath;
+
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js');
     });
@@ -26,20 +30,25 @@ export default function NavbarComponent() {
                         </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav">
-                                <li className={`nav-item ${styles.navItem}`}>
+                                <li className={`nav-item ${styles.navItem} ${isCurrentPage('/faq') ? styles.activeNav : ''}`}>
                                     <Link href="/faq" className={`nav-link ${styles.navbarLink}`}>FAQ</Link>
                                 </li>
-                                <li className={`nav-item ${styles.navItem}`}>
+                                <li className={`nav-item ${styles.navItem} ${isCurrentPage('/commands') ? styles.activeNav : ''}`}>
                                     <Link href="/commands" className={`nav-link ${styles.navbarLink}`}>Commands</Link>
                                 </li>
-                                <li className={`nav-item ${styles.navItem}`}>
+                                <li className={`nav-item ${styles.navItem} ${isCurrentPage('/items') ? styles.activeNav : ''}`}>
                                     <Link href="/items" className={`nav-link ${styles.navbarLink}`}>Items</Link>
                                 </li>
-                                <li className={`nav-item ${styles.navItem}`}>
+                                <li className={`nav-item ${styles.navItem} ${isCurrentPage('/status') ? styles.activeNav : ''}`}>
                                     <Link href="/status" className={`nav-link ${styles.navbarLink}`}>Status</Link>
                                 </li>
-                                <li className={`nav-item ${styles.navItem}`}>
+                                <li className={`nav-item ${styles.navItem} ${isCurrentPage('/updates') ? styles.activeNav : ''}`}>
                                     <Link href="/updates" className={`nav-link ${styles.navbarLink}`}>Updates</Link>
+                                </li>
+                                <li className={`nav-item ${styles.navItem}`}>
+                                    <Link
+                                        href="https://discord.com/oauth2/authorize?client_id=938771676433362955&permissions=313344&scope=bot%20applications.commands"
+                                        className={`nav-link ${styles.navbarLink}`} target="_blank">Invite</Link>
                                 </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
