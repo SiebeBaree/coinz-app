@@ -52,8 +52,8 @@ export default function CommandsPage({ commands }: CommandsProps) {
                         compiled this list to help you quickly and easily access the commands in Coinz effectively.</p>
                 </div>
 
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex flex-row flex-wrap gap-3">
+                <div className={`${styles.selectMenu} d-flex justify-content-between`}>
+                    <div className="d-flex flex-wrap gap-3">
                         {Object.keys(categories).map((cat) => <Category category={cat} name={categories[cat]} key={cat}
                                                                         selectedCategory={category}
                                                                         setCategory={setCategory}/>)}
