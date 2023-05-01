@@ -1,0 +1,242 @@
+.pageContent {
+    min-height: calc(100vh - 75px);
+}
+
+.heroText {
+    position: relative;
+    height: calc(100vh - 225px);
+}
+
+.heroText h2 {
+    font-size: 4rem;
+}
+
+.description {
+    font-size: 1.3rem;
+}
+
+.watermark {
+    color: var(--color-watermark);
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 180px;
+    position: absolute;
+    margin-left: -120px;
+    margin-top: -280px;
+}
+
+.ctaButton {
+    background-color: var(--color-selected);
+    color: var(--color-text-dark);
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.ctaButton:hover {
+    color: var(--color-text-dark);
+}
+
+.ctaButton img {
+    height: 20px;
+    width: 20px;
+}
+
+.ctaButtonInner {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border: 3px solid var(--color-selected);
+    border-radius: 10px;
+    z-index: 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.ctaButtonInner:hover {
+    top: 0;
+    left: 0;
+    border: 3px solid var(--color-selected);
+}
+
+.ctaText {
+    color: var(--color-selected);
+}
+
+.ctaText a {
+    color: var(--color-selected);
+    cursor: pointer;
+}
+
+.heroImg {
+    object-fit: cover;
+    height: calc(100vh - 300px);
+    width: calc(100vh - 300px);
+    max-width: 650px;
+    max-height: 650px;
+}
+
+.reviewCard {
+    background-color: var(--color-background-soft);
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    z-index: 2;
+    position: relative;
+}
+
+.reviewCard img {
+    border-radius: 100%;
+    background-color: var(--color-background-soft);
+    position: absolute;
+    top: 0;
+}
+
+.statistics {
+    height: 150px;
+    background-color: var(--color-background-soft);
+}
+
+.featuresTitle h2 {
+    font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+    display: inline-block;
+}
+
+.featuresTitle h2::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 50%;
+    height: 5px;
+    background-color: var(--color-selected);
+    border-radius: 5px;
+}
+
+.feature {
+    margin: 150px 0;
+    max-height: 400px;
+}
+
+.feature:nth-child(odd) {
+    margin-right: auto;
+    flex-direction: row;
+    text-align: right;
+}
+
+.feature:nth-child(even) {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.featureImage {
+    height: 400px;
+    width: auto;
+    z-index: 9;
+}
+
+.feature:nth-child(odd) .featureIcon {
+    right: -30%;
+}
+
+.feature:nth-child(even) .featureIcon {
+    left: -30%;
+}
+
+.feature .line {
+    left: 50%;
+    bottom: -50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 1200px) {
+    .watermark,
+    .line {
+        display: none;
+    }
+
+    .featureIcon {
+        width: 400px;
+        height: 400px;
+    }
+
+    .heroText h2 {
+        font-size: 2rem;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+    }
+
+    .featureImage {
+        width: 100%;
+        max-height: 300px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero {
+        flex-direction: column-reverse;
+    }
+
+    .heroText {
+        height: auto;
+        text-align: center;
+    }
+
+    .heroImg {
+        max-height: 250px;
+        object-fit: contain;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .heroText p {
+        font-size: 1.1rem;
+    }
+
+    .ctaButtons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .feature {
+        max-height: none;
+    }
+
+    .feature:nth-child(n) {
+        flex-direction: column;
+    }
+
+    .featureImage {
+        margin: 25px auto 20px auto;
+        max-height: 400px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .feature h1,
+    .feature p {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .feature:nth-child(n) .featureIcon {
+        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .heroImg {
+        max-height: 200px;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+}

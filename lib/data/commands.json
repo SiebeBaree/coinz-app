@@ -405,7 +405,7 @@
     "blackjack": {
         "description": "Play a game of blackjack.",
         "category": "games",
-        "cooldown": 300,
+        "cooldown": 420,
         "options": [
             {
                 "name": "bet",

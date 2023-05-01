@@ -1,26 +1,17 @@
-.borderUnder {
-    border-bottom: 1px solid rgba(245, 245, 245, 0.2);
-}
-
 .navbarHeader {
     z-index: 999;
-    height: 50px;
+    height: 75px;
 }
 
 .navbarBrand {
     font-family: "Ginto Nord", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
-    font-size: 1.8rem;
-    margin-right: 20px;
-}
-
-.navItem {
-    margin: auto 0;
+    font-size: 2rem;
 }
 
 .navbarLink {
-    margin: auto 10px;
-    font-size: 1rem;
+    margin: auto 7px;
+    padding: 5px 10px;
 }
 
 .navbarLink,
@@ -33,11 +24,29 @@
 .navbarBrand:focus,
 .dropdownToggle::after,
 .profileSpan {
-    color: var(--text-color);
+    color: var(--color-text);
 }
 
-.navLogo {
-    margin-right: 5px;
+.highlight {
+    outline: 3px solid var(--color-selected);
+    border-radius: 10px;
+}
+
+.colored,
+.colored:hover,
+.colored:active,
+.colored:focus {
+    background-color: var(--color-selected);
+    border-radius: 10px;
+    color: var(--color-text-dark);
+}
+
+.activeNav a,
+.activeNav a:hover,
+.activeNav a:active,
+.activeNav a:focus {
+    font-weight: bold;
+    color: var(--color-selected)
 }
 
 .navbarToggler {
@@ -50,16 +59,16 @@
 }
 
 .offCanvas {
-    background: var(--bg-color);
+    background: var(--color-background);
 }
 
 .offCanvas h5 {
-    color: var(--text-color);
+    color: var(--color-text);
     font-size: 2rem;
 }
 
 @media screen and (max-width: 992px) {
-    .unimportantContent {
-        display: none;
+    .offCanvas .navItemButton {
+        margin: 8px 0;
     }
 }

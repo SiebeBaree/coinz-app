@@ -1,39 +1,54 @@
-import styles from '../styles/faq.module.css';
+import styles from '../styles/Faq.module.css';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export async function getStaticProps() {
     const data = await import('../lib/data/faq.json', { assert: { type: 'json' } });
 
     return {
-        props: { faqItems: data.default.items },
+        props: {
+            items: data.default.items,
+        },
     };
 }
 
-export default function Faq({ faqItems }) {
+export default function FaqPage({ items }) {
     return (
-        <div id={styles.faq} className='container'>
-            <div id={styles.pageTitle}>
-                <h2>Frequently Asked Questions</h2>
-                <p>Check this page first before asking a question in our support server. Your question might already be answered here!</p>
-            </div>
+        <div className="page-content">
+            <div className="container">
+                <div className="page-title">
+                    <h1 className="watermark">Questions</h1>
+                    <h1>Frequently Asked Questions</h1>
+                    <p>Find quick answers to your questions about Coinz. Your question might already be answered here!
+                        If you can&apos;t find what you&apos;re looking for, contact us. We&apos;re here to help!</p>
+                </div>
 
-            <div>
-                {faqItems.map(({ title, slug, description }, index: number) =>
-                    <FaqItem key={index} title={title} slug={slug} description={description} />,
-                )}
+                <div className={`${styles.faq} d-flex flex-column gap-3 mb-5`}>
+                    {items.map((item) => (
+                        <FaqCard key={item.title.toLowerCase().replace(' ', '_')} title={item.title}
+                                 description={item.description}/>
+                    ))}
+                </div>
             </div>
         </div>
     );
 }
 
-function FaqItem({ title, slug, description }) {
-    const [state, setState] = useState(false);
+export function FaqCard({ title, description }) {
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div id={slug} className={`${styles.faqItem} ${state ? styles.itemExpanded : ''}`} onClick={() => setState(!state)}>
-            <h4>{title}</h4>
-            {state ? <p>{description.split('\n').map((line: string, i: number) => <ReactMarkdown key={i}>{line}</ReactMarkdown>)}</p> : null}
-        </div >
+        <div className={`${styles.faqCard} d-flex flex-column gap-3`} data-isopen={isOpen}
+             onClick={() => setIsOpen(!isOpen)}>
+            <div className="d-flex justify-content-between">
+                <h4 className="fw-bold">{title}</h4>
+                <FontAwesomeIcon icon={faChevronDown} className={styles.faqIcon}/>
+            </div>
+            {isOpen ?
+                <div className={styles.faqDescription}>{description.split('\n').map((line: string, index: number) =>
+                    <ReactMarkdown key={index}>{line}</ReactMarkdown>)}</div> : null}
+        </div>
     );
 }

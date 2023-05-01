@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
+import styles from '../styles/Updates.module.css';
 import ReactMarkdown from 'react-markdown';
-import styles from '../styles/updates.module.css';
 
 interface Update {
     version: string;
@@ -18,16 +18,15 @@ export async function getStaticProps() {
     };
 }
 
-export default function Updates({ updates }: { updates: Update[] }) {
+export default function UpdatesPage({ updates }: { updates: Update[] }) {
     useEffect(() => {
-        // get all code elements
         const codeElements = document.querySelectorAll('code');
 
-        // bind click event to all code elements to copy the text and change the text to "Copied!"
         codeElements.forEach(element => {
             element.addEventListener('click', () => {
-                navigator.clipboard.writeText(element.textContent);
-                element.setAttribute('data-tooltip', 'Copied!');
+                navigator.clipboard.writeText(element.textContent).then(() => {
+                    element.setAttribute('data-tooltip', 'Copied!');
+                });
             });
 
             element.addEventListener('mouseout', () => {
@@ -37,30 +36,36 @@ export default function Updates({ updates }: { updates: Update[] }) {
     }, []);
 
     return (
-        <div className="page-content container">
-            <section className="text-white d-flex flex-column align-items-center my-5">
-                <h1>Updates</h1>
-                <p className="text-muted">Know what&apos;s changed in the latest Coinz update.</p>
-            </section>
+        <div className="page-content">
+            <div className="container">
+                <div className="page-title">
+                    <h1 className="watermark">Updates</h1>
+                    <h1>Updates</h1>
+                    <p>Don&apos;t miss out on the latest updates. Stay informed about new features and bug fixes. If you
+                        have a question about a certain update, contact us. We&apos;re here to help!</p>
+                </div>
 
-            <section id={styles.updates} className="text-white">
-                {updates.map(({ version, name, timestamp, log }, index: number) => (
-                    <div key={index} id={`v${version}`} className={`${styles.card} card mb-3`}>
-                        <div className="card-header d-flex justify-content-between align-items-center">
-                            <h3 className="card-title">{name} - Coinz</h3>
-                            <h3 className='text-muted'>v{version}</h3>
+                <div id={styles.updates} className="text-white mb-5">
+                    {updates.map(({ version, name, timestamp, log }, index: number) => (
+                        <div key={index} id={`v${version}`} className={`${styles.card} card mb-3`}>
+                            <div
+                                className="card-header d-flex justify-content-between align-items-center bg-transparent">
+                                <h3 className="card-title">{name} - Coinz</h3>
+                                <h3 className="text-muted">v{version}</h3>
+                            </div>
+                            <div className="card-body">
+                                {log.split('\n').map((line: string, i: number) => (
+                                    <ReactMarkdown key={i}>{line}</ReactMarkdown>
+                                ))}
+                            </div>
+                            <div className="card-footer bg-transparent">
+                                <small className="text-muted">Update posted
+                                    on: {new Date(timestamp * 1000).toDateString()}</small>
+                            </div>
                         </div>
-                        <div className="card-body">
-                            {log.split('\n').map((line: string, i: number) => (
-                                <ReactMarkdown key={i}>{line}</ReactMarkdown>
-                            ))}
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">Update posted on: {new Date(timestamp * 1000).toDateString()}</small>
-                        </div>
-                    </div>
-                ))}
-            </section>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

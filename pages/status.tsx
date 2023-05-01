@@ -1,29 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import styles from '../styles/status.module.css';
-
-import { useEffect, useState } from 'react';
-import config from '../lib/data/config.json' assert { type: 'json' };
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-
+import styles from '../styles/Status.module.css';
+import type { Cluster, Shard } from '../lib/types';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-
-interface Shard {
-    id: number;
-    ping: number;
-    guildcount: number;
-    ram: {
-        heapUsed: number;
-        rss: number;
-    };
-}
-
-interface Cluster {
-    id: number;
-    shards: Shard[];
-}
+import { useEffect, useState } from 'react';
 
 export async function getStaticProps() {
     const clusters = await getStatus();
@@ -36,15 +15,14 @@ export async function getStaticProps() {
 
 async function getStatus(): Promise<Cluster[]> {
     try {
-        const status = await fetch(config.API_URL + '/status');
-        const json = await status.json();
-        return json;
+        const status = await fetch('https://api.coinzbot.xyz/status');
+        return await status.json();
     } catch {
         return [];
     }
 }
 
-function StatusPage({ clusters }) {
+export default function StatusPage({ clusters }: { clusters: Cluster[] }) {
     const [status, setStatus] = useState(clusters);
     const [tries, setTries] = useState(0);
     const [error, setError] = useState(clusters.length === 0);
@@ -59,7 +37,10 @@ function StatusPage({ clusters }) {
                     setStatus(data);
                     setError(false);
                 }
-            }).catch(() => setError(true));
+            }).catch((e) => {
+                console.log(e);
+            setError(true);
+        });
     }, UPDATE_INTERVAL * 1000);
 
     useEffect(() => {
@@ -73,93 +54,75 @@ function StatusPage({ clusters }) {
     }, [error, tries]);
 
     return (
-        <div className="container">
-            <div className="d-flex flex-column align-items-center mt-5 text-color">
-                <h1>Coinz Status</h1>
-                <h4 className='text-muted'>Updated every {UPDATE_INTERVAL} seconds</h4>
-            </div>
+        <div className="page-content pb-5">
+            <div className="container">
+                <div className="page-title">
+                    <h1 className="watermark">Status</h1>
+                    <h1>Status</h1>
+                    <p>Here, you&apos;ll find all the information you need to stay up to date with the status of our
+                        bot. This page is updated every {UPDATE_INTERVAL} seconds.</p>
+                </div>
 
-            <div className={`${styles.clusterCards} d-flex justify-content-center my-5 flex-wrap`}>
-                {error && <h1 className="text-danger">Could not get the status of Coinz, please try again.</h1>}
-                {!error && status.map((cluster: Cluster, index: number) => <ClusterCard key={index} cluster={cluster} />)}
-            </div>
-        </div>
-    );
-}
-
-function ClusterCard({ cluster }) {
-    const averagePing = cluster.shards.reduce((acc: number, shard: Shard) => acc + (shard.ping >= 0 ? shard.ping : 0), 0) /
-        cluster.shards.filter((shard: Shard) => shard.ping >= 0).length || -1;
-
-    return (
-        <div className={`${styles.clusterCard} card d-flex`} style={{
-            borderLeft: `7px solid ${getColor(averagePing)}`,
-        }}>
-            <div className={`${styles.clusterCardBody} card-body`}>
-                <span>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={
-                            <Tooltip>
-                                <h5>Cluster #{cluster.id}</h5>
-                                <b>Total Guilds:</b> {cluster.shards.reduce((total: number, shard: Shard) => total + shard.guildcount, 0)}<br />
-                                <b>Average Ping:</b> {averagePing} ms<br />
-                                <b>Total RAM:</b> {cluster.shards.reduce((total: number, shard: Shard) => total + shard.ram.heapUsed, 0).toFixed(2)} MB
-                            </Tooltip>
-                        }
-                    >
-                        <FontAwesomeIcon icon={faCircleInfo} />
-                    </OverlayTrigger>
-
-
-                </span>
-
-                <h3 className={'card-title text-center text-color'}>Cluster #{cluster.id}</h3>
-                <div className={`${styles.shardCards} d-flex justify-content-center flex-wrap`}>
-                    {(cluster.shards).map((shard: Shard, index: number) => <ShardCard key={index} shard={shard} />)}
+                <div className="d-flex flex-wrap justify-content-between gap-5">
+                    {error && <h1 className="text-danger my-5">Could not get the status of Coinz, please try again.</h1>}
+                    {!error && status.map((cluster: Cluster) => <ClusterCard key={`Cluster#${cluster.id}`} cluster={cluster}/>)}
                 </div>
             </div>
         </div>
     );
 }
 
-function ShardCard({ shard }) {
+function ClusterCard({ cluster }: { cluster: Cluster }) {
+    const averagePing = Math.round(cluster.shards.reduce((acc: number, shard: Shard) =>
+            acc + (shard.ping >= 0 ? shard.ping : 0), 0) /
+        cluster.shards.filter((shard: Shard) => shard.ping >= 0).length || -1);
+
+    return (
+        <div className={styles.statusCard}>
+            <h1 className={styles.custerId}>#{cluster.id}</h1>
+
+            <div className={`${styles.statusContainer} d-flex justify-content-between align-items-center px-4`}>
+                <div className={`${styles.status} d-flex flex-column align-items-center`}>
+                    <p>{cluster.shards.reduce((total: number, shard: Shard) => total + shard.guildcount, 0)}</p>
+                    <h6>Total Guilds</h6>
+                </div>
+                <div className={`${styles.status} d-flex flex-column align-items-center`}>
+                    <p>{averagePing} ms</p>
+                    <h6>Average Ping</h6>
+                </div>
+            </div>
+
+            <div className={`${styles.shardContainer} d-flex flex-wrap justify-content-center px-3`}>
+                {cluster.shards.map((shard) => <ShardCard key={`Shard#${shard.id}`} shard={shard}/>)}
+            </div>
+        </div>
+    );
+}
+
+function ShardCard({ shard }: { shard: Shard }) {
     const status = shard.ping === -1
-        ? 'Shard is offline'
+        ? 'offline'
         : shard.ping > 300
-            ? 'Shard is responding slowly'
-            : 'Shard is fully operational';
+            ? 'slow'
+            : 'online';
 
     return (
         <OverlayTrigger
             placement="top"
             overlay={
                 <Tooltip>
-                    <b>{status}</b>
+                    <b>{status.toUpperCase()}</b>
                     {shard.ping >= 0 && <>
-                        <br /><br />
-                        <b>Ping:</b> {shard.ping} ms<br />
-                        <b>Guilds:</b> {shard.guildcount}<br />
-                        <b>RAM:</b> {shard.ram.heapUsed.toFixed(2)} MB
+                        <br/>
+                        <b>Ping:</b> {shard.ping} ms<br/>
+                        <b>Guilds:</b> {shard.guildcount}
                     </>}
                 </Tooltip>
             }
         >
-            <div className={`${styles.shardCard} d-flex justify-content-center align-items-center`} style={{
-                backgroundColor: getColor(shard.ping),
-            }}>
-                <h5 className='my-auto'>#{shard.id}</h5>
-            </div >
+            <div className={styles.shardCard} data-status={status}>
+                <h5 className={styles.shardId}>#{shard.id}</h5>
+            </div>
         </OverlayTrigger>
     );
 }
-
-function getColor(ping: number): string {
-    return ping === -1
-        ? '#DA3F40'
-        : ping > 300
-            ? '#FAA61A'
-            : '#44B581';
-}
-
-export default StatusPage;
