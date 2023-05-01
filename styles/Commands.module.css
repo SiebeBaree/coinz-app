@@ -29,8 +29,12 @@
     margin: 0;
 }
 
+.commandItem {
+    border: 0 solid var(--color-background-blur);
+}
+
 .opened {
-    box-shadow: 0 0 15px 0 var(--color-background-blur);
+    border: 3px solid var(--color-background-blur);
 }
 
 .opened .commandDescription {
@@ -61,4 +65,15 @@
     border-radius: 8px;
     overflow: hidden;
     background-color: var(--color-background-soft);
+}
+
+@media screen and (max-width: 1200px) {
+    .selectMenu {
+        flex-direction: column;
+    }
+
+    .searchInputContainer {
+        width: 100%;
+        margin-top: 25px;
+    }
 }
