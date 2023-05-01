@@ -27,7 +27,8 @@ export default function FaqPage({ items }) {
 
                 <div className={`${styles.faq} d-flex flex-column gap-3 mb-5`}>
                     {items.map((item) => (
-                        <FaqCard key={item.slug} slug={item.slug} title={item.title} description={item.description}/>
+                        <FaqCard key={item.title.toLowerCase().replace(' ', '_')} title={item.title}
+                                 description={item.description}/>
                     ))}
                 </div>
             </div>
@@ -35,17 +36,19 @@ export default function FaqPage({ items }) {
     );
 }
 
-export function FaqCard({ slug, title, description }) {
+export function FaqCard({ title, description }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div id={slug} className={`${styles.faqCard} d-flex flex-column gap-3`} data-isopen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+        <div className={`${styles.faqCard} d-flex flex-column gap-3`} data-isopen={isOpen}
+             onClick={() => setIsOpen(!isOpen)}>
             <div className="d-flex justify-content-between">
                 <h4 className="fw-bold">{title}</h4>
-                <FontAwesomeIcon icon={faChevronDown} className={styles.faqIcon} />
+                <FontAwesomeIcon icon={faChevronDown} className={styles.faqIcon}/>
             </div>
-            {isOpen ? <div className={styles.faqDescription}>{description.split('\n').map((line: string, index: number) =>
-                <ReactMarkdown key={index}>{line}</ReactMarkdown>)}</div> : null}
+            {isOpen ?
+                <div className={styles.faqDescription}>{description.split('\n').map((line: string, index: number) =>
+                    <ReactMarkdown key={index}>{line}</ReactMarkdown>)}</div> : null}
         </div>
     );
 }
