@@ -1,18 +1,21 @@
 import styles from '../styles/Items.module.css';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Item } from '../lib/types';
 import Image from 'next/image';
 import Fuse from 'fuse.js';
+import connect from '../lib/database';
+import ItemModel, { Item } from '../lib/models/Item';
 
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:3001/api/shop');
-    const shop = await res.json();
+    await connect();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const shop = await ItemModel.find({}) as Item[];
 
     return {
         props: {
-            shop,
+            shop: JSON.parse(JSON.stringify(shop)),
         },
-        revalidate: 60,
+        revalidate: 300,
     };
 }
 
@@ -100,7 +103,7 @@ export default function ItemsPage({ shop }: { shop: Item[] }) {
                         money.</p>
                 </div>
 
-                <div className={`${styles.selectMenu} d-flex justify-content-between align-items-center`}>
+                <div className={`${styles.selectMenu} d-flex justify-content-between`}>
                     <div className={`${styles.categories} d-flex flex-wrap`}>
                         {categoryCards.map((card) => (
                             <CategoryCard key={card.category} name={card.name}
@@ -190,20 +193,21 @@ export default function ItemsPage({ shop }: { shop: Item[] }) {
 
 function CategoryCard({ name, category, state, setState, getItems }) {
     return (
-        <p className={styles.category} data-selected={state === category ? 'true' : 'false'}
+        <button className={`${styles.category} border-0`} data-selected={state === category ? 'true' : 'false'}
            data-category={category} onClick={() => {
             setState(category);
             getItems(category);
         }
-        }>{name}</p>
+        }>{name}</button>
     );
 }
 
 function ItemCard({ item, state, setState }: { item: Item, state: Item, setState: Dispatch<SetStateAction<Item>> }) {
     return (
-        <div className={styles.item} data-selected={item.itemId === state.itemId ? 'true' : 'false'}>
+        <div className={styles.item} data-selected={item.itemId === state.itemId ? 'true' : 'false'}
+             onClick={() => setState(item)}>
             <Image src={`https://cdn.discordapp.com/emojis/${item.emoteId}.webp?size=56&quality=lossless`}
-                   alt={item.name} width={56} height={56} onClick={() => setState(item)}/>
+                   alt={item.name} width={56} height={56}/>
         </div>
     );
 }
