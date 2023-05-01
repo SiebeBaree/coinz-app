@@ -1,5 +1,6 @@
 import styles from '../styles/Donate.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -28,19 +29,21 @@ export default function DonatePage() {
                 </div>
 
                 <div className="d-flex justify-content-around my-5 py-5 flex-wrap gap-3">
-                    <a
+                    <Link
                         href="https://ko-fi.com/coinz"
+                        target="_blank"
                         className={`${styles.donation} d-flex flex-column align-items-center justify-content-center p-3 gap-2 rounded-circle`}>
                         <Image src="/kofi.png" width={50} height={50} alt="Ko-Fi donation platform logo"/>
                         <h2>Ko-Fi</h2>
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                         href="https://www.paypal.com/donate/?hosted_button_id=3ANU36UKV87FE"
+                        target="_blank"
                         className={`${styles.donation} d-flex flex-column align-items-center justify-content-center p-3 gap-2 rounded-circle`}>
                         <Image src="/paypal.png" width={50} height={50} alt="Ko-Fi donation platform logo"/>
                         <h2>PayPal</h2>
-                    </a>
+                    </Link>
 
                     <OverlayTrigger
                         placement="top"
