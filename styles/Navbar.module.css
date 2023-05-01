@@ -40,3 +40,35 @@
     border-radius: 10px;
     color: var(--color-text-dark);
 }
+
+.activeNav a,
+.activeNav a:hover,
+.activeNav a:active,
+.activeNav a:focus {
+    font-weight: bold;
+    color: var(--color-selected)
+}
+
+.navbarToggler {
+    color: white;
+    border: none;
+}
+
+.navbarToggler span {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.87)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.offCanvas {
+    background: var(--color-background);
+}
+
+.offCanvas h5 {
+    color: var(--color-text);
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+    .offCanvas .navItemButton {
+        margin: 8px 0;
+    }
+}
