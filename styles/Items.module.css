@@ -1,10 +1,11 @@
 .categories {
-    column-gap: 12px;
+    gap: 12px;
 }
 
 .category {
     padding: 5px 20px;
     background-color: var(--color-background-soft);
+    color: var(--color-text);
     border-radius: 10px;
     cursor: pointer;
 }

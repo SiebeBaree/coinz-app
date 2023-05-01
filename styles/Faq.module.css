@@ -1,7 +1,3 @@
-.faq {
-
-}
-
 .faqCard {
     background-color: var(--color-background-soft);
     border-radius: 10px;
@@ -44,4 +40,18 @@
 
 .faqCard[data-isopen="true"] .faqIcon {
     transform: rotate(180deg);
+}
+
+.faqCard a {
+    color: var(--color-selected);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.faqCard em {
+    font-weight: bold;
+    background-color: var(--color-background);
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-style: normal;
 }
