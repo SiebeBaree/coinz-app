@@ -20,8 +20,11 @@ export default function Statistic({ icon, title, value, suffix = '' }) {
 
         const interval = setInterval(() => {
             if (isVisible === true) {
-                if (state < value) setState(state + incrementValue);
-                else if (state >= value) setState(value);
+                if (state < value) {
+                    setState(state + incrementValue);
+                } else if (state >= value) {
+                    setState(value);
+                }
             }
         }, 10);
 
@@ -30,7 +33,7 @@ export default function Statistic({ icon, title, value, suffix = '' }) {
 
     return (
         <div ref={ref} className={`${styles.statistic} d-flex align-items-center gap-4`}>
-            <FontAwesomeIcon icon={icon} className={styles.icon} />
+            <FontAwesomeIcon icon={icon} className={styles.icon}/>
             <div className={styles.statText}>
                 <h3>{state}{suffix}</h3>
                 <p className="fw-bold">{title}</p>
