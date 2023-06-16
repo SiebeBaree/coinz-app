@@ -24,6 +24,10 @@
     margin-top: -280px;
 }
 
+.ctaButtons {
+    margin-bottom: 25px;
+}
+
 .ctaButton {
     background-color: var(--color-selected);
     color: var(--color-text-dark);
@@ -227,6 +231,11 @@
         right: 0;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .featureIcon {
+        width: 100vw;
+        height: 100vw;
     }
 }
 
