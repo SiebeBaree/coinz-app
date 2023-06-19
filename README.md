@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img width="150" height="150" style="float: left; margin: 0 10px 10px 0;" alt="Coinz" src="https://cdn.coinzbot.xyz/logo.png">
 
-## Getting Started
+# Coinz App
+![Framework](https://img.shields.io/badge/Framework-Next.js-000000?style=for-the-badge&logo=next.js)
+[![Website](https://img.shields.io/badge/Website-Coinz-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://coinzbot.xyz)
+[![Discord](https://img.shields.io/discord/938177962698735616?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/asnZQwc6kW)
 
-First, run the development server:
+Coinz App is a website built with Next.js 13 made for the [Coinz Discord bot](https://github.com/SiebeBaree/Coinz).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Pages
+* Landing page with animations and statistics.
+* FAQ page with 12 questions and answers.
+* Commands page with all commands and their usage.
+* Items page with all shop items and their description dynamically fetched from the database.
+* Status page with the status of the bot and all its clusters and shards. Dynamically fetched.
+* Updates page with all Coinz updates.
+* Donate page
+* Terms of use page
+* Privacy policy page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Suggestions, bugs, feature requests
+Want to contribute? Great, we love that! Please take your time on [opening a new issue](https://github.com/YourUsername/coinz-app/issues/new).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Support Coinz
+Coinz has started as a passion project but has developed way further than I ever imagined. To support this rappid growth please consider [donating](https://coinzbot.xyz/donate).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+If you can't/don't want to donate anything, that's fine. You can also support Coinz by starring this repository. To make this bot even better consider opening a pull request or issue with a new feature.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Running the project locally
 
-## Learn More
+### Prerequisites:
+* Node.js
+* MongoDB database
 
-To learn more about Next.js, take a look at the following resources:
+### Steps to run the project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the project:
+    ```bash
+    git clone https://github.com/SiebeBaree/coinz-app.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3. Create a .env file with the following content:
+    ```env
+    DATABASE_URI=your-mongodb-uri
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Run the project:
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please note that the author, `siebe_b` on Discord, will **NOT** provide assistance in understanding or implementing the source code. It is your responsibility to understand and adapt the code as needed for your own project.
+
+## License
+We use the GNU GPLv3-license. If you plan to use any part of this source code in your own bot, we would be grateful if you would include some form of credit somewhere.
+
+> You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) GPL-licensed code must also be made available under the GPL along with build & install instructions.
+
+Fetched from [TLDRLegal](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)), please also read the [license](https://github.com/SiebeBaree/coinz-app/blob/main/LICENSE) if you plan on using the source code. This is only a short summary. Please also take note of that we are not forced to help you, and we won't help you host it yourself as we do not recommend you doing so.
