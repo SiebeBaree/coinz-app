@@ -1,4 +1,4 @@
-<img width="150" height="150" style="float: left; margin: 0 10px 10px 0;" alt="Coinz" src="https://cdn.coinzbot.xyz/logo.png">
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 10px 0;" alt="Coinz" src="https://cdn.coinzbot.xyz/logo.png">
 
 # Coinz App
 ![Framework](https://img.shields.io/badge/Framework-Next.js-000000?style=for-the-badge&logo=next.js)
