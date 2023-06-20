@@ -57,7 +57,7 @@ export default function IndexPage() {
                 <div className={`${styles.statistics}`}>
                     <div
                         className="container d-flex justify-content-around align-items-center h-100 flex-wrap gap-4 py-3">
-                        <Statistic icon={faServer} title="Servers" value="2900" suffix="+"/>
+                        <Statistic icon={faServer} title="Servers" value="3000" suffix="+"/>
                         <Statistic icon={faUsers} title="Users" value="330" suffix="k+"/>
                         <Statistic icon={faTerminal} title="Commands" value="41"/>
                     </div>
